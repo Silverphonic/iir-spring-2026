@@ -270,7 +270,7 @@
       margin:.4rem 0 1rem 0;opacity:1;transform:none;pointer-events:auto;
       padding:1.2rem 1.3rem;
     }
-    .tl-inline.show{max-height:60rem;}
+    .tl-inline.show{max-height:400rem;}
   }
 
   footer{border-top:1px solid var(--line);padding:2rem 0;}
@@ -633,10 +633,31 @@
     if(connector){ connector.remove(); connector = null; }
   }
 
+
+  // Measure the panel's real content height instead of relying on a fixed
+  // CSS ceiling -- long entries were being clipped by overflow:hidden.
+  function sizeSlot(slot){
+    if(!slot) return;
+    requestAnimationFrame(function(){
+      slot.style.maxHeight = slot.scrollHeight + 'px';
+    });
+  }
+  function resizeOpenSlot(){
+    var slot = document.querySelector('.tl-inline.show');
+    if(!slot) return;
+    slot.style.maxHeight = 'none';
+    var h = slot.scrollHeight;
+    slot.style.maxHeight = h + 'px';
+  }
+  window.addEventListener('resize', resizeOpenSlot);
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(resizeOpenSlot);
+  }
+
   function closeAll(){
     document.querySelectorAll('.tl-item.open').forEach(function(b){b.classList.remove('open');});
     document.querySelectorAll('.tl-inline.show').forEach(function(d){
-      d.classList.remove('show'); d.innerHTML='';
+      d.classList.remove('show'); d.style.maxHeight=''; d.innerHTML='';
     });
     mount.innerHTML='';
     removeConnector();
@@ -718,6 +739,7 @@
       var slot = document.querySelector('.tl-inline[data-for="'+id+'"]');
       slot.appendChild(node);
       slot.classList.add('show');
+      sizeSlot(slot);
     }else{
       empty.style.display='none';
       mount.appendChild(node);
