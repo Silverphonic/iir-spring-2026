@@ -38,9 +38,9 @@
     backdrop-filter:saturate(140%) blur(10px);
     border-bottom:1px solid var(--line);
   }
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  nav .wrap{display:flex;align-items:center;height:60px;}
   .brandmark{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;color:var(--text);}
-  .navlinks{display:flex;gap:1.6rem;font-size:.82rem;
+  .navlinks{display:flex;flex:1;justify-content:space-between;gap:1.6rem;font-size:.82rem;
     font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;}
   .navlinks a{color:var(--muted);}
   .navlinks a:hover{color:var(--text);}
@@ -157,13 +157,39 @@
     *{animation:none!important;transition:none!important;}
     html{scroll-behavior:auto;}
   }
+
+  /* ---------- title strip under nav ---------- */
+  .titlebar{
+    background:var(--surface);
+    border-bottom:1px solid var(--line);
+  }
+  .titlebar .wrap{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:1.05rem;color:var(--text);
+    padding-top:.7rem;padding-bottom:.7rem;
+    text-align:center;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  @media(max-width:620px){
+    .titlebar .wrap{font-size:.9rem;white-space:normal;}
+    nav .wrap{padding-left:0;padding-right:0;}
+    .navlinks{
+      justify-content:flex-start;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      padding:0 1.5rem;
+    }
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a{white-space:nowrap;flex:0 0 auto;}
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brandmark" href="index.html" style="color:var(--text)">Innovator in Residence Spring 2026</a>
     <div class="navlinks">
       <a href="index.html">Home</a>
       <a href="explored.html">What We Explored</a>
@@ -174,6 +200,10 @@
     </div>
   </div>
 </nav>
+
+<div class="titlebar">
+  <div class="wrap">Innovator in Residence Spring 2026</div>
+</div>
 
 <header class="page">
   <div class="wrap">
