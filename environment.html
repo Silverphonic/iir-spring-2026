@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; the Environment — Innovator in Residence Spring 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1F2E;
+    --surface:#15293B;
+    --surface-2:#1B3247;
+    --accent:#E8622A;
+    --accent-soft:#F2895A;
+    --text:#F2F0EC;
+    --muted:#AABBC8;
+    --line:#2C4459;
+    --maxread:38rem;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--ink);color:var(--text);
+    font-family:"IBM Plex Sans",system-ui,Arial,sans-serif;
+    font-size:18px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-soft);text-decoration:none;}
+  a:hover{color:var(--accent);}
+  ::selection{background:var(--accent);color:var(--ink);}
+  .wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem;}
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,31,46,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brandmark{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;color:var(--text);}
+  .navlinks{display:flex;gap:1.6rem;font-size:.82rem;
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;}
+  .navlinks a{color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  .navlinks a.here{color:var(--accent-soft);}
+  @media(max-width:620px){ .navlinks{gap:1rem;font-size:.72rem;} }
+
+  header.page{padding:5rem 0 1rem;}
+  .pagelabel{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 1.2rem 0;
+  }
+  .pagelabel .dot{color:var(--accent);}
+  header.page h1{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;
+    color:var(--accent);margin:0 0 1.2rem 0;
+  }
+  .disclaimer{
+    font-size:.78rem;line-height:1.65;color:var(--muted);
+    border-left:2px solid var(--accent);
+    padding-left:.9rem;max-width:38rem;
+    margin:1.4rem 0 0 0;
+  }
+
+  /* ---------- the spine ---------- */
+  main{position:relative;padding-bottom:4rem;}
+  .spine{
+    position:relative;
+    border-left:1px solid var(--line);
+    margin-left:1.5rem;
+  }
+  section{position:relative;padding:3.5rem 0 .5rem;}
+  section.node::before{
+    content:"";position:absolute;left:-1.5rem;top:4.1rem;
+    width:9px;height:9px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--line);
+    transform:translateX(-50%);
+    transition:border-color .4s,background .4s,box-shadow .4s;
+  }
+  section.node.active::before{
+    border-color:var(--accent);background:var(--accent);
+    box-shadow:0 0 0 4px rgba(232,98,42,.15);
+  }
+  .spine .wrap{max-width:none;padding-left:2.5rem;padding-right:1.5rem;}
+  @media(min-width:760px){
+    .spine{margin-left:calc((100vw - 60rem)/2 + 1.5rem);}
+    .spine .wrap{max-width:50rem;margin:0;padding-left:2.5rem;}
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 1rem 0;
+  }
+  .eyebrow .dot{color:var(--accent);}
+  h2{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(1.5rem,3.2vw,2.1rem);
+    line-height:1.15;letter-spacing:-.01em;
+    margin:0 0 1.2rem 0;max-width:24ch;
+  }
+  p{max-width:var(--maxread);font-size:.95rem;line-height:1.75;margin:0 0 1.2rem 0;}
+
+  .intro-lede{padding:1.5rem 0 0;}
+  .intro-lede p{max-width:var(--maxread);font-size:.95rem;line-height:1.75;margin:0 0 1.2rem 0;}
+
+  /* ---------- stat strip ---------- */
+  .stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);
+    border-radius:10px;overflow:hidden;
+    margin:2rem 0 1.5rem;max-width:46rem;
+  }
+  .stat{background:var(--ink);padding:1.2rem 1.3rem;}
+  .stat b{
+    display:block;font-family:"Fraunces",serif;font-weight:600;
+    font-size:1.7rem;color:var(--accent);line-height:1.1;
+    margin-bottom:.4rem;
+  }
+  .stat span{
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    line-height:1.5;display:block;
+  }
+
+  /* ---------- place cards ---------- */
+  .places{
+    display:grid;grid-template-columns:1fr 1fr;gap:.8rem;
+    max-width:46rem;margin:1.5rem 0;
+  }
+  @media(max-width:620px){ .places{grid-template-columns:1fr;} }
+  .place{
+    background:var(--surface);border:1px solid var(--line);border-radius:8px;
+    padding:1rem 1.2rem;font-size:.85rem;line-height:1.6;color:var(--muted);
+  }
+  .place b{
+    display:block;font-family:"Fraunces",serif;font-weight:600;
+    font-size:1rem;color:var(--text);margin-bottom:.35rem;
+  }
+
+  /* ---------- closing ---------- */
+  .closing{padding:3.5rem 0 1rem;}
+  .closing p.big{
+    font-family:"Fraunces",serif;font-size:clamp(1.15rem,2.6vw,1.5rem);
+    line-height:1.45;max-width:32ch;color:var(--text);
+  }
+
+  footer{border-top:1px solid var(--line);padding:2rem 0;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted);}
+
+  a:focus-visible{outline:2px solid var(--accent-soft);outline-offset:3px;border-radius:4px;}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brandmark" href="index.html" style="color:var(--text)">Innovator in Residence Spring 2026</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="explored.html">What We Explored</a>
+      <a href="speakers.html">The Speakers</a>
+      <a href="history.html">History of Generative Music</a>
+      <a href="copyright.html">Copyright &amp; AI</a>
+      <a class="here" href="environment.html">AI &amp; the Environment</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page">
+  <div class="wrap">
+    <p class="pagelabel">Innovator in Residence Spring 2026 <span class="dot">·</span> AI &amp; Music Production</p>
+    <h1>AI &amp; the Environment</h1>
+    <p class="disclaimer">This page was written in the summer of 2026. The numbers around AI's environmental footprint are being measured, contested, and revised constantly — treat everything here as a snapshot, and expect the picture to keep changing.</p>
+  </div>
+</header>
+
+<div class="intro-lede">
+  <div class="wrap">
+    <p>Every technology has a physical cost — minerals are mined, trees cut down, harmful plastics are manufactured, carbon is emitted. AI is no different — however, its costs are unusually high in all regards, and easy to overlook, because they often land far away from the person typing the prompt. The energy, water, minerals, and pollution are real, but they happen somewhere else — in a server hall in Virginia, a chip plant in Taiwan, a mine in Congo.</p>
+    <p>During the residency we looked at this squarely, in the same spirit as everything else: without prejudice, and with eyes open. Here is the honest picture, condensed.</p>
+  </div>
+</div>
+
+<main>
+<div class="spine">
+
+  <section class="node">
+    <div class="wrap">
+      <p class="eyebrow">01 <span class="dot">/</span> The Scale</p>
+      <h2>One prompt is tiny. Billions are not.</h2>
+      <p>Start with the number that surprises most people: a typical AI text prompt uses roughly a quarter of a watt-hour of electricity — about the same as a web search, and far less than early estimates claimed. If you've felt guilty about asking a chatbot a question, the honest answer is that the individual act is small.</p>
+      <p>The problem is aggregation. Data centres consumed about 1.5% of the world's electricity in 2024, and the International Energy Agency projects that figure roughly doubling by 2030 — to more electricity than all of Japan uses today — with AI the main driver. The electricity used by AI-focused data centres grew about 50% in 2025 alone. No single prompt matters much; the sum of all of them is reshaping power grids on three continents.</p>
+      <div class="stats">
+        <div class="stat"><b>~0.3 Wh</b><span>One AI text prompt — about the same as a web search</span></div>
+        <div class="stat"><b>2×</b><span>Projected growth in global data-centre electricity, 2024–2030 (IEA)</span></div>
+        <div class="stat"><b>&gt; Japan</b><span>What data centres are on track to consume by 2030</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="node">
+    <div class="wrap">
+      <p class="eyebrow">02 <span class="dot">/</span> Carbon</p>
+      <h2>The tech giants' own numbers tell the story.</h2>
+      <p>You don't need critics to make the carbon case — the companies' own environmental reports do it. Google has disclosed that its emissions rose 48% between 2019 and 2023, and they have kept rising since; Microsoft's grew roughly a quarter since 2020. Both point to the same cause: building and powering AI infrastructure, and manufacturing the hardware inside it.</p>
+      <p>The build-out is also changing what powers the grid. In parts of the United States, gas plants are staying online and coal retirements have been delayed to feed data-centre demand. The flip side: AI has triggered the biggest wave of nuclear investment in decades, including the restart of the Three Mile Island reactor under a twenty-year deal with Microsoft. Whether the race to power AI speeds up clean energy or entrenches fossil fuels is still being decided.</p>
+      <div class="stats">
+        <div class="stat"><b>+48%</b><span>Google's reported emissions rise, 2019–2023 — still climbing</span></div>
+        <div class="stat"><b>2027</b><span>Target restart of Three Mile Island, powering Microsoft</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="node">
+    <div class="wrap">
+      <p class="eyebrow">03 <span class="dot">/</span> Water</p>
+      <h2>The hidden cost is wet.</h2>
+      <p>Data centres drink — directly, to cool the servers, and indirectly, through the power plants that feed them. You may have heard that one AI conversation "costs a bottle of water." That early research estimate has since been revised sharply downward for modern systems — current figures range from a few drops to a few millilitres per prompt, depending on what's counted. Once again, the individual act is small.</p>
+      <p>But once again, the aggregate isn't. Google's data centres consumed around eight billion gallons in 2024. A single large facility can use millions of gallons a day — the draw of a small city — and roughly one in five American data centres sits in a water-stressed region. That's why the sharpest conflicts over AI have been local water fights: a town in Oregon where Google's use grew to roughly a third of the city's supply, and protests in Uruguay, during the country's worst drought in decades, under the slogan "It's not drought, it's pillage."</p>
+    </div>
+  </section>
+
+  <section class="node">
+    <div class="wrap">
+      <p class="eyebrow">04 <span class="dot">/</span> Where It Concentrates</p>
+      <h2>The damage has addresses.</h2>
+      <p>AI's environmental cost isn't spread evenly across the world — it piles up in particular places, at particular stages of the supply chain. These are the ones we kept returning to:</p>
+      <div class="places">
+        <div class="place"><b>Northern Virginia, USA</b>"Data Centre Alley" — the densest cluster on Earth. A third of global internet traffic passes through one county, which now plans for triple its current data-centre power by 2030.</div>
+        <div class="place"><b>Memphis, Tennessee</b>xAI's giant supercomputer runs on dozens of gas turbines beside neighbourhoods with already failing air-quality grades. The NAACP sued in 2026 over unpermitted turbines.</div>
+        <div class="place"><b>Ireland</b>Data centres use a staggering 22% of the country's electricity — more than every urban home combined. Dublin froze new connections for four years; new rules now make data centres bring their own clean power.</div>
+        <div class="place"><b>Taiwan</b>The world's advanced chips are made here. TSMC alone uses roughly 9% of the national grid — projected to reach nearly a quarter by 2030 — and during the 2021 drought, water was trucked to the fabs while farmland went dry.</div>
+        <div class="place"><b>The Democratic Republic of Congo</b>Over 70% of the world's cobalt, essential to the hardware chain, comes from the DRC — including artisanal mines with documented child labour and severe health harms.</div>
+        <div class="place"><b>Everywhere, soon: e-waste</b>Rapid GPU turnover could generate up to five million tonnes of AI-related electronic waste by 2030 — the equivalent of billions of discarded phones.</div>
+      </div>
+      <p>Canada is joining this map quickly: about 90% of planned Canadian data-centre capacity targets Alberta — much of it in high-water-stress areas — while Quebec is rationing its hydro and roughly doubling data-centre power rates, and Ontario passed legislation to screen which projects get grid connections.</p>
+    </div>
+  </section>
+
+  <section class="node">
+    <div class="wrap">
+      <p class="eyebrow">05 <span class="dot">/</span> Music</p>
+      <h2>What about making a song?</h2>
+      <p>Generating a track with an AI music tool is a bounded cost — seconds to minutes of computing — comparable in spirit to the prompt numbers above; though the environmental cost may be small per individual act, when you consider the number of people on each platform doing thousands, even millions of prompts a day, it quickly adds up. And, unlike other AI platforms, nobody outside the companies knows the real figures. Suno and Udio, used by millions, publish no environmental data at all, and no independent study has measured a per-track footprint. That silence is worth noticing.</p>
+    </div>
+  </section>
+
+  <section class="node">
+    <div class="wrap">
+      <p class="eyebrow">06 <span class="dot">/</span> The Other Side</p>
+      <h2>Hope, caution, and paradox &mdash; with a grain of salt.</h2>
+      <p>The energy per AI prompt has fallen roughly tenfold since 2023; Google reports its per-prompt energy dropped 33-fold in a single recent year; and machine learning cut the cooling energy of Google's own data centres by up to 40%. AI can also be useful for the environment — forecasting renewables, optimizing grids, modelling climate, discovering better battery materials.</p>
+      <p>But two cautions keep the ledger honest. First, an old economic pattern called the Jevons paradox: when a technology gets more efficient, we don't use less of it — we use more, and total consumption rises anyway. This can be illustrated perfectly in LED lights — when they were first invented, they promised a world with inexpensive, high-output, low-consumption lights that last thousands of times longer than conventional lightbulbs. However, what actually happened is that we started using LEDs frivolously, and any gains that could have been made were lost because we started using LED lights everywhere — yes, in households and offices, but also in toys, shoes, and countless throwaway objects. Every efficiency gain so far has been outrun by growth. As well, the industry's green claims deserve scrutiny: a 2026 independent review of 154 such claims found that three-quarters were unproven, and could not identify a single verified case of consumer AI tools producing substantial emissions cuts. The potential is real; the proof, so far, is thin.</p>
+      <div class="stats">
+        <div class="stat"><b>33×</b><span>Drop in energy per Google AI prompt in one recent year</span></div>
+        <div class="stat"><b>74%</b><span>Share of industry AI-climate claims found unproven (2026 review)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="node">
+    <div class="wrap">
+      <p class="eyebrow">07 <span class="dot">/</span> What Could Fix It</p>
+      <h2>The solutions exist. The pressure doesn't — yet.</h2>
+      <p>None of this is unsolvable, and the fixes are known. Data centres can be required to run on genuinely clean power around the clock, rather than buying paper credits — Ireland now demands new facilities bring their own. Cooling can go liquid and closed-loop instead of evaporating a town's water. Models can be smaller: routing everyday questions to lightweight systems instead of frontier giants is the single easiest saving available, and it's already happening. Siting rules can keep facilities out of water-stressed regions, and honest pricing can make companies pay what power and water actually cost.</p>
+      <p>The one fix underneath all the others is transparency. Nearly everything on this page had to be prised out of companies by researchers, journalists, and lawsuits. Standardized, mandatory disclosure — how much energy, how much water, from which grid, per facility and per prompt — would let the public see the real costs and reward the builders who shrink them. It's hard to fix what no one is allowed to measure.</p>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <p class="big">The individual prompt is nearly free. The system behind it is not. Knowing the difference — and asking who pays, and where — is what it means to use these tools with your eyes open.</p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Innovator in Residence Spring 2026 · <a href="https://silverphonic.com" target="_blank" rel="noopener">Joel S. Silver</a></span>
+    <span>Toronto Public Library · Fairview DIH · 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var nodes = Array.prototype.slice.call(document.querySelectorAll('section.node'));
+    if(!('IntersectionObserver' in window)){ return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('active'); }
+      });
+    }, {rootMargin:'-40% 0px -50% 0px', threshold:0});
+    nodes.forEach(function(n){ io.observe(n); });
+  })();
+</script>
+
+</body>
+</html>

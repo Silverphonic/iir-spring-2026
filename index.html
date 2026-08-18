@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innovator in Residence Spring 2026 — AI and Music Production</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1F2E;
+    --surface:#15293B;
+    --surface-2:#1B3247;
+    --accent:#E8622A;
+    --accent-soft:#F2895A;
+    --text:#F2F0EC;
+    --muted:#AABBC8;
+    --line:#2C4459;
+    --maxread:38rem;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:"IBM Plex Sans",system-ui,Arial,sans-serif;
+    font-size:18px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:var(--accent-soft);text-decoration:none;}
+  a:hover{color:var(--accent);}
+  ::selection{background:var(--accent);color:var(--ink);}
+
+  .wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem;}
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 1rem 0;
+  }
+  .eyebrow .dot{color:var(--accent);}
+
+  /* ---------- top nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,31,46,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;
+    height:60px;}
+  .brandmark{
+    font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;
+    color:var(--text);letter-spacing:.01em;
+  }
+  .navlinks{display:flex;gap:1.6rem;font-size:.82rem;
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;}
+  .navlinks a{color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  @media(max-width:620px){
+    .navlinks{gap:1rem;font-size:.72rem;}
+  }
+
+  /* ---------- hero / intro ---------- */
+  header.hero{padding:6rem 0 0;}
+  .herolabel{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.74rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 1.2rem 0;
+  }
+  .herolabel .dot{color:var(--accent);}
+  .hero h1{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    font-size:clamp(1.9rem,4.2vw,2.9rem);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    color:var(--accent);
+    margin:0 0 1.6rem 0;
+  }
+  .herorule{
+    width:4.5rem;height:2px;
+    background:linear-gradient(90deg,var(--accent),transparent);
+    margin:0 0 .5rem 0;
+  }
+  .rise{opacity:0;transform:translateY(14px);
+    animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
+  .rise.d1{animation-delay:.05s;}
+  .rise.d2{animation-delay:.18s;}
+  .rise.d3{animation-delay:.32s;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+
+  .intro{padding:2.5rem 0 5rem;}
+  .intro p{
+    font-size:.95rem;
+    line-height:1.75;
+    max-width:34rem;
+    margin:0;
+  }
+  /* stagger: ease alternate paragraphs rightward */
+  .intro p:nth-of-type(even){margin-left:clamp(0rem,6vw,4.5rem);}
+  /* gentle orange separators between paragraphs */
+  .intro p + p{
+    margin-top:1.6rem;
+    padding-top:1.6rem;
+    position:relative;
+  }
+  .intro p + p::before{
+    content:"";
+    position:absolute;top:0;left:0;
+    width:3rem;height:1px;
+    background:linear-gradient(90deg,rgba(232,98,42,.55),rgba(232,98,42,0));
+  }
+  .intro p:last-child{
+    font-family:"Fraunces",serif;
+    font-size:1.15rem;
+    color:var(--text);
+  }
+  @media(max-width:620px){
+    .intro p:nth-of-type(even){margin-left:0;}
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:2rem 0;margin-top:2rem;
+  }
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem;
+    justify-content:space-between;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.06em;color:var(--muted);}
+
+  a:focus-visible,.btn:focus-visible{
+    outline:2px solid var(--accent-soft);outline-offset:3px;border-radius:4px;}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    html{scroll-behavior:auto;}
+    .rise{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brandmark">Innovator in Residence Spring 2026</span>
+    <div class="navlinks">
+      <a class="here" href="index.html">Home</a>
+      <a href="explored.html">What We Explored</a>
+      <a href="speakers.html">The Speakers</a>
+      <a href="history.html">History of Generative Music</a>
+      <a href="copyright.html">Copyright &amp; AI</a>
+      <a href="environment.html">AI &amp; the Environment</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="herolabel rise d1">Toronto Public Library <span class="dot">·</span> Digital Innovation Hub <span class="dot">·</span> Spring 2026</p>
+    <h1 class="rise d2">AI &amp; Music Production</h1>
+    <div class="herorule rise d2"></div>
+  </div>
+</header>
+
+<div class="intro">
+  <div class="wrap">
+    <p class="rise d3">AI technology is at the forefront of many conversations these days, and it has rapidly become a controversial topic in the music production world. Depending on who you ask, it's an existential threat to working musicians and composers, a revolutionary creative tool, or something in between. The honest answer is that nobody fully knows yet — and that's exactly why it's worth exploring... carefully.</p>
+
+    <p>I've been a <a href="https://silverphonic.com" target="_blank" rel="noopener">professional composer</a> (predominantly for film &amp; television) for about 25 years. For about 10 of those years, I was an in-house composer for one of the largest music library companies in the world providing music to television shows around the world. However, this came to an end when the company I was working for laid off their team of human composers. The unconfirmed rumours were that the new company was planning on training an AI on the thousands of pieces of music we'd written over the previous decade.</p>
+
+    <p>I'd heard AI-generated music a few years prior, and at first, I did not feel threatened. To be blunt, it wasn't very good. But, I know that technology has a way of progressing non-linearly, so, out of curiosity, I downloaded an AI music application, and, to put it to the test, I prompted it to make "Quirky Hip-Hop with Pizzicato Strings" — one of the biggest requests I get from Reality TV productions. Within about 15 seconds, it gave me a totally usable piece of library music that would have taken me a few hours to create.</p>
+
+    <p>I knew immediately that the industry was about to change, and I hated it, viscerally.</p>
+
+    <p>After my initial reaction wore off, I took a deep breath and decided to learn more. Even over the course of my own career, I've seen a few paradigm-shifting moments in the industry, and, if this was going to be the trend, I wanted to be prepared. After all, when drum machines, synthesizers, and record players first arrived, much of the established music industry panicked and even threatened to go on strike... but, a generation later, the next wave of creatives got their hands on new technologies, and used them to invent entire genres of music that exist because of those tools. You'd be hard pressed to find a composer today who doesn't view a drum machine as a legitimate instrument, but 40 years ago, it was a fierce debate.</p>
+
+    <p>Instead of judging a technology based on its worst-case usage, I decided to explore without prejudice or preconceived outcomes, to see if these tools could actually be used to create ethical, interesting, legitimate art that keeps human creators at the helm, and human expression at its core. As fate would have it, The Toronto Public Library (through its awesome Digital Innovation Hub) was asking similar questions, and were looking for someone who could design a comprehensive course to explore the many facets - positive and negative - that AI presents to the world of music production.</p>
+
+    <p>This website is a summary of that journey.</p>
+  </div>
+</div>
+
+
+
+<footer>
+  <div class="wrap">
+    <span>Innovator in Residence Spring 2026 · <a href="https://silverphonic.com" target="_blank" rel="noopener">Joel S. Silver</a></span>
+    <span>Toronto Public Library · Fairview DIH · 2026</span>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

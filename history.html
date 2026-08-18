@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The History of Generative Music — Innovator in Residence Spring 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1F2E;
+    --surface:#15293B;
+    --accent:#E8622A;
+    --accent-soft:#F2895A;
+    --text:#F2F0EC;
+    --muted:#AABBC8;
+    --line:#2C4459;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--ink);color:var(--text);
+    font-family:"IBM Plex Sans",system-ui,Arial,sans-serif;
+    font-size:18px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-soft);text-decoration:none;}
+  a:hover{color:var(--accent);}
+  ::selection{background:var(--accent);color:var(--ink);}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem;}
+
+  /* ---------- top nav (matches index) ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,31,46,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brandmark{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;color:var(--text);}
+  .navlinks{display:flex;gap:1.6rem;font-size:.82rem;
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;}
+  .navlinks a{color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  .navlinks a.here{color:var(--accent-soft);}
+  @media(max-width:620px){ .navlinks{gap:1rem;font-size:.72rem;} }
+
+  /* ---------- page header ---------- */
+  header.page{padding:5rem 0 2.5rem;}
+  .pagelabel{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 1.2rem 0;
+  }
+  .pagelabel .dot{color:var(--accent);}
+  header.page h1{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;
+    color:var(--accent);margin:0 0 1.2rem 0;
+  }
+  .hint{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--muted);letter-spacing:.04em;
+  }
+  .hint b{color:var(--accent-soft);font-weight:500;}
+  .disclaimer{
+    font-size:.78rem;line-height:1.65;color:var(--muted);
+    border-left:2px solid var(--accent);
+    padding-left:.9rem;max-width:38rem;
+    margin:1.4rem 0 0 0;
+  }
+  .intro{margin-top:1.6rem;}
+  .intro p{max-width:38rem;font-size:.95rem;line-height:1.75;margin:0 0 1.2rem 0;}
+  .lenses{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;max-width:44rem;margin:0 0 1.4rem 0;}
+  @media(max-width:620px){ .lenses{grid-template-columns:1fr;} }
+  .lens{
+    background:var(--surface);border:1px solid var(--line);border-radius:8px;
+    padding:.9rem 1.1rem;font-size:.85rem;line-height:1.6;color:var(--muted);
+  }
+  .lens b{
+    display:block;font-family:"IBM Plex Mono",monospace;font-size:.72rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft);
+    margin-bottom:.35rem;font-weight:500;
+  }
+  .erabar{
+    position:sticky;top:60px;z-index:40;
+    background:rgba(15,31,46,.88);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .erabar .wrap{
+    display:flex;gap:1.8rem;overflow-x:auto;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.06em;padding-top:.65rem;padding-bottom:.65rem;
+    white-space:nowrap;scrollbar-width:none;
+  }
+  .erabar .wrap::-webkit-scrollbar{display:none;}
+  .erabar a{color:var(--muted);}
+  .erabar a:hover{color:var(--accent-soft);}
+
+  .tl-era{
+    font-family:"Fraunces",serif;font-weight:600;font-size:1.15rem;
+    color:var(--accent);margin:2.4rem 0 .6rem 0;padding:.2rem 0;
+    position:relative;cursor:pointer;user-select:none;
+    display:flex;align-items:center;gap:.7rem;
+    scroll-margin-top:8rem;
+  }
+  .tl-era:hover{color:var(--accent-soft);}
+  .tl-era:first-of-type{margin-top:.5rem;}
+  .tl-era .count{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+    color:var(--muted);letter-spacing:.08em;font-weight:400;
+    border:1px solid var(--line);border-radius:99px;
+    padding:.1rem .55rem;
+  }
+  .tl-era .chev{
+    width:.55rem;height:.55rem;
+    border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+    transform:rotate(-45deg);transition:transform .3s ease;
+    margin-top:-.2rem;
+  }
+  .tl-era.on .chev{transform:rotate(45deg);margin-top:-.35rem;}
+
+  .era-group{
+    overflow:hidden;max-height:0;
+    transition:max-height .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .era-group.openEra{max-height:400rem;}
+  .tl-era::before{
+    content:"";position:absolute;left:-1.6rem;top:50%;
+    width:11px;height:11px;border-radius:50%;
+    background:var(--accent);transform:translate(-50%,-50%);
+    box-shadow:0 0 0 4px rgba(232,98,42,.15);
+  }
+  .cats{
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent-soft);margin:0 0 1rem 0;
+  }
+
+  /* ---------- timeline layout ---------- */
+  .tl-grid{
+    display:grid;grid-template-columns:minmax(0,26rem) 1fr;
+    gap:3rem;align-items:start;
+    padding:1.5rem 0 6rem;
+  }
+  /* the vertical line + entries */
+  .tl{
+    position:relative;
+    border-left:1px solid var(--line);
+    padding-left:1.6rem;
+    margin-left:.4rem;
+  }
+  .tl .connector{z-index:2;}
+  .tl-item{
+    position:relative;
+    display:block;width:100%;text-align:left;
+    background:none;border:none;cursor:pointer;
+    color:var(--muted);
+    font-family:"IBM Plex Sans",sans-serif;
+    font-size:.8rem;line-height:1.35;
+    padding:.42rem 0;margin:0;
+    transition:font-size .22s cubic-bezier(.2,.7,.2,1), color .22s;
+  }
+  .tl-item .yr{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.86em;color:var(--accent-soft);
+    margin-right:.55em;letter-spacing:.02em;
+  }
+  /* node dot on the line */
+  .tl-item::before{
+    content:"";position:absolute;left:-1.6rem;top:50%;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--line);
+    transform:translate(-50%,-50%);
+    transition:border-color .22s, background .22s, width .22s, height .22s, box-shadow .22s;
+  }
+  /* hover: enlarge */
+  .tl-item:hover, .tl-item:focus-visible{
+    font-size:1.02rem;color:var(--text);outline:none;
+  }
+  .tl-item:hover::before, .tl-item:focus-visible::before{
+    border-color:var(--accent-soft);
+  }
+  /* open state */
+  .tl-item.open{
+    font-size:1.05rem;color:var(--text);font-weight:600;
+  }
+  .tl-item.open::before{
+    background:var(--accent);border-color:var(--accent);
+    width:10px;height:10px;
+    box-shadow:0 0 0 4px rgba(232,98,42,.16);
+  }
+  /* entries not yet written */
+  .tl-item.soon{cursor:default;opacity:.38;}
+  .tl-item.soon:hover{font-size:.8rem;color:var(--muted);}
+  .tl-item.soon:hover::before{border-color:var(--line);}
+  .tl-item.soon .todo{
+    font-family:"IBM Plex Mono",monospace;font-size:.72em;
+    color:var(--muted);margin-left:.5em;letter-spacing:.06em;
+  }
+
+  /* ---------- detail panel (desktop) ---------- */
+  .panel{
+    position:relative;align-self:stretch;
+    min-height:10rem;
+  }
+  #panel-mount{position:absolute;left:0;right:0;top:0;}
+  /* orange connector from the open entry to the card's bracket */
+  .connector{
+    position:absolute;height:2px;border-radius:1px;
+    background:linear-gradient(90deg,rgba(232,98,42,.25),var(--accent));
+    pointer-events:none;
+    opacity:0;transition:opacity .35s ease .1s;
+  }
+  .connector.show{opacity:1;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    border-radius:10px;
+    padding:1.8rem 2rem;
+    opacity:0;transform:translateX(-14px);
+    transition:opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+    pointer-events:none;
+  }
+  .card.show{opacity:1;transform:none;pointer-events:auto;}
+  .card .cyr{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.16em;color:var(--accent-soft);
+    text-transform:uppercase;margin:0 0 .5rem 0;
+  }
+  .card h2{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:1.45rem;line-height:1.2;margin:0 0 1rem 0;color:var(--text);
+  }
+  .card p{margin:0;font-size:.95rem;line-height:1.75;color:var(--text);}
+  .card p + p{margin-top:1rem;}
+  .panel .empty{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--muted);letter-spacing:.05em;
+    padding:1.8rem 0;
+  }
+
+  /* ---------- mobile: accordion below entry ---------- */
+  .tl-inline{display:none;}
+  @media(max-width:760px){
+    .tl-grid{grid-template-columns:1fr;gap:0;}
+    .panel{display:none;}
+    .tl-inline{
+      display:block;overflow:hidden;max-height:0;
+      transition:max-height .4s ease;
+    }
+    .tl-inline .card{
+      margin:.4rem 0 1rem 0;opacity:1;transform:none;pointer-events:auto;
+      padding:1.2rem 1.3rem;
+    }
+    .tl-inline.show{max-height:60rem;}
+  }
+
+  footer{border-top:1px solid var(--line);padding:2rem 0;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted);}
+
+  a:focus-visible,.tl-item:focus-visible{outline:2px solid var(--accent-soft);outline-offset:3px;border-radius:4px;}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brandmark" href="index.html" style="color:var(--text)">Innovator in Residence Spring 2026</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="explored.html">What We Explored</a>
+      <a href="speakers.html">The Speakers</a>
+      <a class="here" href="history.html">History of Generative Music</a>
+      <a href="copyright.html">Copyright &amp; AI</a>
+      <a href="environment.html">AI &amp; the Environment</a>
+    </div>
+  </div>
+</nav>
+
+<div class="erabar">
+  <div class="wrap">
+    <a href="#era-ancients">The Ancients</a>
+    <a href="#era-medieval">Medieval</a>
+    <a href="#era-baroque">Baroque &amp; Classical</a>
+    <a href="#era-earlymodern">Early Modern</a>
+    <a href="#era-last50">The Last 50 Years</a>
+  </div>
+</div>
+
+<header class="page">
+  <div class="wrap">
+    <p class="pagelabel">Innovator in Residence Spring 2026 <span class="dot">·</span> AI &amp; Music Production</p>
+    <h1>The History of Generative Music</h1>
+      <div class="intro">
+      <p>AI is a brand-new technology — but, in many ways, the concepts behind it are not. The idea that music can emerge from a <em>system</em> — from rules, chance, machinery, or the environment, rather than solely from a performer's hands — is at least 5,000 years old. Every era of human history has found some new way to set music in motion and let it run. Across the residency, we traced that story — from prehistoric caves to the AI tools — because placing today's technology in its historical context helps us to understand it.</p>
+      <p>Along the way, we assessed every example through the same four lenses:</p>
+      <div class="lenses">
+        <div class="lens"><b>Environmental</b>Sound generated by nature or by acoustic spaces themselves — wind, water, resonant caves.</div>
+        <div class="lens"><b>Automated</b>Machines that make music without a human performing in real time — musical clocks, player pianos, robotic automatons.</div>
+        <div class="lens"><b>Rule-Based</b>Music generated by explicit systems and procedures — counterpoint, dice tables, algorithms, even basic scales.</div>
+        <div class="lens"><b>Chance / Process</b>Music shaped by randomness or indeterminate processes — coin tosses, tape loops drifting apart.</div>
+      </div>
+      <p>Most examples don't sit cleanly in one box. As you explore the list below, ask yourself which, if any, of these categories the historical examples fall into. By the time you reach the end of this timeline, AI stops looking like an alien arrival and starts looking like what it is: the newest chapter of an old story.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tl-grid">
+
+    <!-- ============ TIMELINE (left) ============ -->
+    <div class="tl" id="timeline">
+
+      <div class="tl-era" id="era-ancients" role="button" tabindex="0">The Ancients<span class="count">35</span><span class="chev"></span></div>
+      <div class="era-group" data-era="era-ancients">
+      <button class="tl-item" data-id="h1">
+        <span class="yr">~60,000 BP</span>The Divje Babe flute — a Neanderthal instrument?
+      </button>
+      <div class="tl-inline" data-for="h1"></div>
+      <button class="tl-item" data-id="h2">
+        <span class="yr">~43,000 BP</span>The Geissenklösterle flutes — the oldest confirmed instruments
+      </button>
+      <div class="tl-inline" data-for="h2"></div>
+      <button class="tl-item" data-id="h3">
+        <span class="yr">~40,000 BP</span>Cave acoustics — painting where the echo lives
+      </button>
+      <div class="tl-inline" data-for="h3"></div>
+      <button class="tl-item" data-id="h4">
+        <span class="yr">~37,000 BP</span>The Hohle Fels flute
+      </button>
+      <div class="tl-inline" data-for="h4"></div>
+      <button class="tl-item" data-id="h5">
+        <span class="yr">~18,000 BCE</span>The bullroarer — a self-sounding instrument
+      </button>
+      <div class="tl-inline" data-for="h5"></div>
+      <button class="tl-item" data-id="h6">
+        <span class="yr">~4000 BCE</span>The Hal Saflieni Hypogeum — a room tuned to the brain
+      </button>
+      <div class="tl-inline" data-for="h6"></div>
+      <button class="tl-item" data-id="h8">
+        <span class="yr">~3000 BCE</span>Wind chimes — the wind becomes a musician
+      </button>
+      <div class="tl-inline" data-for="h8"></div>
+      <button class="tl-item" data-id="h9">
+        <span class="yr">~2600 BCE</span>The Oracle of Dodona — bronze cauldrons in the wind
+      </button>
+      <div class="tl-inline" data-for="h9"></div>
+      <button class="tl-item" data-id="h10">
+        <span class="yr">~2500 BCE</span>Stonehenge &amp; the Preseli bluestones
+      </button>
+      <div class="tl-inline" data-for="h10"></div>
+      <button class="tl-item" data-id="h11">
+        <span class="yr">~2300 BCE</span>The sistrum — Hathor's sacred rattle
+      </button>
+      <div class="tl-inline" data-for="h11"></div>
+      <button class="tl-item" data-id="h12">
+        <span class="yr">~2100 BCE</span>China's first bronze bells
+      </button>
+      <div class="tl-inline" data-for="h12"></div>
+      <button class="tl-item" data-id="h13">
+        <span class="yr">~1800 BCE</span>The Mesopotamian tuning tablets — music's first algorithm
+      </button>
+      <div class="tl-inline" data-for="h13"></div>
+      <button class="tl-item" data-id="h14">
+        <span class="yr">~1600 BCE</span>Shang Dynasty bells &amp; feng ling
+      </button>
+      <div class="tl-inline" data-for="h14"></div>
+      <button class="tl-item" data-id="h7">
+        <span class="yr">~1500 BCE</span>Lithophones — ringing stones &amp; water-powered strikers
+      </button>
+      <div class="tl-inline" data-for="h7"></div>
+      <button class="tl-item" data-id="h15">
+        <span class="yr">~1400 BCE</span>The Hurrian Hymns — the oldest notated music
+      </button>
+      <div class="tl-inline" data-for="h15"></div>
+      <button class="tl-item" data-id="h16">
+        <span class="yr">~1350 BCE</span>The Colossi of Memnon — the statue that sang at dawn
+      </button>
+      <div class="tl-inline" data-for="h16"></div>
+      <button class="tl-item" data-id="h17">
+        <span class="yr">~1200 BCE</span>The Sama Veda — chant as cosmic procedure
+      </button>
+      <div class="tl-inline" data-for="h17"></div>
+      <button class="tl-item" data-id="h18">
+        <span class="yr">~1000 BCE</span>Chavín de Huántar — a temple built to multiply echoes
+      </button>
+      <div class="tl-inline" data-for="h18"></div>
+      <button class="tl-item" data-id="h19">
+        <span class="yr">~1000 BCE</span>Yan Shi's singing automaton — the legend
+      </button>
+      <div class="tl-inline" data-for="h19"></div>
+      <button class="tl-item" data-id="h20">
+        <span class="yr">~1000 BCE</span>King David's wind-played lyre
+      </button>
+      <div class="tl-inline" data-for="h20"></div>
+      <button class="tl-item" data-id="h21">
+        <span class="yr">~530 BCE</span>Pythagoras — music becomes mathematics
+      </button>
+      <div class="tl-inline" data-for="h21"></div>
+      <button class="tl-item" data-id="h22">
+        <span class="yr">~450 BCE</span>The ethos doctrine — Plato regulates the modes
+      </button>
+      <div class="tl-inline" data-for="h22"></div>
+      <button class="tl-item" data-id="h23">
+        <span class="yr">433 BCE</span>The Bianzhong of Marquis Yi — 65 bells, five octaves
+      </button>
+      <div class="tl-inline" data-for="h23"></div>
+      <button class="tl-item" data-id="h24">
+        <span class="yr">~330 BCE</span>Aristoxenus — the rules of melody
+      </button>
+      <div class="tl-inline" data-for="h24"></div>
+      <button class="tl-item" data-id="h25">
+        <span class="yr">~360 BCE</span>Plato's Timaeus — the cosmos as a musical score
+      </button>
+      <div class="tl-inline" data-for="h25"></div>
+      <button class="tl-item" data-id="h26">
+        <span class="yr">~250 BCE</span>The Barabar Caves — India's echo chambers
+      </button>
+      <div class="tl-inline" data-for="h26"></div>
+      <button class="tl-item" data-id="h27">
+        <span class="yr">~270 BCE</span>Ctesibius &amp; the hydraulis — the first keyboard instrument
+      </button>
+      <div class="tl-inline" data-for="h27"></div>
+      <button class="tl-item" data-id="h28">
+        <span class="yr">~200 BCE</span>The Nāṭya Śāstra — India's generative grammar
+      </button>
+      <div class="tl-inline" data-for="h28"></div>
+      <button class="tl-item" data-id="h29">
+        <span class="yr">~122 BCE</span>The twelve lü — China computes the comma
+      </button>
+      <div class="tl-inline" data-for="h29"></div>
+      <button class="tl-item" data-id="h30">
+        <span class="yr">~100 BCE</span>The Dion hydraulis — the oldest surviving organ
+      </button>
+      <div class="tl-inline" data-for="h30"></div>
+      <button class="tl-item" data-id="h31">
+        <span class="yr">~60 CE</span>Hero of Alexandria — programmable sound machines
+      </button>
+      <div class="tl-inline" data-for="h31"></div>
+      <button class="tl-item" data-id="h32">
+        <span class="yr">~79 CE</span>Roman tintinnabula — wind chimes against the evil eye
+      </button>
+      <div class="tl-inline" data-for="h32"></div>
+      <button class="tl-item" data-id="h33">
+        <span class="yr">~150 CE</span>Cleonides &amp; Ptolemy — composition by rulebook
+      </button>
+      <div class="tl-inline" data-for="h33"></div>
+      <button class="tl-item" data-id="h34">
+        <span class="yr">228 CE</span>The Aquincum organ — dated by inscription
+      </button>
+      <div class="tl-inline" data-for="h34"></div>
+      <button class="tl-item" data-id="h35">
+        <span class="yr">~510 CE</span>Boethius — handing it all to the Middle Ages
+      </button>
+      <div class="tl-inline" data-for="h35"></div>
+
+            </div>
+
+      <div class="tl-era" id="era-medieval" role="button" tabindex="0">The Medieval World<span class="count">18</span><span class="chev"></span></div>
+      <div class="era-group" data-era="era-medieval">
+      <button class="tl-item" data-id="h36">
+        <span class="yr">~850</span>The Banū Mūsā brothers — the first automatic melody
+      </button>
+      <div class="tl-inline" data-for="h36"></div>
+      <button class="tl-item" data-id="h37">
+        <span class="yr">~900</span>Musica Enchiriadis — the first rules of harmony
+      </button>
+      <div class="tl-inline" data-for="h37"></div>
+      <button class="tl-item" data-id="h38">
+        <span class="yr">~950</span>Dunstan of Canterbury's aeolian harp
+      </button>
+      <div class="tl-inline" data-for="h38"></div>
+      <button class="tl-item" data-id="h39">
+        <span class="yr">~1170</span>Léonin — rhythm gets a system
+      </button>
+      <div class="tl-inline" data-for="h39"></div>
+      <button class="tl-item" data-id="h40">
+        <span class="yr">~1200</span>Pérotin — four voices from one chant
+      </button>
+      <div class="tl-inline" data-for="h40"></div>
+      <button class="tl-item" data-id="h41">
+        <span class="yr">1206</span>Al-Jazari's musical boat — the reprogrammable drum machine
+      </button>
+      <div class="tl-inline" data-for="h41"></div>
+      <button class="tl-item" data-id="h42">
+        <span class="yr">1273</span>The Norwich Cathedral clock
+      </button>
+      <div class="tl-inline" data-for="h42"></div>
+      <button class="tl-item" data-id="h43">
+        <span class="yr">1288</span>The Hesdin Castle automata
+      </button>
+      <div class="tl-inline" data-for="h43"></div>
+      <button class="tl-item" data-id="h44">
+        <span class="yr">1316</span>Philippe de Vitry — Ars Nova
+      </button>
+      <div class="tl-inline" data-for="h44"></div>
+      <button class="tl-item" data-id="h45">
+        <span class="yr">1321</span>The Rouen clock plays a melody
+      </button>
+      <div class="tl-inline" data-for="h45"></div>
+      <button class="tl-item" data-id="h46">
+        <span class="yr">1352</span>The Strasbourg rooster
+      </button>
+      <div class="tl-inline" data-for="h46"></div>
+      <button class="tl-item" data-id="h47">
+        <span class="yr">~1360</span>Machaut — isorhythm
+      </button>
+      <div class="tl-inline" data-for="h47"></div>
+      <button class="tl-item" data-id="h48">
+        <span class="yr">1392</span>The Wells Cathedral clock
+      </button>
+      <div class="tl-inline" data-for="h48"></div>
+      <button class="tl-item" data-id="h49">
+        <span class="yr">~1400</span>Ars Subtilior — Cordier's circular canon
+      </button>
+      <div class="tl-inline" data-for="h49"></div>
+      <button class="tl-item" data-id="h50">
+        <span class="yr">1410</span>The Prague Orloj
+      </button>
+      <div class="tl-inline" data-for="h50"></div>
+      <button class="tl-item" data-id="h51">
+        <span class="yr">~1470</span>Ockeghem — the mensuration canons
+      </button>
+      <div class="tl-inline" data-for="h51"></div>
+      <button class="tl-item" data-id="h52">
+        <span class="yr">~1500</span>Josquin — canons on L'homme armé
+      </button>
+      <div class="tl-inline" data-for="h52"></div>
+      <button class="tl-item" data-id="h53">
+        <span class="yr">1510</span>The Oudenaarde carillon
+      </button>
+      <div class="tl-inline" data-for="h53"></div>
+
+            </div>
+
+      <div class="tl-era" id="era-baroque" role="button" tabindex="0">Baroque &amp; Classical<span class="count">19</span><span class="chev"></span></div>
+      <div class="era-group" data-era="era-baroque">
+      <button class="tl-item" data-id="h54">
+        <span class="yr">1571</span>The Villa d'Este water organ
+      </button>
+      <div class="tl-inline" data-for="h54"></div>
+      <button class="tl-item" data-id="h55">
+        <span class="yr">~1600</span>Figured bass — improvising from a code
+      </button>
+      <div class="tl-inline" data-for="h55"></div>
+      <button class="tl-item" data-id="h56">
+        <span class="yr">1650</span>Kircher's Arca Musarithmica — composition in a box
+      </button>
+      <div class="tl-inline" data-for="h56"></div>
+      <button class="tl-item" data-id="h57">
+        <span class="yr">1650</span>Kircher describes the aeolian harp
+      </button>
+      <div class="tl-inline" data-for="h57"></div>
+      <button class="tl-item" data-id="h58">
+        <span class="yr">1679</span>Diletsky — the first circle of fifths
+      </button>
+      <div class="tl-inline" data-for="h58"></div>
+      <button class="tl-item" data-id="h59">
+        <span class="yr">1722</span>Rameau codifies harmony
+      </button>
+      <div class="tl-inline" data-for="h59"></div>
+      <button class="tl-item" data-id="h60">
+        <span class="yr">1725</span>Fux — Gradus ad Parnassum
+      </button>
+      <div class="tl-inline" data-for="h60"></div>
+      <button class="tl-item" data-id="h61">
+        <span class="yr">~1737</span>Vaucanson's Flute Player
+      </button>
+      <div class="tl-inline" data-for="h61"></div>
+      <button class="tl-item" data-id="h62">
+        <span class="yr">1747</span>Bach's Crab Canon — one line, played both ways
+      </button>
+      <div class="tl-inline" data-for="h62"></div>
+      <button class="tl-item" data-id="h63">
+        <span class="yr">~1749</span>The Art of Fugue
+      </button>
+      <div class="tl-inline" data-for="h63"></div>
+      <button class="tl-item" data-id="h64">
+        <span class="yr">1757</span>Kirnberger — the first musical dice game
+      </button>
+      <div class="tl-inline" data-for="h64"></div>
+      <button class="tl-item" data-id="h65">
+        <span class="yr">1758</span>C.P.E. Bach's dice game — counterpoint by chance
+      </button>
+      <div class="tl-inline" data-for="h65"></div>
+      <button class="tl-item" data-id="h66">
+        <span class="yr">~1774</span>Haydn's musical clocks &amp; the Jaquet-Droz Musician
+      </button>
+      <div class="tl-inline" data-for="h66"></div>
+      <button class="tl-item" data-id="h67">
+        <span class="yr">1781</span>Stadler's dice game
+      </button>
+      <div class="tl-inline" data-for="h67"></div>
+      <button class="tl-item" data-id="h68">
+        <span class="yr">~1790</span>The Gioco filarmonico
+      </button>
+      <div class="tl-inline" data-for="h68"></div>
+      <button class="tl-item" data-id="h69">
+        <span class="yr">1791</span>Mozart for mechanical organ — K. 594, 608, 616
+      </button>
+      <div class="tl-inline" data-for="h69"></div>
+      <button class="tl-item" data-id="h70">
+        <span class="yr">1792</span>Mozart's Würfelspiel — 759 trillion waltzes
+      </button>
+      <div class="tl-inline" data-for="h70"></div>
+      <button class="tl-item" data-id="h71">
+        <span class="yr">1805</span>Mälzel's Panharmonicon &amp; Beethoven's Wellington's Victory
+      </button>
+      <div class="tl-inline" data-for="h71"></div>
+      <button class="tl-item" data-id="h72">
+        <span class="yr">1821</span>Winkel's Componium — the first self-composing instrument
+      </button>
+      <div class="tl-inline" data-for="h72"></div>
+
+            </div>
+
+      <div class="tl-era" id="era-earlymodern" role="button" tabindex="0">The Early Modern Era<span class="count">18</span><span class="chev"></span></div>
+      <div class="era-group" data-era="era-earlymodern">
+      <button class="tl-item" data-id="h73">
+        <span class="yr">1904</span>The player piano — Welte-Mignon
+      </button>
+      <div class="tl-inline" data-for="h73"></div>
+      <button class="tl-item" data-id="h74">
+        <span class="yr">1913</span>Russolo — The Art of Noises
+      </button>
+      <div class="tl-inline" data-for="h74"></div>
+      <button class="tl-item" data-id="h75">
+        <span class="yr">1920</span>Tzara — a poem pulled from a bag
+      </button>
+      <div class="tl-inline" data-for="h75"></div>
+      <button class="tl-item" data-id="h76">
+        <span class="yr">1920</span>The theremin
+      </button>
+      <div class="tl-inline" data-for="h76"></div>
+      <button class="tl-item" data-id="h77">
+        <span class="yr">~1925</span>Schwitters — Ursonate
+      </button>
+      <div class="tl-inline" data-for="h77"></div>
+      <button class="tl-item" data-id="h78">
+        <span class="yr">1931</span>The Rhythmicon — the first drum machine
+      </button>
+      <div class="tl-inline" data-for="h78"></div>
+      <button class="tl-item" data-id="h79">
+        <span class="yr">1948</span>Schaeffer — musique concrète
+      </button>
+      <div class="tl-inline" data-for="h79"></div>
+      <button class="tl-item" data-id="h80">
+        <span class="yr">1948</span>Nancarrow — Studies for Player Piano
+      </button>
+      <div class="tl-inline" data-for="h80"></div>
+      <button class="tl-item" data-id="h81">
+        <span class="yr">1951</span>Cage — Music of Changes
+      </button>
+      <div class="tl-inline" data-for="h81"></div>
+      <button class="tl-item" data-id="h82">
+        <span class="yr">1952</span>Cage — 4′33″
+      </button>
+      <div class="tl-inline" data-for="h82"></div>
+      <button class="tl-item" data-id="h83">
+        <span class="yr">~1956</span>Xenakis — Pithoprakta
+      </button>
+      <div class="tl-inline" data-for="h83"></div>
+      <button class="tl-item" data-id="h84">
+        <span class="yr">1956</span>Stockhausen — Klavierstück XI
+      </button>
+      <div class="tl-inline" data-for="h84"></div>
+      <button class="tl-item" data-id="h85">
+        <span class="yr">1957</span>The Illiac Suite — the first computer score
+      </button>
+      <div class="tl-inline" data-for="h85"></div>
+      <button class="tl-item" data-id="h86">
+        <span class="yr">~1963</span>Raymond Scott's Electronium
+      </button>
+      <div class="tl-inline" data-for="h86"></div>
+      <button class="tl-item" data-id="h87">
+        <span class="yr">1964</span>Riley — In C
+      </button>
+      <div class="tl-inline" data-for="h87"></div>
+      <button class="tl-item" data-id="h88">
+        <span class="yr">1967</span>Reich — the phasing pieces
+      </button>
+      <div class="tl-inline" data-for="h88"></div>
+      <button class="tl-item" data-id="h89">
+        <span class="yr">1969</span>La Monte Young — Dream House
+      </button>
+      <div class="tl-inline" data-for="h89"></div>
+      <button class="tl-item" data-id="h90">
+        <span class="yr">1975</span>Eno — Discreet Music: he names it “generative”
+      </button>
+      <div class="tl-inline" data-for="h90"></div>
+
+            </div>
+
+      <div class="tl-era" id="era-last50" role="button" tabindex="0">The Last 50 Years<span class="count">24</span><span class="chev"></span></div>
+      <div class="era-group" data-era="era-last50">
+      <button class="tl-item" data-id="h91">
+        <span class="yr">1976</span>Reich — Music for 18 Musicians
+      </button>
+      <div class="tl-inline" data-for="h91"></div>
+      <button class="tl-item" data-id="h92">
+        <span class="yr">1977</span>Arvo Pärt — tintinnabuli
+      </button>
+      <div class="tl-inline" data-for="h92"></div>
+      <button class="tl-item" data-id="h93">
+        <span class="yr">1978</span>Eno — Music for Airports
+      </button>
+      <div class="tl-inline" data-for="h93"></div>
+      <button class="tl-item" data-id="h94">
+        <span class="yr">1981</span>David Cope — EMI, “Emmy”
+      </button>
+      <div class="tl-inline" data-for="h94"></div>
+      <button class="tl-item" data-id="h95">
+        <span class="yr">~1982</span>Suzanne Ciani — the Buchla concerts
+      </button>
+      <div class="tl-inline" data-for="h95"></div>
+      <button class="tl-item" data-id="h96">
+        <span class="yr">1985</span>Laurie Spiegel — Music Mouse
+      </button>
+      <div class="tl-inline" data-for="h96"></div>
+      <button class="tl-item" data-id="h97">
+        <span class="yr">1985</span>George Lewis — Voyager
+      </button>
+      <div class="tl-inline" data-for="h97"></div>
+      <button class="tl-item" data-id="h98">
+        <span class="yr">1986</span>Barry Truax — Riverrun 🇨🇦
+      </button>
+      <div class="tl-inline" data-for="h98"></div>
+      <button class="tl-item" data-id="h99">
+        <span class="yr">1988</span>Éliane Radigue — Trilogie de la Mort
+      </button>
+      <div class="tl-inline" data-for="h99"></div>
+      <button class="tl-item" data-id="h100">
+        <span class="yr">1990</span>Miller Puckette — Max/MSP
+      </button>
+      <div class="tl-inline" data-for="h100"></div>
+      <button class="tl-item" data-id="h101">
+        <span class="yr">1991</span>LucasArts iMUSE — Monkey Island 2
+      </button>
+      <div class="tl-inline" data-for="h101"></div>
+      <button class="tl-item" data-id="h102">
+        <span class="yr">1991</span>Xenakis — GENDYN
+      </button>
+      <div class="tl-inline" data-for="h102"></div>
+      <button class="tl-item" data-id="h103">
+        <span class="yr">1996</span>SuperCollider
+      </button>
+      <div class="tl-inline" data-for="h103"></div>
+      <button class="tl-item" data-id="h104">
+        <span class="yr">1996</span>Eno + Koan — Generative Music 1
+      </button>
+      <div class="tl-inline" data-for="h104"></div>
+      <button class="tl-item" data-id="h105">
+        <span class="yr">~1997</span>The Amen Break — six seconds that built genres
+      </button>
+      <div class="tl-inline" data-for="h105"></div>
+      <button class="tl-item" data-id="h106">
+        <span class="yr">2002</span>Basinski — The Disintegration Loops
+      </button>
+      <div class="tl-inline" data-for="h106"></div>
+      <button class="tl-item" data-id="h107">
+        <span class="yr">2004</span>TOPLAP — live coding
+      </button>
+      <div class="tl-inline" data-for="h107"></div>
+      <button class="tl-item" data-id="h108">
+        <span class="yr">2008</span>Eno + Chilvers — Bloom
+      </button>
+      <div class="tl-inline" data-for="h108"></div>
+      <button class="tl-item" data-id="h109">
+        <span class="yr">2010</span>Hans Zimmer + RjDj — the Inception app
+      </button>
+      <div class="tl-inline" data-for="h109"></div>
+      <button class="tl-item" data-id="h110">
+        <span class="yr">2012</span>TidalCycles &amp; Algorave
+      </button>
+      <div class="tl-inline" data-for="h110"></div>
+      <button class="tl-item" data-id="h111">
+        <span class="yr">~2012</span>The Cybernetic Orchestra 🇨🇦
+      </button>
+      <div class="tl-inline" data-for="h111"></div>
+      <button class="tl-item" data-id="h112">
+        <span class="yr">2016</span>DeepMind — WaveNet
+      </button>
+      <div class="tl-inline" data-for="h112"></div>
+      <button class="tl-item" data-id="h113">
+        <span class="yr">2019</span>Google Magenta — the Bach Doodle
+      </button>
+      <div class="tl-inline" data-for="h113"></div>
+      <button class="tl-item" data-id="h114">
+        <span class="yr">2023</span>Suno &amp; the AI era — the newest chapter
+      </button>
+      <div class="tl-inline" data-for="h114"></div>
+
+      </div>
+
+          </div>
+
+    <!-- ============ DETAIL PANEL (right, desktop) ============ -->
+    <div class="panel">
+      <p class="empty" id="panel-empty">← Choose a moment on the timeline</p>
+      <div id="panel-mount"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Innovator in Residence Spring 2026 · <a href="https://silverphonic.com" target="_blank" rel="noopener">Joel S. Silver</a></span>
+    <span>Toronto Public Library · Fairview DIH · 2026</span>
+  </div>
+</footer>
+
+<!-- ============ ENTRY CONTENT ============ -->
+
+<template id="h1">
+  <div class="card">
+    <p class="cyr">~60,000 BP</p>
+    <h2>The Divje Babe flute — a Neanderthal instrument?</h2>
+    <p>In a cave in Slovenia, archaeologists found a cave-bear femur pierced with holes — two intact, others damaged — and a dating that stops people in their tracks: fifty to sixty thousand years old. If it's a flute, it wasn't made by us. That's thousands of years before modern humans reached the region, which would make its maker a Neanderthal — and music older than our species' arrival in Europe.</p>
+    <p>The scientific fight over it has raged for decades: skeptics argue the holes are carnivore tooth-punctures, defenders point out how improbably flute-like the spacing is, and replicas of it can genuinely play a scale. We opened the whole residency here on purpose. Before a single note of the story is certain, the very first artifact already asks the question that echoes all the way to AI: how do we decide what counts as an instrument — and who, or what, counts as a musician?</p>
+  </div>
+</template>
+
+<template id="h2">
+  <div class="card">
+    <p class="cyr">~43,000 BP</p>
+    <h2>The Geissenklösterle flutes — the oldest confirmed instruments</h2>
+    <p>No dispute about these ones. In a cave in Germany's Swabian Jura, carbon dating placed a set of flutes — one carved from a swan's wing bone, another painstakingly built from mammoth ivory — at roughly 42,000 to 43,000 years old. They are the oldest confirmed musical instruments on Earth, made by some of the first modern humans in Europe, and the site is now UNESCO-protected.</p>
+    <p>Think about what a flute with finger holes actually is: a tuning system, frozen in bone. Whoever carved it decided in advance which notes would be possible and which wouldn't — a set of rules, physically encoded, that every future performance would obey. Forty-three thousand years before the synthesizer preset, humans were already building their musical choices into their tools. That's the deep ancestry of every system on this timeline.</p>
+  </div>
+</template>
+
+<template id="h3">
+  <div class="card">
+    <p class="cyr">~40,000 BP</p>
+    <h2>Cave acoustics — painting where the echo lives</h2>
+    <p>Researcher Iegor Reznikoff mapped the acoustics of painted caves in France and found that in the caves he studied, up to 90% of the paintings sit at or near the points of maximum resonance — the spots where sound rings longest and loudest. In passages too narrow to paint, red ochre dots mark the resonant spots instead, as if the sound itself demanded a label. Later work found the grand animal chambers, painted 15,000–25,000 years ago, have reverberation like cathedrals.</p>
+    <p>Our ancestors weren't just decorating caves — they were choosing rooms for their sound and marking where the acoustics performed. The space itself was the instrument; you sang, and the cave answered. That makes resonant architecture the first sound technology, and it puts the Paleolithic squarely in our Environmental category: music generated not by a performer alone, but by a system — in this case, sixty metres of limestone — transforming everything it's given.</p>
+  </div>
+</template>
+
+<template id="h4">
+  <div class="card">
+    <p class="cyr">~37,000 BP</p>
+    <h2>The Hohle Fels flute</h2>
+    <p>Discovered in 2008 in the Ach Valley in Germany, the Hohle Fels flute is the showpiece of prehistoric music: a nearly complete instrument almost 22 centimetres long, carved from a griffon vulture's wing bone, with five finger holes and a carefully shaped V-notch mouthpiece. It's around 35,000 to 40,000 years old — and playable replicas produce a genuine, expressive scale.</p>
+    <p>Five holes is a decision. It means its maker had a mental model of the music they wanted — intervals chosen, tested, and committed to bone with stone tools. And the cave it was found in is itself deeply resonant, so instrument and room worked together. When people say AI music is “music made by technology,” this is worth remembering: every instrument is technology, and humans have been designing systems that shape what music can be since before the last Ice Age peaked.</p>
+  </div>
+</template>
+
+<template id="h5">
+  <div class="card">
+    <p class="cyr">~18,000 BCE</p>
+    <h2>The bullroarer — a self-sounding instrument</h2>
+    <p>A flat blade of wood or bone on a cord: swing it in a circle and it begins to roar — a deep, pulsing drone that rises and falls as the blade spins and the pitch bends around you. The oldest known examples are about 20,000 years old, from Ukraine and France, and versions appear on nearly every continent: the voice of the sky god in Aboriginal Australia, the <em>rhombos</em> of Greek mystery cults, the Māori <em>pūrerehua</em>, the Dogon announcing a festival held once every sixty years.</p>
+    <p>Once you set it spinning, the <em>aerodynamics</em> make the sound. You supply energy; the physics performs. Nobody is choosing the pulses or the pitch-bends — the system generates them.</p>
+  </div>
+</template>
+
+<template id="h6">
+  <div class="card">
+    <p class="cyr">~4000 BCE</p>
+    <h2>The Hal Saflieni Hypogeum — a room tuned to the brain</h2>
+    <p>On the island of Malta, an entire temple complex was carved downward into living rock — three storeys of chambers, hand-cut around 4000 BCE. One room, nicknamed the Oracle Chamber, has acoustic properties that still startle researchers: it resonates strongly at low frequencies around 70 and 114 Hz, and a low male voice spoken there rolls through the whole complex.</p>
+    <p>A 2008 study found that sound at those frequencies can measurably shift patterns of brain activity, leaning them toward states associated with trance and deep relaxation. Whether the builders understood this in anything like those terms is unknowable — but they carved thousands of tonnes of limestone and arrived at a room that transforms a voice into something physically felt. It stands with the painted caves as early evidence of the same instinct: engineering a space so the space itself makes the music larger than the person producing it.</p>
+  </div>
+</template>
+
+<template id="h8">
+  <div class="card">
+    <p class="cyr">~3000 BCE</p>
+    <h2>Wind chimes — the wind becomes a musician</h2>
+    <p>The earliest wind chimes appear in Southeast Asia around 3000 BCE, made of bone, wood, bamboo, and shell — hung deliberately so that moving air would strike them. They may be the simplest generative instrument ever devised: choose the materials, choose the tuning, hang the parts, and surrender the performance entirely to the weather.</p>
+    <p>Nearly every element of later generative music is already present in that arrangement. A human makes the design decisions in advance; an outside force supplies endless, unrepeatable variation; and the result is music no one is playing. Five thousand years later, Brian Eno would describe his ambient systems in almost exactly those terms — set up the conditions, then let the piece run. The wind chime got there first.</p>
+  </div>
+</template>
+
+<template id="h9">
+  <div class="card">
+    <p class="cyr">~2600 BCE</p>
+    <h2>The Oracle of Dodona — bronze cauldrons in the wind</h2>
+    <p>Dodona, in the mountains of northwestern Greece, is the oldest Greek oracle — older than Delphi, mentioned in Homer. At its centre stood a sacred oak surrounded by a ring of bronze cauldrons mounted on tripods, positioned so they touched one another. When wind moved the branches and swung the hanging chains, the cauldrons rang — and the priests interpreted that ringing as the voice of Zeus. From the 4th century BCE, a bronze statue of a boy holding chains of knuckle bones was added, striking a cauldron whenever the wind blew: a permanent, weather-driven percussion installation.</p>
+    <p>Excavations have backed the ancient accounts, including a bronze wheel that chimes when wind passes over it. What Dodona adds to the wind-chime idea is scale and meaning: a purpose-built, architecturally arranged sound system, maintained for centuries, whose generated sound was treated as significant — as a message worth interpreting.</p>
+  </div>
+</template>
+
+<template id="h10">
+  <div class="card">
+    <p class="cyr">~2500 BCE</p>
+    <h2>Stonehenge &amp; the Preseli bluestones</h2>
+    <p>Stonehenge's smaller stones — the bluestones — were hauled roughly 250 kilometres from the Preseli Hills in Wales, and one property of those hills may help explain why: the rocks ring. Field tests have found that a meaningful fraction of Preseli stones sound like bells or gongs when struck, several Stonehenge bluestones show marks consistent with repeated striking, and a nearby village is named Maenclochog — “ringing stones.” Some of these stones served as church bells into the 18th century.</p>
+    <p>The monument itself behaves acoustically too: modelling by the University of Salford found that inside the completed circle, sound reverberated for over half a second and was noticeably amplified, while listeners outside the ring heard far less. None of this proves Stonehenge was built <em>for</em> sound — but it adds acoustics to the list of properties its builders plausibly selected for, and it places one of the world's most famous monuments in the long human tradition of choosing materials and spaces for what they do to sound.</p>
+  </div>
+</template>
+
+<template id="h11">
+  <div class="card">
+    <p class="cyr">~2300 BCE</p>
+    <h2>The sistrum — Hathor's sacred rattle</h2>
+    <p>The sistrum is a handled rattle of metal discs on rods, shaken to produce a bright metallic shimmer. Examples survive from Anatolia around 2300–2000 BCE, but it is most famous from Egypt, where it belonged to the worship of Hathor — goddess of music, dance, and joy, called “Mistress of Singing.” Egyptian texts likened its sound to a breeze rustling through papyrus reeds, and credited that sound with the power to ward off evil.</p>
+    <p>As an instrument it is nearly unskilled by design — the jangle is the jangle, however it is shaken — and that was the point. The sound itself, not the performance of it, carried the meaning. It marks an early recognition that a sound can do its work independent of virtuosity: an idea that runs from temple rattles through church bells to every notification chime on a phone.</p>
+  </div>
+</template>
+
+<template id="h12">
+  <div class="card">
+    <p class="cyr">~2100 BCE</p>
+    <h2>China's first bronze bells</h2>
+    <p>Chinese foundries were casting clapperless bronze bells by roughly 2100 BCE — bells struck from outside rather than swung, which makes pitch a matter of precise manufacture. From the beginning, Chinese bell-making treated tuning as an engineering discipline: the metal, the thickness, and the shape of the casting determine the note before the bell ever sounds.</p>
+    <p>That commitment — building the music into the object itself — became one of the defining threads of Chinese musical history, and it sets up the astonishment to come further down this timeline: the sixty-five-bell bianzhong of Marquis Yi, cast with two precise pitches per bell. A bell is a note that a founder composed years before any musician arrives. It is tuning as manufacturing, and manufacturing as composition.</p>
+  </div>
+</template>
+
+<template id="h13">
+  <div class="card">
+    <p class="cyr">~1800 BCE</p>
+    <h2>The Mesopotamian tuning tablets — music's first algorithm</h2>
+    <p>A clay tablet from the city of Ur, catalogued as UET VII 74, contains instructions for retuning a nine-stringed lyre — written as conditional procedures: if the instrument is in tuning X and a particular interval sounds impure, tighten this string, and the interval will be clear. Follow the steps repeatedly and you cycle through all seven of the named Babylonian tunings. It shares its logical form with Babylonian mathematical and legal texts: condition, operation, result.</p>
+    <p>That makes it, by any reasonable definition, an algorithm — arguably the oldest surviving one applied to music, nearly four thousand years old. Companion tablets deepen the picture: one lists the interval pairs whose numbers trace the mathematical cycle underlying the diatonic scale, more than a millennium before Pythagoras, whom the West long credited with discovering it. Step-by-step procedures for producing correct musical results are not a computer-age invention; they are among the oldest music theory we possess.</p>
+  </div>
+</template>
+
+<template id="h14">
+  <div class="card">
+    <p class="cyr">~1600 BCE</p>
+    <h2>Shang Dynasty bells &amp; feng ling</h2>
+    <p>Under the Shang Dynasty, Chinese bronze bells matured into organized families: the <em>nao</em>, held mouth-upward and struck, typically cast and played in graduated sets of three — already a step toward treating bells as a tuned ensemble rather than isolated objects. Alongside them, <em>feng ling</em> — wind bells — hung from eaves and, in later centuries, from temples and pagodas by the hundred.</p>
+    <p>The two lineages neatly embody two branches of this timeline. The struck sets lead toward instruments of extraordinary engineered precision, where the pitches are composed at the foundry. The wind bells belong with Dodona and the earliest chimes: sound handed over to the weather, ringing whether or not anyone is present. One tradition perfects control; the other perfects surrender. Generative music has been negotiating between those two poles ever since.</p>
+  </div>
+</template>
+
+<template id="h7">
+  <div class="card">
+    <p class="cyr">~1500 BCE</p>
+    <h2>Lithophones — ringing stones &amp; water-powered strikers</h2>
+    <p>In Vietnam's Central Highlands, sets of shaped basalt slabs — the <em>đàn đá</em> — were cut and tuned to produce distinct pitches when struck; the oldest dated set is roughly 3,500 years old, and the first was identified by ethnologist Georges Condominas in 1949. Stone, the least likely of materials, made into a keyboard.</p>
+    <p>What the Raglai people did with those stones is the remarkable part. They suspended lithophones above streams with paddle-driven strikers, so the current itself beat the stones — an automated, water-powered percussion system, used to protect crops by keeping foraging animals away — and hung other stones on frames to be struck by the wind. A machine that plays music continuously, powered by a river, with no performer: the concept sounds contemporary, and it is at least three millennia old.</p>
+  </div>
+</template>
+
+<template id="h15">
+  <div class="card">
+    <p class="cyr">~1400 BCE</p>
+    <h2>The Hurrian Hymns — the oldest notated music</h2>
+    <p>Excavated from the royal palace at Ugarit, on the Syrian coast, a set of clay tablets from around 1400 BCE holds the oldest substantially complete notated music in the world. The best preserved, Hymn No. 6, is dedicated to Nikkal, goddess of orchards. Its notation does not record pitches directly; it records the <em>names of intervals</em> — instructions tied to pairs of lyre strings — with numbers alongside them.</p>
+    <p>In other words, the oldest written music we have is not a recording of a melody but a procedure for reconstructing one: follow the interval instructions on a properly tuned instrument and the piece emerges. Scholars in the 1970s worked out the decipherment, and the underlying scale is heptatonic and diatonic — structurally the same seven-note framework as the modern major scale. The earliest surviving song, and it is already written as a recipe.</p>
+  </div>
+</template>
+
+<template id="h16">
+  <div class="card">
+    <p class="cyr">~1350 BCE</p>
+    <h2>The Colossi of Memnon — the statue that sang at dawn</h2>
+    <p>Two colossal statues of Pharaoh Amenhotep III — eighteen metres tall, over 700 tonnes each — have stood in the Theban necropolis since around 1350 BCE. In 27 BCE an earthquake shattered the northern colossus from the waist up. Then something strange began: each morning, within an hour or two of sunrise, the damaged statue produced sound — a light moan, or as the geographer Strabo described it, something like the snap of a breaking lyre string.</p>
+    <p>The singing statue became one of the ancient world's great attractions; over a hundred Greek and Latin inscriptions on its base record visitors' experiences, including verses by the poet Julia Balbilla, who came with the Emperor Hadrian in 130 CE. The leading explanation is morning heat rapidly evaporating dew inside the cracked stone, driving vibration through the fractures. When Emperor Septimius Severus repaired the statue around 199 CE, the sound stopped — permanently. It remains the most famous case of accidental generative sound in history: thermal energy and broken stone, performing daily for two centuries.</p>
+  </div>
+</template>
+
+<template id="h17">
+  <div class="card">
+    <p class="cyr">~1200 BCE</p>
+    <h2>The Sama Veda — chant as cosmic procedure</h2>
+    <p>The Sama Veda — the “Veda of Melodies” — contains what are likely the oldest melodies still in use: nearly two thousand verses set to music and transmitted orally with extraordinary rigour, each chant unfolding through a strict five-stage format. Training to perform them correctly has always been long, formal, and exact.</p>
+    <p>The exactness was the theology. In Vedic belief, properly performed chant participated in the order of the cosmos — and improper recitation could disturb it. That is a procedural constraint of a severity no modern system approaches: the rules are not stylistic preferences but load-bearing parts of reality. It is worth holding beside every later rule-system on this timeline, from counterpoint to code — the conviction that following the procedure precisely is what makes the music <em>work</em> is as old as music's written record.</p>
+  </div>
+</template>
+
+<template id="h18">
+  <div class="card">
+    <p class="cyr">~1000 BCE</p>
+    <h2>Chavín de Huántar — a temple built to multiply echoes</h2>
+    <p>At Chavín de Huántar, high in the Peruvian Andes, a ceremonial complex from around 1000 BCE contains a half-mile labyrinth of underground galleries. Acoustic research led by Stanford's Miriam Kolar demonstrated something extraordinary: the network of stone ducts is arranged so that it selectively favours the frequencies of the <em>pututu</em> — a conch-shell trumpet — and multiplies its echoes until the sound seems to come from everywhere at once.</p>
+    <p>A person standing in those galleries hears a single instrument transformed into a surrounding presence, its source impossible to locate. This is architecture as signal processing — filtering, amplifying, and spatializing a specific input — built in stone three thousand years before anyone would use those words. The cave painters chose resonant rooms; the builders of Chavín went further and constructed one, tuned to a single instrument.</p>
+  </div>
+</template>
+
+<template id="h19">
+  <div class="card">
+    <p class="cyr">~1000 BCE</p>
+    <h2>Yan Shi's singing automaton — the legend</h2>
+    <p>The <em>Liezi</em>, a Chinese text compiled around the 4th century BCE, tells of events said to be far older: the craftsman Yan Shi presents King Mu of Zhou with a life-size mechanical figure that walks, sings perfectly in tune when its chin is touched, and dances in time when its hand is taken. Alarmed by how lifelike it is, the king has it taken apart — revealing leather, wood, glue, and paint, with complete artificial organs. Remove the heart and it cannot sing; remove the kidneys and it cannot walk.</p>
+    <p>No such machine existed, so far as anyone can show — this is philosophy wearing engineering's clothes. But the story's precision is what makes it remarkable: nearly three thousand years ago, a writer imagined a manufactured performer convincing enough to unsettle its audience, and asked what its performance meant. The anxiety the tale explores — delight in the artificial musician, and discomfort at being moved by it — has not aged a day.</p>
+  </div>
+</template>
+
+<template id="h20">
+  <div class="card">
+    <p class="cyr">~1000 BCE</p>
+    <h2>King David's wind-played lyre</h2>
+    <p>Rabbinic tradition records that King David hung his <em>kinnor</em> — his lyre — above his bed, positioned to catch the north wind, which at midnight would move across the strings and cause the instrument to play by itself; David would rise and study until dawn. Similar traditions of wind-sounded strings appear in Greece — Homer has Hermes invent the lyre after wind sings across dried sinew — and across China, Indonesia, Ethiopia, and India.</p>
+    <p>The instrument described is what later centuries would call an aeolian harp: strings excited by moving air, sounding only natural harmonics, in patterns no player could dictate. The purpose-built version would not be documented until the 17th century, but the idea — a stringed instrument surrendered to the wind — recurs across unconnected cultures for millennia. Some musical ideas appear to be discovered independently wherever there are strings, wind, and someone willing to listen.</p>
+  </div>
+</template>
+
+<template id="h21">
+  <div class="card">
+    <p class="cyr">~530 BCE</p>
+    <h2>Pythagoras — music becomes mathematics</h2>
+    <p>The famous story has Pythagoras passing a blacksmith's shop, noticing that different hammers rang at different pitches, and discovering that consonance follows simple whole-number ratios — 2:1 for the octave, 3:2 for the fifth, 4:3 for the fourth. The story is physically impossible (hammer weight doesn't work that way), but the ratios are real discoveries, almost certainly made on the monochord: a single string over a movable bridge, where lengths can be measured precisely. To the Pythagoreans this was not a fact about strings; it was a fact about reality. Their most sacred symbol, the tetractys, encoded those same numbers, and their oath invoked it as the source of all creation.</p>
+    <p>There is a catch, and the ancients found it. Stack twelve perfect fifths and you should land exactly seven octaves higher — but you don't. You overshoot by a small, irreducible amount now called the Pythagorean comma. Nature's most perfect intervals refuse to close the circle, which means no fixed tuning can be pure in every key. That single imperfection drove more than two thousand years of tuning systems, temperaments, and compromises — an early lesson that even the most mathematical music is built on negotiated trade-offs.</p>
+  </div>
+</template>
+
+<template id="h22">
+  <div class="card">
+    <p class="cyr">~450 BCE</p>
+    <h2>The ethos doctrine — Plato regulates the modes</h2>
+    <p>Greek theory held that each musical mode carried a distinct moral force — an <em>ethos</em>. Dorian was steady and courageous, fit for educating the guardians of the state. Phrygian was ecstatic. Mixolydian suited grief. Lydian was relaxed to the point of indolence — and in the <em>Republic</em>, Plato bans it outright, prescribing which modes, rhythms, and instruments a well-ordered city should permit. His musical adviser Damon reportedly claimed he would rather control a city's modes than its laws.</p>
+    <p>Strip away the politics and something notable remains: a formal constraint system for composition, written down and argued over — rules about which musical materials may be used, and to what end. The conviction underneath it, that musical structures act on people in predictable ways, has never really left; it echoes in film scoring conventions, in playlist moods, and in every debate about what algorithmically generated culture does to its audience.</p>
+  </div>
+</template>
+
+<template id="h23">
+  <div class="card">
+    <p class="cyr">433 BCE</p>
+    <h2>The Bianzhong of Marquis Yi — 65 bells, five octaves</h2>
+    <p>In 1978, archaeologists opening a tomb in Hubei Province found the greatest instrument of the ancient world intact: sixty-five bronze bells on lacquered wooden racks, buried with the Marquis Yi of Zeng in 433 BCE. The largest bell stands over a metre and a half tall and weighs more than 200 kilograms. The set spans five octaves — fully chromatic across the central three — and each bell is cast with a lens-shaped cross-section that gives it <em>two</em> precise pitches, depending on where it is struck. The bells carry 3,755 characters of inscriptions documenting pitch relationships and scale theory: a music-theory treatise written on the instrument itself.</p>
+    <p>Every one of those 130 pitches was fixed at the foundry, decades of accumulated acoustic engineering committed to bronze before a single performance. Twenty-five centuries later the bells still play; they were sounded at Hong Kong's handover ceremony in 1997. As a monument to the idea that music can be designed, computed, and manufactured — rather than only performed — nothing else from antiquity comes close.</p>
+  </div>
+</template>
+
+<template id="h24">
+  <div class="card">
+    <p class="cyr">~330 BCE</p>
+    <h2>Aristoxenus — the rules of melody</h2>
+    <p>Aristoxenus of Tarentum, a pupil of Aristotle, wrote the oldest substantially surviving work of music theory, the <em>Elements of Harmony</em>. His project was to define which intervals could function melodically and to establish the rules by which they combine — effectively founding musicology. His sharpest idea was <em>dynamis</em>: a note's identity comes from its function within a scale, not merely from its pitch.</p>
+    <p>That is a structural insight of lasting consequence — the recognition that music is a system of relationships, in which the same sound means different things depending on context. Every later rule-system on this timeline, from counterpoint to jazz theory to the pattern-learning of modern AI models, rests on that premise: what matters is not the note, but the role the note plays.</p>
+  </div>
+</template>
+
+<template id="h25">
+  <div class="card">
+    <p class="cyr">~360 BCE</p>
+    <h2>Plato's Timaeus — the cosmos as a musical score</h2>
+    <p>In the <em>Timaeus</em>, Plato describes the creation of the universe: the Demiurge constructs the World Soul by dividing a primordial substance according to the sequence 1, 2, 3, 4, 8, 9, 27, then filling the gaps with precise intermediate proportions. Follow the procedure and something familiar emerges — the steps generate the Pythagorean diatonic scale. Plato has, quite literally, written the cosmos as the output of a scale-building algorithm.</p>
+    <p>The companion image, the Music of the Spheres, held that the planets themselves sound in mathematical harmony — unheard by us only because it has played since our birth. What matters here is not the astronomy but the worldview: musical structure treated as something discovered in the fabric of reality rather than invented by taste. That conviction — that the rules exist and composition is the art of engaging them — is the philosophical ancestor of every generative system that followed.</p>
+  </div>
+</template>
+
+<template id="h26">
+  <div class="card">
+    <p class="cyr">~250 BCE</p>
+    <h2>The Barabar Caves — India's echo chambers</h2>
+    <p>In the hills of Bihar, in India's northeast, the Barabar Caves are the oldest surviving rock-cut caves in the world — chambers carved from solid granite in the 3rd century BCE, their interior walls polished to a mirror finish. Sing a single note inside and the room answers: the reverberation carries on for several seconds after the voice stops.</p>
+    <p>The polish is the notable engineering choice — smooth stone reflects sound with minimal loss, so the chambers sustain and layer whatever is sounded within them. Built two millennia after the Hypogeum in Malta and continents apart, they demonstrate the same discovery made independently again: shape and finish a space carefully enough, and the architecture becomes a participant in the music.</p>
+  </div>
+</template>
+
+<template id="h27">
+  <div class="card">
+    <p class="cyr">~270 BCE</p>
+    <h2>Ctesibius &amp; the hydraulis — the first keyboard instrument</h2>
+    <p>Ctesibius of Alexandria, a barber's son turned engineer, noticed the whistle of compressed air escaping a tube and pursued the observation to a remarkable conclusion: the hydraulis, the world's first keyboard instrument. Hand pumps forced air into a chamber submerged in water; the water's weight kept the air pressure constant; and a keyboard of sliders released that air into tuned bronze pipes. The result was something no flute or voice could achieve — sustained, steady tone, independent of anyone's breath, for as long as the keys were held.</p>
+    <p>The hydraulis became a sensation for centuries: Cicero admired it, and Nero played one. Its deeper significance is architectural — it separated the <em>energy source</em> of music from its <em>control</em>. One person supplies power; a mechanism regulates it; a keyboard directs it. That division of labour is the design pattern of nearly every instrument invented since, from the pipe organ to the synthesizer, and Ctesibius drew it first.</p>
+  </div>
+</template>
+
+<template id="h28">
+  <div class="card">
+    <p class="cyr">~200 BCE</p>
+    <h2>The Nāṭya Śāstra — India's generative grammar</h2>
+    <p>The Nāṭya Śāstra, the great Sanskrit treatise on the performing arts, specifies a musical system of extraordinary procedural depth. The octave divides into 22 microintervals; seven notes are distributed across them in defined proportions; two parent scales generate fourteen modal permutations by systematic rotation; and from these come eighteen melodic types — <em>jatis</em> — each specified by ten parameters, including its opening note, predominant note, final note, and permitted range.</p>
+    <p>Supply values for the parameters and the melody type follows — a genuinely generative design, and the direct ancestor of the raga system, which later added constraints of time and season: particular ragas for particular hours of the day, monsoon ragas, spring ragas. It stands among the most complete rule-based musical frameworks ever devised, and it was already codified while Rome was still a republic.</p>
+  </div>
+</template>
+
+<template id="h29">
+  <div class="card">
+    <p class="cyr">~122 BCE</p>
+    <h2>The twelve lü — China computes the comma</h2>
+    <p>Chinese theory generated its twelve pitches by an arithmetic procedure — the Method of Subtracting and Adding Thirds — starting from a fundamental tone called Huangzhong, the Yellow Bell. The mathematics is identical to Pythagorean tuning, arrived at independently; legend credits the minister Ling Lun, cutting bamboo pipes to match the calls of phoenixes. Each pitch was mapped to a month of the year, and the five tones to elements, directions, seasons, and roles in the state — the ruler, the minister, the people.</p>
+    <p>By 122 BCE, Chinese scholars had documented the same tuning discrepancy the Greeks found — the comma — and the scholar Jing Fang pushed the calculation to 53 steps in pursuit of closure. Tuning was statecraft: a new dynasty re-established the fundamental pitch itself, on the belief that improper music had helped bring down the old one. Nowhere else has the idea that correct musical mathematics underwrites social order been taken more seriously.</p>
+  </div>
+</template>
+
+<template id="h30">
+  <div class="card">
+    <p class="cyr">~100 BCE</p>
+    <h2>The Dion hydraulis — the oldest surviving organ</h2>
+    <p>In August 1992, at the foot of Mount Olympus, excavators led by Dimitrios Pandermalis uncovered the remains of a first-century-BCE hydraulis — the oldest surviving example of Ctesibius's invention. Forty bronze pipes in two ranks, decorated with silver rings and coloured glass beads: a luxury instrument, and physical proof that the ancient descriptions were not exaggeration.</p>
+    <p>The pipes correspond to the pitch framework of Greek theory — the instrument and the mathematics agree. A working replica, completed in 1999, has performed for modern audiences, which means the sound of a two-thousand-year-old keyboard instrument can once again be heard rather than imagined. Between the treatises and the archaeology, the ancient world's most advanced music machine is fully recoverable.</p>
+  </div>
+</template>
+
+<template id="h31">
+  <div class="card">
+    <p class="cyr">~60 CE</p>
+    <h2>Hero of Alexandria — programmable sound machines</h2>
+    <p>Hero of Alexandria's surviving writings describe dozens of automata, and the sound devices are the most inventive of them. Water-driven mechanisms made carved birds sing through tuned pipes, fall silent when a rotating owl turned to face them, and resume when it turned away — a self-cycling loop that ran indefinitely. Trumpets sounded automatically when temple doors opened. A windwheel drove the pipes of a small organ: the first recorded instance of wind powering a machine.</p>
+    <p>His masterwork was an automated puppet theatre — a production lasting nearly ten minutes, powered by a falling weight regulated by draining sand, complete with timed thunder effects from metal balls dropped onto a hidden drum. And his cart, steered by pegs wound with rope, could follow a pre-set course: a mechanism many historians count among the earliest programmable devices. In Hero's workshop, the full ambition is already visible — not merely instruments that sound, but performances that run on their own, from a stored plan.</p>
+  </div>
+</template>
+
+<template id="h32">
+  <div class="card">
+    <p class="cyr">~79 CE</p>
+    <h2>Roman tintinnabula — wind chimes against the evil eye</h2>
+    <p>Excavations at Pompeii preserved the Roman version of the wind chime: the tintinnabulum, a bronze figure — very often an exuberantly phallic one — hung with bells, placed at doorways, courtyards, and bedrooms. Its tinkling in the breeze was apotropaic: sound deployed to ward off the evil eye. Finely worked examples have surfaced from Britain to the Balkans, including one excavated in its original context at Viminacium, in modern Serbia, as recently as 2023.</p>
+    <p>Functionally these are direct descendants of the Southeast Asian chimes three thousand years older, but the Roman examples document something with unusual clarity: ordinary households installing automatic sound devices for daily protective use. Generated sound as domestic infrastructure — continuous, unattended, and purposeful — was a fixture of street-level Roman life.</p>
+  </div>
+</template>
+
+<template id="h33">
+  <div class="card">
+    <p class="cyr">~150 CE</p>
+    <h2>Cleonides &amp; Ptolemy — composition by rulebook</h2>
+    <p>By the second century CE, Greek theory had matured into codification. Cleonides organized the rules of melodic composition — <em>melopoiia</em> — into formal classes, matched to three emotional registers: elevating, depressing, and soothing. Ptolemy, the great astronomer, wrote the <em>Harmonics</em>, reconciling the mathematical and empirical schools of tuning theory — and then, in his final book, extended musical ratios outward to the planets themselves.</p>
+    <p>This is the ancient rule tradition in its finished form: composition as a discipline with named procedures, categorized purposes, and intended effects on listeners — a handbook, not a mystery. The distance from a second-century composition manual to a style guide, a species-counterpoint textbook, or a well-crafted generative prompt is shorter than it first appears; each is an attempt to write down how music that <em>works</em> gets made.</p>
+  </div>
+</template>
+
+<template id="h34">
+  <div class="card">
+    <p class="cyr">228 CE</p>
+    <h2>The Aquincum organ — dated by inscription</h2>
+    <p>In 1931, excavations at Aquincum — Roman Budapest — uncovered the remains of a small organ with four ranks of thirteen pipes. Uniquely, it came with its own paperwork: a dedicatory inscription recording that Gaius Iulius Viatorinus presented the instrument to the local firefighters' guild in the year 228. It is the most precisely dated instrument to survive from antiquity.</p>
+    <p>The detail worth pausing on is the recipient. Not an emperor, not a temple: a guild hall in a provincial town on the Danube frontier. By the third century, the keyboard instrument had travelled from Alexandria's engineering workshops to the social clubs of the empire's edges — the trajectory every music technology on this timeline repeats, from wonder of the age to ordinary furniture in a few generations.</p>
+  </div>
+</template>
+
+<template id="h35">
+  <div class="card">
+    <p class="cyr">~510 CE</p>
+    <h2>Boethius — handing it all to the Middle Ages</h2>
+    <p>As the Roman world came apart, the philosopher Boethius compressed centuries of Greek musical thought into <em>De Institutione Musica</em> — and through it, transmitted the whole tradition to medieval Europe. His framework sorted music into three levels: <em>musica mundana</em>, the harmony of the cosmos; <em>musica humana</em>, the harmony binding soul and body; and <em>musica instrumentalis</em>, audible sound — ranked lowest of the three. Music entered the medieval curriculum as a branch of mathematics, alongside arithmetic, geometry, and astronomy.</p>
+    <p>The book's afterlife is scarcely believable: it remained required reading at Oxford until the nineteenth century. For over a millennium, every educated European learned first that music is number, structure, and cosmic order — and only secondarily something performed. The entire medieval chapter of this timeline, with its rule-built polyphony and mechanical bell-towers, unfolds inside the frame Boethius set.</p>
+  </div>
+</template>
+
+<template id="h36">
+  <div class="card">
+    <p class="cyr">~850</p>
+    <h2>The Banū Mūsā brothers — the first automatic melody</h2>
+    <p>In ninth-century Baghdad, three brothers — the Banū Mūsā, celebrated engineers of the Islamic Golden Age — described a hydraulic organ whose heart was a slowly rotating cylinder studded with raised pegs. As the cylinder turned, driven by a water wheel, the pegs lifted levers that opened and closed the holes of a flute. The instrument required no player at all: the melody lived on the cylinder.</p>
+    <p>That pegged cylinder is one of the most consequential objects on this timeline. It is the first known mechanism capable of playing a complete melody automatically — and it is the direct ancestor of the music box, the carillon drum, the barrel organ, and, at a longer remove, the player-piano roll and the step sequencer. Storing a piece of music as a physical pattern, separate from any performance of it, begins here.</p>
+  </div>
+</template>
+
+<template id="h37">
+  <div class="card">
+    <p class="cyr">~900</p>
+    <h2>Musica Enchiriadis — the first rules of harmony</h2>
+    <p>The <em>Musica Enchiriadis</em>, an anonymous treatise from around 900, is the earliest surviving attempt to write down rules for singing in more than one voice at once. It teaches <em>organum</em>: take a chant melody, and add a second voice moving in parallel at a fixed interval below, with guidelines for where the voices may diverge and converge to avoid forbidden clashes.</p>
+    <p>Follow the procedure and harmony <em>results</em> — the second voice is generated from the first by rule. It is a modest system, but it marks the moment Western polyphony became something teachable and reproducible rather than improvised custom, and it opens four centuries in which European music grows steadily more constructed: rules layered on rules, from these parallel lines to the mathematical canons at this era's end.</p>
+  </div>
+</template>
+
+<template id="h38">
+  <div class="card">
+    <p class="cyr">~950</p>
+    <h2>Dunstan of Canterbury's aeolian harp</h2>
+    <p>Dunstan — monk, craftsman, and eventually Archbishop of Canterbury — is credited with the first well-attested aeolian harp in medieval Europe: a stringed instrument hung where moving air would sound it. The story goes that when his harp played with no hand touching it, the untouched music was taken by some as evidence of sorcery.</p>
+    <p>The accusation is the interesting part. King David's wind-played lyre, a millennium earlier, was received as devotion; Dunstan's, in a different age, drew suspicion. The device is the same — strings surrendered to the wind — but the meaning assigned to self-playing music had shifted with the culture around it. How a society reacts to music without a visible musician says at least as much about the society as about the machine.</p>
+  </div>
+</template>
+
+<template id="h39">
+  <div class="card">
+    <p class="cyr">~1170</p>
+    <h2>Léonin — rhythm gets a system</h2>
+    <p>At Notre-Dame in Paris, the composer Léonin assembled the <em>Magnus Liber Organi</em> — the Great Book of Organum — and with it, a solution to polyphony's coordination problem: the rhythmic modes, a small set of repeating long-short patterns that every voice could share. For the first time in the West, rhythm itself was notated systematically rather than remembered.</p>
+    <p>A shared rhythmic grid is infrastructure. Once independent voices can be locked together in time, music can grow more elaborate than any single memory could hold — and composition starts to become the design of structures on paper. Léonin is also among the first polyphonic composers whose name survives attached to his work: the system and the author arrive together.</p>
+  </div>
+</template>
+
+<template id="h40">
+  <div class="card">
+    <p class="cyr">~1200</p>
+    <h2>Pérotin — four voices from one chant</h2>
+    <p>Léonin's successor Pérotin pushed the Notre-Dame method to four simultaneous voices — works like <em>Viderunt omnes</em>, built by stretching a single chant melody into enormously long held notes and constructing rhythmic, interlocking upper voices above it. One borrowed line becomes the foundation for a vast sounding architecture.</p>
+    <p>The design principle deserves notice: a fixed, pre-existing structure underneath; systematic elaboration above. That template — ground layer plus generated layers — recurs for the next eight hundred years, in the chaconne's repeating bass, in jazz standards' chord changes, in the loop under a house track. Pérotin's towering settings are an early demonstration that constraint at the bottom enables freedom at the top.</p>
+  </div>
+</template>
+
+<template id="h41">
+  <div class="card">
+    <p class="cyr">1206</p>
+    <h2>Al-Jazari's musical boat — the reprogrammable drum machine</h2>
+    <p>The engineer Al-Jazari, working in Diyarbakir, described and built a boat that floated on a palace lake carrying four mechanical musicians — a harpist, a flautist, and two drummers — that performed automatically every half hour. The percussion was driven by a rotating beam fitted with movable pegs; the pegs tripped the drummers' arms as the beam turned.</p>
+    <p>Because the pegs could be repositioned, the rhythmic pattern could be changed — which is why the roboticist Noel Sharkey has argued the mechanism amounts to an early <em>reprogrammable</em> device. Move the pegs, change the performance: the gap between that and a step sequencer's grid is a matter of materials, not of concept. The Banū Mūsā stored a melody; Al-Jazari made the stored pattern editable.</p>
+  </div>
+</template>
+
+<template id="h42">
+  <div class="card">
+    <p class="cyr">1273</p>
+    <h2>The Norwich Cathedral clock</h2>
+    <p>Records from Norwich Cathedral note a clock installed in 1273 — one of the earliest weight-driven mechanical timekeepers in England, replaced fifty years later by a celebrated astronomical clock with automata and bells. Clocks of this era told time to the surrounding town the only practical way they could: by striking bells, automatically, at set intervals.</p>
+    <p>The tower clock matters to this timeline because it normalized automatic sound in public life. For centuries after, the most sophisticated machine most Europeans would ever encounter was a device whose whole public function was to make scheduled, unattended sound — and every quarter-hour chime quietly taught the same lesson: machines can be trusted to perform.</p>
+  </div>
+</template>
+
+<template id="h43">
+  <div class="card">
+    <p class="cyr">1288</p>
+    <h2>The Hesdin Castle automata</h2>
+    <p>At Hesdin in Artois, Count Robert II built the most famous pleasure garden of the Middle Ages — an estate salted with mechanical marvels, maintained and expanded for over a century: automata, trick fountains, mechanical birds, and engines that surprised, soaked, and delighted visitors as they passed.</p>
+    <p>Hesdin marks the arrival of automation as courtly entertainment in Europe — machines built not for utility but for wonder, with sound among their effects. The accounts of visitors describe astonishment and laughter in equal measure: a reminder that from early on, one reliable human response to the performing machine has simply been delight.</p>
+  </div>
+</template>
+
+<template id="h44">
+  <div class="card">
+    <p class="cyr">1316</p>
+    <h2>Philippe de Vitry — Ars Nova</h2>
+    <p>Philippe de Vitry's name is attached to the <em>Ars Nova</em> — the “new art” — a notational revolution that gave rhythm a full arithmetic: note values could now be divided in twos or threes at multiple levels, with signs indicating which scheme governed. Rhythm became precisely specifiable, at any level of complexity a composer cared to write.</p>
+    <p>Notation is easy to underestimate. What can be written down can be planned, transmitted, and built upon — and the Ars Nova's mensuration system is effectively a data format for time. The intricate rhythmic machinery of the next two centuries, isorhythm and the mensuration canons included, becomes possible only once this format exists.</p>
+  </div>
+</template>
+
+<template id="h45">
+  <div class="card">
+    <p class="cyr">1321</p>
+    <h2>The Rouen clock plays a melody</h2>
+    <p>At Rouen in Normandy, records from 1321 describe a clock arranged to play melodies on bells — a step beyond the single strike of the hour. A rotating mechanism, set with the tune in advance, sounded it automatically for the whole city.</p>
+    <p>This is the Banū Mūsā's principle scaled up to civic architecture: the stored melody, now installed in a tower and run on a schedule. A town with a musical clock lived with automated music as public utility — the same tune, played by no one, marking the shared hours. The path from here to the carillon is short and direct.</p>
+  </div>
+</template>
+
+<template id="h46">
+  <div class="card">
+    <p class="cyr">1352</p>
+    <h2>The Strasbourg rooster</h2>
+    <p>Strasbourg Cathedral's astronomical clock of 1352 carried the celebrated showpiece of medieval automation: a mechanical rooster that, at the appointed hour, raised its head, flapped its wings, and crowed through a bellows-driven pipe. The gilded bird survives — one of the oldest preserved automata in existence.</p>
+    <p>The rooster's crow is a small sound with a large implication: the clock was no longer just marking time but <em>staging</em> it, with sound effects and theatrical timing. Public clockwork was becoming scheduled performance — and crowds gathered for it, as they still gather beneath astronomical clocks today.</p>
+  </div>
+</template>
+
+<template id="h47">
+  <div class="card">
+    <p class="cyr">~1360</p>
+    <h2>Machaut — isorhythm</h2>
+    <p>Guillaume de Machaut's <em>Messe de Nostre Dame</em>, the first complete polyphonic mass setting by a single named composer, is built in places on isorhythm: a rhythmic pattern (the <em>talea</em>) and a melodic pattern (the <em>color</em>) of different lengths, repeating independently in the same voice. Because the two cycles are of unequal length, the same notes return dressed in different rhythms, phase by phase, until the cycles realign.</p>
+    <p>Two patterns of different lengths, looping against each other and generating evolving combinations — six centuries later, Steve Reich's phasing pieces and Brian Eno's tape loops of unequal duration would rest on precisely this principle. Machaut ran the process on parchment and singers rather than tape, but the engine is the same: set two cycles turning, and let their interference compose the surface.</p>
+  </div>
+</template>
+
+<template id="h48">
+  <div class="card">
+    <p class="cyr">1392</p>
+    <h2>The Wells Cathedral clock</h2>
+    <p>The clock at Wells Cathedral has told time since around 1392 — and above its astronomical dial, mechanical knights on horseback joust in a circle as bells sound, one of them knocked flat at each pass. The display, originally hourly (a 1960s modification quickened it to every quarter hour), has repeated for over six hundred years.</p>
+    <p>The medieval movement itself was replaced in the nineteenth century — the original mechanism now ticks on, still in working order, at London's Science Museum — but the spectacle at Wells continues on schedule: the medieval marriage of timekeeping, automatic sound, and staged performance, still playing to visitors. A modern visitor watches essentially the show a fourteenth-century pilgrim did — one of the longest-running scheduled performances on Earth.</p>
+  </div>
+</template>
+
+<template id="h49">
+  <div class="card">
+    <p class="cyr">~1400</p>
+    <h2>Ars Subtilior — Cordier's circular canon</h2>
+    <p>Around 1400, a circle of composers pushed rhythmic notation to its limits — the <em>Ars Subtilior</em>, the “subtler art.” Its emblem is Baude Cordier's <em>Tout par compas suy composés</em>: a canon written out in a perfect circle, whose text announces “with a compass I was composed,” and whose music loops back on itself with no fixed end. Cordier also notated a love song in the shape of a heart.</p>
+    <p>The circular score is notation as concept: the piece's form, its written image, and its performance instructions are one object. A score that is also a diagram, whose shape <em>is</em> the algorithm — graphic notation's twentieth-century avant-garde would reinvent the idea with no need of improvement on the original.</p>
+  </div>
+</template>
+
+<template id="h50">
+  <div class="card">
+    <p class="cyr">1410</p>
+    <h2>The Prague Orloj</h2>
+    <p>Prague's astronomical clock — the Orloj — was installed in 1410 and has run, with interruptions and restorations, ever since: the oldest astronomical clock still operating. Its hourly show accumulated over the centuries — the Walk of the Apostles, the bell-ringing skeleton of Death, the crowing rooster — and crowds still fill the square below to watch.</p>
+    <p>The Orloj is this era's automation summarized in one machine: astronomy computed by gears, time announced by bells, allegory performed by moving figures, all on schedule and unattended. That a six-century-old public automaton remains a functioning tourist attraction — rather than a museum piece — is the medieval chapter's neatest closing argument: build the machine well enough, and the performance simply keeps going.</p>
+  </div>
+</template>
+
+<template id="h51">
+  <div class="card">
+    <p class="cyr">~1470</p>
+    <h2>Ockeghem — the mensuration canons</h2>
+    <p>Johannes Ockeghem's <em>Missa Prolationum</em> is one of the most astonishing constructions in Western music: its movements unfold as mensuration canons, in which voices sing the <em>same written line</em> simultaneously at different speeds — the notation read under different rhythmic schemes, so one melody generates two or more diverging, interlocking parts.</p>
+    <p>A single line of music, plus a rule for reading it, produces the entire polyphonic fabric — the most compressed data on this timeline so far. Everything the listener hears is latent in one melody and a set of transformations. Four centuries before anyone spoke of algorithms, Ockeghem was composing them, and the craft's difficulty is the point: designing a line whose transformed copies harmonize is composing the rule and the material at once.</p>
+  </div>
+</template>
+
+<template id="h52">
+  <div class="card">
+    <p class="cyr">~1500</p>
+    <h2>Josquin — canons on L'homme armé</h2>
+    <p>Josquin des Prez, the most celebrated composer of his generation, built masses on <em>L'homme armé</em> — a popular tune that served dozens of composers as common raw material — subjecting it to canon at every interval, augmentation, diminution, inversion: the full transformation toolkit, deployed with a fluency that made the machinery sound effortless.</p>
+    <p>The shared tune matters as much as the technique. Generations of composers took the same public melody and competed in what their systems could build from it — a culture of common source material and rival transformations. The parallel to remix culture, to the shared breakbeat, to a common dataset worked by many hands, is direct; the practice of making new music by systematically transforming what everyone already knows is centuries deep.</p>
+  </div>
+</template>
+
+<template id="h53">
+  <div class="card">
+    <p class="cyr">1510</p>
+    <h2>The Oudenaarde carillon</h2>
+    <p>In the Low Countries, the tower bells crossed a threshold: at Oudenaarde's town hall, by 1510, a set of tuned bells could be played automatically from a rotating drum set with pegs — the carillon, the pegged cylinder of Baghdad grown to architectural size and civic purpose. Soon carillons rang across Flanders and the Netherlands, their drums re-pegged seasonally with new tunes.</p>
+    <p>The carillon closes the medieval chapter by uniting its two great threads — the stored-melody machine and the public clock tower — into a single instrument that whole cities lived inside. It was, and in carillon towns still is, automated music as shared civic atmosphere: programmed by a human, performed by a building, heard by everyone.</p>
+  </div>
+</template>
+
+<template id="h54">
+  <div class="card">
+    <p class="cyr">1571</p>
+    <h2>The Villa d'Este water organ</h2>
+    <p>In the gardens of the Villa d'Este at Tivoli, outside Rome, engineers built a fountain containing a full pipe organ powered entirely by falling water — the water compressed the air, drove the mechanism, and the organ played its music automatically for astonished visitors. It became one of the most famous marvels in Europe; rulers and travellers made detours to hear it.</p>
+    <p>The device is Ctesibius's hydraulis reborn after a millennium, but with the human removed entirely: water now supplied both the power <em>and</em> the performance. Restored in recent decades, it plays again today. The Renaissance garden, with its programmed fountains and self-sounding organ, was among the first places Europeans went specifically to experience music made by no one — and found it delightful.</p>
+  </div>
+</template>
+
+<template id="h55">
+  <div class="card">
+    <p class="cyr">~1600</p>
+    <h2>Figured bass — improvising from a code</h2>
+    <p>Around 1600, European music adopted a remarkable convention: composers wrote out only a bass line, annotated with small numbers — figures — indicating the harmonies to build above it. The keyboard or lute player read this shorthand and improvised the actual notes in real time, guided by the code and the style's conventions. For a century and a half, the accompaniment of most European music was not written down at all.</p>
+    <p>Figured bass is a compression format: the essential structure specified, the surface left to be generated fresh at every performance. Two players realizing the same figures produce different music — both correct. The practice trained every professional musician of the era to think generatively: given constraints, produce a valid, tasteful realization on demand. The distance from a figured bass line to a chord chart, or to a well-constrained prompt, is small.</p>
+  </div>
+</template>
+
+<template id="h56">
+  <div class="card">
+    <p class="cyr">1650</p>
+    <h2>Kircher's Arca Musarithmica — composition in a box</h2>
+    <p>The Jesuit polymath Athanasius Kircher, in his encyclopedic <em>Musurgia Universalis</em>, described a device he called the Arca Musarithmica: a wooden chest filled with slats carrying number tables. By selecting slats and combining their columns according to instructions, a user with no musical training could assemble a correct four-voice setting of a given text. Several arcae were actually built; examples survive.</p>
+    <p>Kircher's stated aim was that anyone — he imagined missionaries, diplomats, the musically untrained — could produce competent sacred music by procedure alone. It is composition by lookup table and combination: an explicit, physical algorithm for generating music, three centuries before software. The question it raised — “is the user of the box a composer?” — has not left.</p>
+  </div>
+</template>
+
+<template id="h57">
+  <div class="card">
+    <p class="cyr">1650</p>
+    <h2>Kircher describes the aeolian harp</h2>
+    <p>In the same <em>Musurgia Universalis</em>, Kircher gave the first thorough documented description of a purpose-built aeolian harp — a box strung with gut strings, placed in a window or draft, sounding shifting chords of natural harmonics as the air moved across it. From King David's legend to Dunstan's suspect instrument, the wind-played string had lived in story; Kircher put it in a manual, with construction details.</p>
+    <p>Publication changed its status: the aeolian harp became a buildable object rather than a marvel, and over the following two centuries it spread across Europe — by the Romantic era it sat in fashionable windows as domestic atmosphere, the ambient sound generator of its age. An instrument no one plays, bought to make a room feel a certain way: the category is older than recording, older than electricity.</p>
+  </div>
+</template>
+
+<template id="h58">
+  <div class="card">
+    <p class="cyr">1679</p>
+    <h2>Diletsky — the first circle of fifths</h2>
+    <p>In a music grammar written for Slavic church musicians, the composer-theorist Nikolay Diletsky included a diagram that had not been printed before: the keys arranged in a circle, each a fifth from its neighbours — the circle of fifths, drawn as a navigational chart.</p>
+    <p>The circle turned a web of relationships into a map: from any key, the diagram shows where you can travel smoothly and what it costs to go further. Musicians have steered by it ever since — and it quietly recalls this timeline's oldest mathematics, the cycle of fifths traced on Babylonian tablets and in the tunings of ancient China. The same structure, rediscovered and finally drawn as a picture anyone could use.</p>
+  </div>
+</template>
+
+<template id="h59">
+  <div class="card">
+    <p class="cyr">1722</p>
+    <h2>Rameau codifies harmony</h2>
+    <p>Jean-Philippe Rameau's <em>Traité de l'harmonie</em> set out to give harmony a scientific foundation: chords understood as entities built from a fundamental bass, related by principles as regular — Rameau argued — as physics. Harmony, long taught as accumulated craft, was recast as a system with axioms and derivations.</p>
+    <p>Whatever its scientific pretensions, the treatise's practical effect was enormous: harmonic progression became something that could be reasoned about, taught systematically, and — eventually — encoded. Every chord-labelling system, every harmony textbook, every piece of software that knows a V wants to move to a I sits downstream of the claim Rameau staked: that beneath the art of harmony lies a describable machine.</p>
+  </div>
+</template>
+
+<template id="h60">
+  <div class="card">
+    <p class="cyr">1725</p>
+    <h2>Fux — Gradus ad Parnassum</h2>
+    <p>Johann Joseph Fux's <em>Gradus ad Parnassum</em> distilled the polyphonic craft of the previous two centuries into species counterpoint: a graded sequence of exercises, each governed by explicit rules — which intervals may sound together, how voices may move, what must be prepared and resolved. Cast as a dialogue between master and eager student, it became the most influential composition textbook ever written; Haydn taught from it, Mozart taught from it, Beethoven studied it.</p>
+    <p>Species counterpoint is a rule-system precise enough that a modern programmer can — and many have — implement it directly in code. Fux's deeper wager, though, was pedagogical: that internalizing strict constraints is how compositional freedom is <em>earned</em>. Three centuries of musicians trained on those exercises suggest the wager paid — constraint as the engine of craft, formalized into a curriculum.</p>
+  </div>
+</template>
+
+<template id="h61">
+  <div class="card">
+    <p class="cyr">~1737</p>
+    <h2>Vaucanson's Flute Player</h2>
+    <p>Jacques de Vaucanson exhibited in Paris a life-size android seated with a real transverse flute — not a music box disguised as a figure, but a machine that actually <em>played</em> the instrument: bellows-driven breath through shaped lips, articulating tongue, mechanical fingers on the real holes, wind pressure varied for register. It performed around a dozen tunes, and contemporaries — Voltaire among them — were fascinated.</p>
+    <p>Vaucanson's automaton crossed a line the pegged cylinders never approached: it reproduced the human <em>means</em> of performance, not just the musical result. The Enlightenment audience understood the provocation immediately — if breath, lips, and fingers can be mechanized, what exactly is the performer's remainder? The exhibition hall filed no verdict, but the question had been staged in public, with tickets sold.</p>
+  </div>
+</template>
+
+<template id="h62">
+  <div class="card">
+    <p class="cyr">1747</p>
+    <h2>Bach's Crab Canon — one line, played both ways</h2>
+    <p>Among the riddle-canons of Bach's <em>Musical Offering</em> is the canon cancrizans — the crab canon: a single melodic line that harmonizes with itself played backwards, the two versions sounding simultaneously, front meeting rear. Bach notated only the one line; the performer must realize the rule.</p>
+    <p>It is composition under a constraint so severe it approaches pure structure: every note must function twice, in both temporal directions. Modern admirers have rendered it on a Möbius strip, where the score's geometry makes the trick visible. The crab canon is the rule-based thread of this timeline at its most crystalline — a piece that is, in essence, a single elegant theorem.</p>
+  </div>
+</template>
+
+<template id="h63">
+  <div class="card">
+    <p class="cyr">~1749</p>
+    <h2>The Art of Fugue</h2>
+    <p>Bach's final project, <em>Die Kunst der Fuge</em>, takes a single subject and subjects it to systematic, near-exhaustive exploration: simple fugues, counter-fugues, double and triple fugues, mirror fugues in which entire textures invert intact — an ordered survey of what one theme contains. He left it unfinished, breaking off famously mid-passage.</p>
+    <p>The work reads as a demonstration that a small kernel of material, worked by rigorous transformation, contains a world — the same conviction that animated Ockeghem, here carried to its summit. Bach wrote it without specifying instruments, as if the music's substance were the structure itself, indifferent to its sounding body. It stands as the monument of the rule-based tradition: what procedure, mastered absolutely, can build.</p>
+  </div>
+</template>
+
+<template id="h64">
+  <div class="card">
+    <p class="cyr">1757</p>
+    <h2>Kirnberger — the first musical dice game</h2>
+    <p>Johann Philipp Kirnberger — a student of Bach's — published <em>The Ever-Ready Polonaise and Minuet Composer</em>: tables of pre-written musical bars, indexed by dice rolls. Throw the dice, look up each bar in turn, copy them out — and a complete, correct dance piece results, different nearly every time. The chance-music parlour game had arrived, and it arrived from inside Bach's own school.</p>
+    <p>The design is worth taking seriously: the skill lives in the tables. Kirnberger composed bar-sets in which <em>any</em> combination the dice select will connect gracefully — the craft moved upstream, from writing the piece to designing the space of possible pieces. That is precisely the position of the modern generative artist, and the dice-game tradition it launched treated the arrangement, correctly, as entertainment <em>and</em> as a genuine question about where composition resides.</p>
+  </div>
+</template>
+
+<template id="h65">
+  <div class="card">
+    <p class="cyr">1758</p>
+    <h2>C.P.E. Bach's dice game — counterpoint by chance</h2>
+    <p>A year after Kirnberger, Carl Philipp Emanuel Bach — the great master's most famous son — published his own contribution, with a title that gives the game away: an <em>invention by which six measures of double counterpoint can be written without knowing the rules</em>. Roll the dice; obtain correct invertible counterpoint, the learned style's most technical commodity, with no training whatever.</p>
+    <p>The title's mixture of pride and mischief is the point: the system's designer has embedded the rules so thoroughly in the tables that the user needs none of them. Expertise, once encoded, transfers to the ignorant — stated plainly by a Bach, in 1758. Every debate about deskilling, about tools that let the untrained produce expert output, is a continuation of that title page.</p>
+  </div>
+</template>
+
+<template id="h66">
+  <div class="card">
+    <p class="cyr">~1774</p>
+    <h2>Haydn's musical clocks &amp; the Jaquet-Droz Musician</h2>
+    <p>Two threads of the era meet here. In Switzerland, around 1774, the Jaquet-Droz workshop completed The Musician: a life-size android of a young woman who plays a genuine organ with her fingers, chest rising as if breathing, eyes following her hands, a bow at the close. And at the Esterházy court around 1790, Joseph Haydn wrote a set of little pieces for the <em>Flötenuhr</em> — flute-playing musical clocks built by the court librarian.</p>
+    <p>Between them they mark automation's full arrival in polite society: the first-rank composer writing <em>for</em> the machine as a legitimate instrument, and the machine itself refined into a performer with stage presence. The Musician still plays, on schedule, in a Swiss museum. When a great composer accepts the automaton as a commission worth his best small pieces, the boundary dispute is, in practice, over.</p>
+  </div>
+</template>
+
+<template id="h67">
+  <div class="card">
+    <p class="cyr">1781</p>
+    <h2>Stadler's dice game</h2>
+    <p>The dice-game genre kept selling, and tables attributed to Maximilian Stadler — later a respected abbé and friend of Mozart's circle — offered minuets and trios assembled by dice throw. Publishers issued such games across Europe, frequently borrowing famous names to move copies.</p>
+    <p>By the 1780s, then, combinatorial composition was a small industry: a public accustomed to the idea that charming, correct music could be manufactured from parts, at home, by chance. The games normalized in the parlour what Kircher had proposed in Latin folios — and their commercial logic, the famous name attached to the automated system, has a distinctly familiar ring.</p>
+  </div>
+</template>
+
+<template id="h68">
+  <div class="card">
+    <p class="cyr">~1790</p>
+    <h2>The Gioco filarmonico</h2>
+    <p>The <em>Gioco filarmonico</em> — the “philharmonic game” — circulated under Haydn's name: dice tables for assembling minuets in the master's style. Whether Haydn had any hand in it is doubtful; the attribution sold copies, and the publishers knew it.</p>
+    <p>Authentic or not, the object is telling: what the game claims to bottle is not a piece by Haydn but Haydn's <em>manner</em> — style abstracted from any particular work and offered as a system the buyer can run. The idea that a master's style is an extractable, marketable pattern, separable from the master, enters commerce here — two centuries and some decades before it became the music industry's most urgent legal question.</p>
+  </div>
+</template>
+
+<template id="h69">
+  <div class="card">
+    <p class="cyr">1791</p>
+    <h2>Mozart for mechanical organ — K. 594, 608, 616</h2>
+    <p>In his final year, Mozart accepted commissions for a Viennese waxworks mausoleum whose attraction included a mechanical organ — and grumbled about it in letters, calling the instrument's little pipes childish and shrill. Then he wrote for it anyway: the Adagio and Allegro K. 594, the Fantasia K. 608, and the Andante K. 616. The F-minor Fantasia in particular is no trifle — organists have adopted it as one of the repertoire's masterpieces.</p>
+    <p>K. 608 is the era's quiet verdict: a work of the first rank, composed knowingly for a machine that would perform it with no interpreter, its every nuance fixed in the barrel's pins. Mozart disliked the instrument and honoured it with masterwork regardless — professional ambivalence toward the machine, resolved by writing well for it, is at least as old as 1791.</p>
+  </div>
+</template>
+
+<template id="h70">
+  <div class="card">
+    <p class="cyr">1792</p>
+    <h2>Mozart's Würfelspiel — 759 trillion waltzes</h2>
+    <p>Published just after Mozart's death and attributed to him, the <em>Musikalisches Würfelspiel</em> is the most famous of all the dice games: sixteen dice throws select sixteen bars from tables of alternatives, producing a complete waltz. The arithmetic of the combinations runs to roughly 759 trillion possible pieces — practically every waltz the game generates has never been heard before and will never be heard again.</p>
+    <p>Whoever built the tables (Mozart's authorship is uncertain), the achievement stands: a pocket-sized system containing an inexhaustible space of correct music, navigated by chance. Players in 1792 could hold in their hands a question we now ask of far larger systems — in what sense do the trillions of unheard waltzes <em>exist</em>, and who is the composer of the one the dice happen to find?</p>
+  </div>
+</template>
+
+<template id="h71">
+  <div class="card">
+    <p class="cyr">1805</p>
+    <h2>Mälzel's Panharmonicon &amp; Beethoven's Wellington's Victory</h2>
+    <p>Johann Nepomuk Mälzel — remembered today for the metronome — built the Panharmonicon: a mechanical orchestra in a cabinet, with automated trumpets, drums, strings and winds, performing full orchestral works from pinned barrels. Seeking repertoire with maximum spectacle, he persuaded Beethoven to write <em>Wellington's Victory</em> for the machine in 1813; Beethoven then re-scored the piece for live orchestra, and it became one of his most profitable works.</p>
+    <p>The greatest composer alive writing a premiere for a machine orchestra, at a promoter's suggestion, then porting the piece to humans for the wider market — the traffic between mechanical and live performance ran in both directions from the start, and it ran on money. Mälzel's talent was recognizing that automation was not just an engineering project but a business.</p>
+  </div>
+</template>
+
+<template id="h72">
+  <div class="card">
+    <p class="cyr">1821</p>
+    <h2>Winkel's Componium — the first self-composing instrument</h2>
+    <p>Diederich Nicolaus Winkel, an Amsterdam instrument builder, completed in 1821 the machine this whole era had been reaching toward: the Componium. Two barrels play in alternation — while one sounds a two-measure phrase, the other slides to its next position, a roulette-like flywheel deciding whether it stays on its current variation or advances to the next — so the instrument assembles ever-new sequences of its theme without any human intervention. The number of possible sequences has been calculated at 53,875,981,680,676 — nearly 54 trillion. Experts of the French Académie examined the machine in 1824, verified that no one was hidden inside, and reported with some wonder that it recombined its variations “in all the orders of possible permutations.”</p>
+    <p>The dice games had made chance composition a human pastime; the Componium removed the human. Here, at the era's close, stands a machine that <em>composes as it performs</em> — variation without end, no player, no audience participation, no one to credit or blame. The instrument survives in the Brussels museum of instruments: the nineteenth century's answer, in oak and brass, to a question the twenty-first is still litigating.</p>
+  </div>
+</template>
+
+<template id="h73">
+  <div class="card">
+    <p class="cyr">1904</p>
+    <h2>The player piano — Welte-Mignon</h2>
+    <p>The player piano brought the pegged cylinder into the parlour — but the Welte-Mignon, introduced in 1904, did something more: it <em>recorded</em>. Its rolls captured a living pianist's actual performance — tempo, dynamics, pedalling — and played it back on a real instrument. Mahler, Debussy, and Ravel all cut rolls; their touch at the keyboard survives in punched paper.</p>
+    <p>For the first time, a specific human performance could be stored and re-performed mechanically, indistinguishable in the room from the pianist's own hands. It was also, as the copyright timeline on this site recounts, the technology that broke the law of its day: the courts couldn't decide whether a roll was a copy of the music. The reproducing piano opened the century by scrambling both the philosophy and the law of performance at once.</p>
+  </div>
+</template>
+
+<template id="h74">
+  <div class="card">
+    <p class="cyr">1913</p>
+    <h2>Russolo — The Art of Noises</h2>
+    <p>The Futurist painter Luigi Russolo published <em>The Art of Noises</em>, a manifesto declaring that the industrial world had given music a new orchestra: hisses, roars, clatters, hums. He built the <em>intonarumori</em> — crank-driven noise machines in wooden boxes, each producing a family of tuned noise — and staged concerts for them. Audiences rioted more than once.</p>
+    <p>Russolo's provocation reframed the basic question of material: if music is organized sound, then <em>any</em> sound is eligible. Every sample library, every field recording in a track, every synthesized texture stands on that claim. The machines themselves were mostly lost to war and neglect — but the manifesto's argument won so completely that the scandal is now hard to hear.</p>
+  </div>
+</template>
+
+<template id="h75">
+  <div class="card">
+    <p class="cyr">1920</p>
+    <h2>Tzara — a poem pulled from a bag</h2>
+    <p>Tristan Tzara's instructions <em>To Make a Dadaist Poem</em> are a complete recipe: take a newspaper article, cut out each word, shake them in a bag, draw them one by one, and copy them down in the order they emerge. “The poem will resemble you,” he promised — a jab, and perhaps not only a jab.</p>
+    <p>It is chance operation as manifesto: authorship relocated from choosing the words to choosing the <em>procedure</em>. The Dadaists framed it as an attack on artistic pretension, but the method outlived the polemic — through Burroughs's cut-ups, Bowie's lyric scissors, and every artist since who has trusted a random process to say something their deliberation couldn't.</p>
+  </div>
+</template>
+
+<template id="h76">
+  <div class="card">
+    <p class="cyr">1920</p>
+    <h2>The theremin</h2>
+    <p>Leon Theremin's instrument, demonstrated around 1920, is played without being touched: two antennas sense the player's hands in the air, one governing pitch, the other volume. The sound — a singing, voice-like electronic tone — came from nowhere visible, and early audiences received it as close to sorcery. In the hands of virtuosa Clara Rockmore it proved capable of genuine lyricism.</p>
+    <p>The theremin matters twice over. It was the first widely known instrument whose sound was generated purely electronically — the opening of the electric century — and its interface severed the last physical link between gesture and mechanism: nothing is struck, bowed, or blown. Music produced by moving your hands through empty air was, for 1920, a preview of how strange the century intended to get.</p>
+  </div>
+</template>
+
+<template id="h77">
+  <div class="card">
+    <p class="cyr">~1925</p>
+    <h2>Schwitters — Ursonate</h2>
+    <p>The Dada artist Kurt Schwitters spent a decade composing the <em>Ursonate</em> — the “primal sonata” — a half-hour work for solo voice made entirely of invented phonemes: no words, only syllables, organized with complete formal rigour into the four movements of a classical sonata, with themes, development, and recapitulation.</p>
+    <p>The piece splits language from meaning and keeps only the structure — sonata form executed in pure sound. It demonstrates something this timeline keeps circling: form is separable from content, and form alone can carry a listener for half an hour. Nonsense, rigorously organized, stops being nonsense.</p>
+  </div>
+</template>
+
+<template id="h78">
+  <div class="card">
+    <p class="cyr">1931</p>
+    <h2>The Rhythmicon — the first drum machine</h2>
+    <p>The composer Henry Cowell wanted to hear rhythms built on the same ratios as the harmonic series — patterns too mathematically intricate for human players — so he commissioned Leon Theremin to build a machine. The Rhythmicon, completed in 1931, was the result: press a key and it repeats a rhythmic pattern; press several and the patterns interlock in precise polyrhythm, each keyed to a harmonic ratio.</p>
+    <p>It is, by most reckonings, the first drum machine — built not for convenience but because a composer's idea exceeded human performance. That motive deserves notice: the machine as the only possible performer of music a person can imagine but cannot play. Nancarrow would shortly stake his life's work on the same premise, and half a century later the drum machine's descendants would remake popular music entirely.</p>
+  </div>
+</template>
+
+<template id="h79">
+  <div class="card">
+    <p class="cyr">1948</p>
+    <h2>Schaeffer — musique concrète</h2>
+    <p>In a Paris radio studio, Pierre Schaeffer assembled the <em>Études de bruits</em> — studies made not from notes but from recordings: locomotives, spinning tops, pans, voices — manipulated on turntables and locked grooves, later on tape. He called the approach <em>musique concrète</em>: composing directly with captured sound rather than with symbols for performers.</p>
+    <p>This is the moment recording stopped being a document and became an instrument. Cutting, looping, reversing, and layering recorded sound — the entire grammar of sampling, hip-hop production, and the modern DAW — begins in that studio. The recording, once a copy of music, became the raw material of it; the implications, artistic and legal alike, are still being worked out.</p>
+  </div>
+</template>
+
+<template id="h80">
+  <div class="card">
+    <p class="cyr">1948</p>
+    <h2>Nancarrow — Studies for Player Piano</h2>
+    <p>Conlon Nancarrow, living in Mexico City, concluded that the rhythmic music he imagined — voices moving at tempos related by ratios like 21 against 24, accelerating continuously against each other — could never be played by humans. So he stopped writing for them. For four decades he punched piano rolls by hand, note by note, composing directly for the player piano: tempo canons of a complexity no ensemble could approach.</p>
+    <p>Nancarrow inverted the player piano's purpose — built to reproduce human performance, he used it to realize <em>inhuman</em> performance. Working in near-total obscurity until late in life, he demonstrated the purest case of a pattern this era repeats: the machine not as labour-saving device but as the sole possible performer of an imagined music. Ligeti, discovering the Studies, called him “the greatest composer of our time.”</p>
+  </div>
+</template>
+
+<template id="h81">
+  <div class="card">
+    <p class="cyr">1951</p>
+    <h2>Cage — Music of Changes</h2>
+    <p>John Cage composed <em>Music of Changes</em> for piano by consulting the I Ching — the ancient Chinese oracle — tossing coins thousands of times to select sounds, durations, dynamics, and silences from pre-built charts. The labour was immense: chance, pursued with total discipline. Cage's stated aim was to remove his own taste and let sounds be themselves.</p>
+    <p>The dice games of the 1750s had used chance as a parlour amusement; Cage elevated it to compositional philosophy. Note where the authorship settles: Cage designed the charts, the questions, and the procedure — the coins only answered. The work reframes the composer as the designer of a decision system, and it made every later argument about process, intention, and authorship in generated music unavoidable.</p>
+  </div>
+</template>
+
+<template id="h82">
+  <div class="card">
+    <p class="cyr">1952</p>
+    <h2>Cage — 4′33″</h2>
+    <p>At a woods-edge concert hall in Woodstock, New York, pianist David Tudor sat down, closed the keyboard lid, and for four minutes and thirty-three seconds played nothing, marking three movements in silence. The premiere of <em>4′33″</em> scandalized even a sympathetic audience. Cage insisted ever after that it was his most important work — and that it contained no silence at all: wind in the trees, rain on the roof, the audience's own restlessness were the piece.</p>
+    <p><em>4′33″</em> is the Environmental category distilled to a single gesture: the frame is placed, and whatever sound the world supplies becomes the music. The cave painters chose resonant chambers; Cage chose a duration and a room. Between them lies forty thousand years, and remarkably little conceptual distance.</p>
+  </div>
+</template>
+
+<template id="h83">
+  <div class="card">
+    <p class="cyr">~1956</p>
+    <h2>Xenakis — Pithoprakta</h2>
+    <p>Iannis Xenakis — engineer, architect in Le Corbusier's studio, wartime resistance fighter — found individual note-against-note composition inadequate to his imagination and turned to mathematics: <em>Pithoprakta</em> deploys the statistical mechanics of gases, its dozens of string players becoming particles whose collective behaviour is composed as clouds, densities, and trajectories rather than melodies.</p>
+    <p>Xenakis composed the <em>distribution</em>, not the individual event — the shape of a mass of sound, with mathematics determining the particulars. It is a genuinely new answer to the question of what a composer controls: not the notes but the statistics of the notes. That idea — authorship at the level of the probability distribution — has never been more current than now.</p>
+  </div>
+</template>
+
+<template id="h84">
+  <div class="card">
+    <p class="cyr">1956</p>
+    <h2>Stockhausen — Klavierstück XI</h2>
+    <p>Karlheinz Stockhausen's <em>Klavierstück XI</em> is printed as a single large sheet holding nineteen musical fragments. The pianist plays whichever fragment the eye falls on first, then whichever it falls on next — each fragment ending with instructions that modify how the following one is played. When any fragment has been reached a third time, the piece ends. No two performances share a form.</p>
+    <p>This is “mobile form”: the composer supplies the components and the combination rules; the performance assembles itself, differently, every time. A score that is a set of parts plus a traversal procedure is, in the strict sense, a program — one that happens to run on a pianist. The moment European art music's most rigorous wing embraced indeterminate structure, the old certainty that a piece <em>is</em> its fixed sequence was finished.</p>
+  </div>
+</template>
+
+<template id="h85">
+  <div class="card">
+    <p class="cyr">1957</p>
+    <h2>The Illiac Suite — the first computer score</h2>
+    <p>At the University of Illinois, Lejaren Hiller and Leonard Isaacson programmed the ILLIAC I — a room-sized early computer — to compose music. It generated material by rule (species counterpoint among the constraint sets, Fux's textbook rendered as code) and by Markov-chain probabilities, and the results were transcribed for humans: the <em>Illiac Suite</em>, for string quartet — the first substantial score composed by computer.</p>
+    <p>The experiments' design is the striking part: centuries-old counterpoint rules, encoded and executed by machine, alongside statistical models of style — the rule-based and probabilistic approaches that still divide generative music, present together in the very first computer piece. The premiere drew the reaction that would become standard: fascination, unease, and the immediate question of who — or what — had composed it.</p>
+  </div>
+</template>
+
+<template id="h86">
+  <div class="card">
+    <p class="cyr">~1963</p>
+    <h2>Raymond Scott's Electronium</h2>
+    <p>Raymond Scott — bandleader, jingle king, and secretive electronic inventor — spent years and a fortune building the Electronium, which he described as an “instantaneous composition-performance machine.” It had no keyboard. The operator conversed with it through switches and dials — suggesting, constraining, approving — while the machine generated melodies, rhythms, and variations in real time. Motown's Berry Gordy was impressed enough to buy one and hire Scott as his head of electronic research.</p>
+    <p>Scott's own patent application is the prophetic part: the whole system, he wrote, was built on artistic collaboration between man and machine, its unpredictable results “a kind of duet between the composer and the machine.” The workflow of every modern producer auditioning generated material was described, and built in prototype, by a man whose day job was cartoon soundtracks. The Electronium was never finished to Scott's satisfaction; the idea, evidently, was.</p>
+  </div>
+</template>
+
+<template id="h87">
+  <div class="card">
+    <p class="cyr">1964</p>
+    <h2>Riley — In C</h2>
+    <p>Terry Riley's <em>In C</em> is a single page: fifty-three short melodic modules, to be played in order — but each musician repeats each module as many times as they like before moving on, so the ensemble drifts through the sequence out of step, phrases overlapping in combinations no one plans. Any number of players, any instruments; a steady pulse holds it together. The premiere, with Steve Reich among the performers, ran over an hour.</p>
+    <p>The score is a rule-set, and every performance is one run of it — the same system, never the same piece. <em>In C</em> made process music public and joyous rather than austere, and its structure — simple modules, local decisions, emergent global pattern — is the musical version of ideas that would soon preoccupy computer science. It remains, arguably, the most performed generative composition ever written.</p>
+  </div>
+</template>
+
+<template id="h88">
+  <div class="card">
+    <p class="cyr">1967</p>
+    <h2>Reich — the phasing pieces</h2>
+    <p>Steve Reich discovered his signature process by accident: two tape machines playing identical loops of a preacher's voice slipped gradually out of sync, and the drifting alignment produced patterns richer than either loop alone. He composed with the discovery directly — <em>It's Gonna Rain</em> on tape, then <em>Piano Phase</em>, where two live pianists play the same figure and one accelerates almost imperceptibly, the music living in the shifting interference. <em>Pendulum Music</em> went further: microphones swinging over loudspeakers, feedback pulsing as physics slows the pendulums — a piece performed by gravity.</p>
+    <p>Reich named what this timeline had long practised: “music as a gradual process,” where the composer sets a process running and the process, audibly, makes the piece. Machaut's overlapping cycles, six centuries earlier, worked the same seam — Reich's tape recorders simply let everyone hear the mechanism turning.</p>
+  </div>
+</template>
+
+<template id="h89">
+  <div class="card">
+    <p class="cyr">1969</p>
+    <h2>La Monte Young — Dream House</h2>
+    <p>From the late 1960s, La Monte Young and the artist Marian Zazeela developed the Dream House: a room filled with precisely tuned sine tones, sustained continuously — for years — in magenta light. Nothing develops and nothing repeats, because nothing changes but the listener: move your head and the standing waves shift, different intervals blooming at different points in the air. Its current lower-Manhattan installation has run since 1993.</p>
+    <p>The Dream House dissolves the concert into an environment — music as a place you enter rather than a performance you attend, composed once and then simply <em>on</em>, indefinitely. A room that plays itself for decades belongs equally to the lineage of the resonant caves and to the future of ambient and installation sound. Among all the era's experiments, it may be the most literal answer to the question of how long a piece of music can last.</p>
+  </div>
+</template>
+
+<template id="h90">
+  <div class="card">
+    <p class="cyr">1975</p>
+    <h2>Eno — Discreet Music: he names it “generative”</h2>
+    <p>Brian Eno — by his own description a “non-musician” — made <em>Discreet Music</em> with a system: two melodic phrases of different lengths, played by a synthesizer into a long tape-delay loop, recombining endlessly as the unequal cycles drifted through their phases. Eno's role, once the system ran, was largely to listen. The album sleeve printed the signal diagram — the score, in effect, was the wiring.</p>
+    <p>Eno later coined the term “generative music” for this way of working — the gardener's approach, as he put it: plant seeds, tend conditions, let the music grow — and the word stuck to the whole tradition this timeline traces. Isorhythm's unequal cycles, the wind chime's surrendered performance, the Componium's endless recombination: Eno gathered the old ideas into a modern practice and, at last, gave the thing its name. The remaining chapter of this story unfolds under it.</p>
+  </div>
+</template>
+
+<template id="h91">
+  <div class="card">
+    <p class="cyr">1976</p>
+    <h2>Reich — Music for 18 Musicians</h2>
+    <p>A decade after the tape loops, Steve Reich scaled process music to an ensemble: <em>Music for 18 Musicians</em> unfolds over a cycle of eleven chords, its sections built from interlocking patterns, its phrase-lengths governed in places by the natural duration of a singer's or clarinettist's breath. The pulse runs continuously for an hour; the music seems to shimmer in place while transforming completely.</p>
+    <p>The piece demonstrated that systematic process could produce music of open warmth — rigorous underneath, radiant on the surface — and it carried minimalist process into concert halls, record collections, and eventually the bloodstream of electronic dance music. Rules, it turned out, could glow.</p>
+  </div>
+</template>
+
+<template id="h92">
+  <div class="card">
+    <p class="cyr">1977</p>
+    <h2>Arvo Pärt — tintinnabuli</h2>
+    <p>After years of silence, the Estonian composer Arvo Pärt emerged with a self-invented system he called tintinnabuli — “little bells.” Two voices move in strict relation: one steps through the melody; its companion sounds only notes of the tonic triad, chosen by fixed rule. <em>Cantus in Memoriam Benjamin Britten</em> — a descending scale, a canon at different speeds, one bell — is built almost entirely from procedure.</p>
+    <p>Audiences hearing the results — grave, luminous, widely beloved — rarely suspect the mechanism. Pärt is this era's cleanest proof of an old proposition: strictness of system and depth of feeling are not opposites, and a rule followed with total conviction can sound like prayer.</p>
+  </div>
+</template>
+
+<template id="h93">
+  <div class="card">
+    <p class="cyr">1978</p>
+    <h2>Eno — Music for Airports</h2>
+    <p>Eno followed <em>Discreet Music</em> with a manifesto in album form: <em>Ambient 1: Music for Airports</em>, assembled from tape loops of voices and piano cut to deliberately unequal lengths, so their overlaps continually recombine — the isorhythm engine again, now furnishing an airport. The liner notes defined the genre he was naming: ambient music “must be as ignorable as it is interesting.”</p>
+    <p>The album's premise — music as atmosphere, designed for a space and an activity rather than for attention — gave the wind chime's ancient job a modern genre. Airports have actually installed it. Nearly every streaming-era “focus” playlist, sleep app, and generative soundscape is downstream of this record and its calm, radical sentence.</p>
+  </div>
+</template>
+
+<template id="h94">
+  <div class="card">
+    <p class="cyr">1981</p>
+    <h2>David Cope — EMI, “Emmy”</h2>
+    <p>Stuck on a commissioned opera, the composer David Cope spent his block building a collaborator: Experiments in Musical Intelligence — “Emmy” — software that analyzed a body of music, broke it into characteristic gestures, and recombined them by rule into new works in the same style. Emmy produced convincing chorales “by Bach,” mazurkas “by Chopin,” and eventually works in Cope's own manner.</p>
+    <p>Audiences reacted with fascination and, frequently, anger — listeners moved by a piece would learn its origin and feel deceived, and some musicologists refused to engage at all. Cope had, decades early and with recombination rather than neural networks, forced the whole modern argument: what a style is, whether it can be extracted from a composer's corpus, and what we owe the music once we know. The Gioco filarmonico had sold Haydn's manner as a parlour trick; Emmy made the question unavoidable.</p>
+  </div>
+</template>
+
+<template id="h95">
+  <div class="card">
+    <p class="cyr">~1982</p>
+    <h2>Suzanne Ciani — the Buchla concerts</h2>
+    <p>Suzanne Ciani spent the late seventies and early eighties performing solo concerts on the Buchla — a modular synthesizer with no conventional keyboard — surrounding audiences in quadraphonic sound. Her instrument was the system itself: sequencers running, voltages shaping, her hands steering an electronic organism in real time. Between concerts she was the most in-demand sound designer in American advertising.</p>
+    <p>Ciani's practice answered a question this timeline keeps raising — where is the performance in machine music? — with a working demonstration: the performance is in the steering. Guiding generative circuitry live, she made the case that running a system expressively is itself virtuosity; four decades later, with the same Buchla, she still does.</p>
+  </div>
+</template>
+
+<template id="h96">
+  <div class="card">
+    <p class="cyr">1985</p>
+    <h2>Laurie Spiegel — Music Mouse</h2>
+    <p>Laurie Spiegel — Bell Labs veteran, and the composer whose realization of Kepler's <em>Harmonices Mundi</em> opens the Voyager spacecraft's Golden Record — released Music Mouse, software she called “an intelligent instrument.” Move the mouse and music results; the program handles harmony, voicing, and idiom according to constraints the player sets, so gesture becomes melody within an always-musical space.</p>
+    <p>Spiegel's design embodied a precise philosophy: automate the aspects of music-making that are craft-knowledge, so that expression — the part that can't be automated — is what the human supplies. “I wanted to let people who weren't trained musicians make music,” she said, decades before that sentence became an industry's pitch. Music Mouse is the humane prototype of the accessible music tool, built by someone who understood exactly which part of the work was the human part.</p>
+  </div>
+</template>
+
+<template id="h97">
+  <div class="card">
+    <p class="cyr">1985</p>
+    <h2>George Lewis — Voyager</h2>
+    <p>George Lewis — trombonist, scholar, and veteran of Chicago's AACM — wrote Voyager: a program that improvises. It listens to a human improviser in real time, analyzes what it hears, and responds with its own musical behaviour — sometimes following, sometimes contrasting, sometimes ignoring the human entirely. Lewis performs <em>with</em> it, and insists on the preposition: Voyager is not an instrument he plays but a partner he encounters.</p>
+    <p>Rooted in the practices of African-American improvised music, Voyager reframed the machine question entirely — not “can the computer compose?” but “can it converse?” Interaction, negotiation, and mutual surprise as the measure of machine musicality: the framing arrived from the improvising tradition, and the field has spent the decades since catching up to it.</p>
+  </div>
+</template>
+
+<template id="h98">
+  <div class="card">
+    <p class="cyr">1986</p>
+    <h2>Barry Truax — Riverrun 🇨🇦</h2>
+    <p>At Simon Fraser University in British Columbia, Barry Truax composed <em>Riverrun</em> — the first work to use real-time granular synthesis: sound built from thousands of overlapping “grains,” each a few milliseconds long, massed into torrents and mists. The piece enacts its title: a river assembled from droplets, computed as it flows.</p>
+    <p>Granular synthesis treats sound the way Xenakis treated notes — statistically, as clouds — and Truax's implementation moved it from theory to living practice. The technique now sits inside virtually every modern sampler and film-score texture. A Canadian campus, a composer-programmer, and a genuinely new way of making sound from arithmetic: this timeline's national contribution runs directly through Vancouver.</p>
+  </div>
+</template>
+
+<template id="h99">
+  <div class="card">
+    <p class="cyr">1988</p>
+    <h2>Éliane Radigue — Trilogie de la Mort</h2>
+    <p>The French composer Éliane Radigue worked for years at a single instrument — the ARP 2500 modular synthesizer — coaxing from it music that changes so slowly the transformation is nearly subliminal. Her three-hour <em>Trilogie de la Mort</em>, shaped by Tibetan Buddhist practice, unfolds as one long continuous becoming; the listener cannot say when anything changed, only that everything has.</p>
+    <p>Radigue's method was patience as technique: tiny adjustments to a sustaining electronic system, accumulated over months. Her work poses this era's gentlest challenge — machine music of profound interiority, made by attending to a circuit the way a contemplative attends to breath. Sustained systems, she demonstrated, can hold depths that events cannot.</p>
+  </div>
+</template>
+
+<template id="h100">
+  <div class="card">
+    <p class="cyr">1990</p>
+    <h2>Miller Puckette — Max/MSP</h2>
+    <p>At IRCAM in Paris, Miller Puckette built a program — named Max, after computer-music pioneer Max Mathews — in which musicians construct instruments by drawing: boxes for oscillators, filters, and logic, connected by patch cords on screen. No compiling, no code in the traditional sense; the patch runs live, and changing it is part of playing it.</p>
+    <p>Max — and its open-source sibling Pure Data — turned instrument-building into a musician's daily practice rather than an engineer's specialty. Concert halls, installations, and studios across the world run on patches; the ambient generative system used throughout this residency was built in it. The medieval clock-builders encoded one performance in brass; a patcher encodes a <em>space</em> of possible performances, and hands the wires to anyone.</p>
+  </div>
+</template>
+
+<template id="h101">
+  <div class="card">
+    <p class="cyr">1991</p>
+    <h2>LucasArts iMUSE — Monkey Island 2</h2>
+    <p>Two LucasArts composers, tired of game music that stopped dead at every scene change, built iMUSE: a system in which the score tracks the player — themes handing off seamlessly, arrangements thickening and thinning, transitions waiting for musically sensible moments — first deployed in <em>Monkey Island 2</em>. The player's wandering conducts the orchestra.</p>
+    <p>Game music is generative music with an audience of one: the score must be composed as <em>possibilities</em> — states, layers, and transition rules — because no one knows in advance what the player will do. iMUSE formalized that craft, and every adaptive game score since — which is to say, essentially all of them — descends from it. Composers in this idiom write the system, and the player, unknowingly, performs it.</p>
+  </div>
+</template>
+
+<template id="h102">
+  <div class="card">
+    <p class="cyr">1991</p>
+    <h2>Xenakis — GENDYN</h2>
+    <p>Xenakis returned at the end of his career with his most radical construction: GENDYN, a program implementing “dynamic stochastic synthesis,” in which probability distributions generate the sound wave itself, sample by sample — no oscillators, no recordings, no instruments. <em>Gendy3</em> is its document: timbre, pitch, and form all emerging from one stochastic engine.</p>
+    <p>Where the <em>Illiac Suite</em> had computed a score for humans to play, GENDYN abolished the middle step — mathematics proceeding directly to sound with nothing performed at all. It closes the arc Xenakis opened with <em>Pithoprakta</em>: the composer as designer of probability, now all the way down to the waveform. Few works make the idea of music as computed process so uncompromisingly literal.</p>
+  </div>
+</template>
+
+<template id="h103">
+  <div class="card">
+    <p class="cyr">1996</p>
+    <h2>SuperCollider</h2>
+    <p>James McCartney released SuperCollider, a programming language built for one purpose: describing sound and musical process, executed in real time. Where Max offered patch cords, SuperCollider offered text — concise code that defines synthesizers, spawns patterns, and rewrites itself while playing. In 2002 McCartney made it free and open source, and a global community took over its development.</p>
+    <p>A language, unlike an instrument, has speakers — and SuperCollider's community turned computer music into a shared literature of published code, taught techniques, and borrowed idioms. It became the engine of the live-coding movement a few entries below. The instrument as a sentence you can revise mid-performance: that idea needed a language before it could have a culture.</p>
+  </div>
+</template>
+
+<template id="h104">
+  <div class="card">
+    <p class="cyr">1996</p>
+    <h2>Eno + Koan — Generative Music 1</h2>
+    <p>Eno, encountering the Koan software built by the British company SSEYO, released <em>Generative Music 1</em> — an “album” shipped as a floppy disk of parameters. Each time the software ran, the music assembled itself anew within Eno's constraints: the same piece, never the same twice. It was with this project that Eno put the phrase “generative music” into public circulation — and mused that future listeners might marvel that we ever “listened to exactly the same thing over and over again.”</p>
+    <p>The floppy disk was a commercial failure and a conceptual landmark: a released work whose fixed form is the <em>system</em>, with every playback an original performance. The Componium had been a machine in a museum; Koan made the self-varying composition a consumer product. The naming, and the format, mark the moment the old tradition recognized itself and signed its work.</p>
+  </div>
+</template>
+
+<template id="h105">
+  <div class="card">
+    <p class="cyr">~1997</p>
+    <h2>The Amen Break — six seconds that built genres</h2>
+    <p>In 1969, the funk band The Winstons recorded a B-side, “Amen, Brother,” containing a four-bar drum solo by G.C. Coleman — roughly six seconds of playing. Sampled in the eighties, then chopped, resequenced, and accelerated by a generation of producers, that single recording became the rhythmic DNA of jungle and drum &amp; bass and a fixture across hip-hop and electronic music: thousands upon thousands of tracks, one drummer.</p>
+    <p>The Amen Break is what a shared musical dataset looks like in miniature — a common source, endlessly transformed, spawning styles its player never imagined. It is also the tradition's hardest ethical case: neither Coleman nor The Winstons received royalties from the break's vast afterlife, and Coleman died in poverty; the £24,000 that fans crowdfunded in 2015 for the band's surviving copyright holder was a voluntary gesture, decades late — thanks, not royalties. Between those facts — boundless creative fertility, uncompensated source — sits the entire debate now surrounding AI training, rehearsed decades early in six seconds of drums.</p>
+  </div>
+</template>
+
+<template id="h106">
+  <div class="card">
+    <p class="cyr">2002</p>
+    <h2>Basinski — The Disintegration Loops</h2>
+    <p>Digitizing decades-old tape loops of pastoral orchestral fragments, William Basinski discovered the transfer was destroying them: with each pass over the tape head, the magnetic coating flaked away, the music thinning, hollowing, and finally dissolving into silence. He let the process run and recorded it — hours of music composing its own disappearance. He finished the transfers in New York in September 2001, and the work became inseparable from that month.</p>
+    <p><em>The Disintegration Loops</em> is process music at its most elemental: the piece <em>is</em> the physical decay of its medium, unrepeatable by definition. Nothing on this timeline states more plainly that a process, set running and honestly witnessed, can carry meanings no deliberate composition could reach for.</p>
+  </div>
+</template>
+
+<template id="h107">
+  <div class="card">
+    <p class="cyr">2004</p>
+    <h2>TOPLAP — live coding</h2>
+    <p>A loose collective of programmer-musicians founded TOPLAP and drafted a manifesto for a new performance practice: writing and rewriting code as the performance itself, screens projected so the audience can watch the source change — “show us your screens.” Obscurantism, the manifesto declared, is dangerous.</p>
+    <p>Live coding inverted computer music's old stagecraft: instead of hiding the machinery, it made the machinery the show — thought, typed, executed, and heard, with mistakes public. The transparency was an ethics as much as an aesthetic: an insistence that algorithmic music be legible, its authorship visible on the wall. In an era increasingly full of opaque systems, a movement whose founding demand was <em>show your work</em> has aged remarkably well.</p>
+  </div>
+</template>
+
+<template id="h108">
+  <div class="card">
+    <p class="cyr">2008</p>
+    <h2>Eno + Chilvers — Bloom</h2>
+    <p>Months after the iPhone's App Store opened, Eno and the musician-programmer Peter Chilvers released Bloom: touch the screen and coloured circles ripple outward, each a note; the app repeats, layers, and slowly evolves what you've planted, or generates its own garden if left alone. No instructions, no wrong notes — and it remains available more than fifteen years later.</p>
+    <p>Bloom put a generative instrument in millions of pockets and made the gardener's approach a casual, tactile pleasure — ambient system as toy, in the best sense. The wind chime, the aeolian harp in the window, the app on the phone: the same domestic impulse, each in its century's technology. Of everything in this final era, Bloom may be the object most people have actually made generative music with.</p>
+  </div>
+</template>
+
+<template id="h109">
+  <div class="card">
+    <p class="cyr">2010</p>
+    <h2>Hans Zimmer + RjDj — the Inception app</h2>
+    <p>For Christopher Nolan's <em>Inception</em>, Hans Zimmer's score was released not only as an album but as an app, built by the Austrian studio RjDj: “reactive music” that listened to the phone's microphone and sensors and rewove the score around the listener's actual surroundings — walking, waiting, weather — in real time. Each listener heard a version of the score no one else would hear.</p>
+    <p>A major Hollywood composer shipping his work as a responsive system rather than a fixed recording was a quiet landmark: the film score, most tightly synchronized of all musical forms, loosened into something worn like weather. The app is gone from stores — software mortality is part of this era's story too — but it marked how far into the mainstream the idea of music-as-system had travelled.</p>
+  </div>
+</template>
+
+<template id="h110">
+  <div class="card">
+    <p class="cyr">2012</p>
+    <h2>TidalCycles &amp; Algorave</h2>
+    <p>The live-coding researcher Alex McLean built TidalCycles, a compact language for describing rhythmic pattern — cycles, subdivisions, transformations — in lines of code terse enough to rewrite mid-groove. Around it, McLean and others launched the algorave: club nights where the music is coded live, screens projected, dancefloor full — the manifesto of 2004 given a sound system and a Friday night.</p>
+    <p>Algorave closed a loop this timeline had left open: generative music returned to the body. Not the concert hall's attention or the installation's contemplation, but dancing — to pattern-code, visibly authored in real time. The scene now spans continents, and its Canadian outpost is the next entry.</p>
+  </div>
+</template>
+
+<template id="h111">
+  <div class="card">
+    <p class="cyr">~2012</p>
+    <h2>The Cybernetic Orchestra 🇨🇦</h2>
+    <p>At McMaster University in Hamilton, Ontario, David Ogborn founded the Cybernetic Orchestra: an ensemble whose members — students, often with no prior programming experience — perform together by live coding, their laptops networked into one shared musical fabric. The group has performed and released work continuously since, and Ogborn's networked-ensemble tools have spread well beyond it.</p>
+    <p>An orchestra whose instrument is collaborative code, run for years as a university ensemble like any choir or big band — the radical premise made institutional, pedagogical, and Canadian. For a residency held in a Toronto library, the Cybernetic Orchestra is the near neighbour on this whole timeline: proof that the tradition's newest practices are teachable, local, and communal.</p>
+  </div>
+</template>
+
+<template id="h112">
+  <div class="card">
+    <p class="cyr">2016</p>
+    <h2>DeepMind — WaveNet</h2>
+    <p>Researchers at DeepMind published WaveNet: a neural network that generates audio one sample at a time — tens of thousands of decisions per second — having learned the statistics of sound from recordings. Trained on speech, it produced the most natural synthetic voices yet heard; trained on piano music, it produced strange, fluent passages of piano that no one had composed.</p>
+    <p>WaveNet marks this timeline's decisive turn: the system no longer follows rules anyone wrote. Fux's counterpoint could be read; Emmy's recombinations could be traced; WaveNet's millions of learned parameters answer to no inspection. Generation by learned statistical model — powerful, opaque, and trained on existing human work — is the paradigm every subsequent entry inherits, along with every question it raises.</p>
+  </div>
+</template>
+
+<template id="h113">
+  <div class="card">
+    <p class="cyr">2019</p>
+    <h2>Google Magenta — the Bach Doodle</h2>
+    <p>For Bach's birthday, Google's Magenta team put machine learning on the world's most visited page: a Doodle in which anyone could enter a two-bar melody and have it harmonized, instantly, in the style of a Bach chorale — the model having learned from hundreds of Bach harmonizations. Tens of millions of people used it in a few days; for most, it was their first time making music with a neural network.</p>
+    <p>The Doodle compressed this timeline's longest thread into a toy: Fux's rules, the Illiac's encoded counterpoint, Emmy's Bach chorales — now a browser widget for children. Harmonization in a master's style, once a discipline of years, offered free with the morning's search results: the democratization is real, and so is the vertigo. Both arrive together; that is this era's signature.</p>
+  </div>
+</template>
+
+<template id="h114">
+  <div class="card">
+    <p class="cyr">2023</p>
+    <h2>Suno &amp; the AI era — the newest chapter</h2>
+    <p>With tools like Suno, Udio, and Stable Audio, the threshold dropped to a sentence: type a description — genre, mood, era, instrumentation — and receive, in seconds, a complete produced song, vocals included. The models behind them, trained on vast corpora of recorded music, brought the deep-learning turn to the whole population; within months, millions of people who had never made music were making something.</p>
+    <p>And so the timeline arrives at its present — carrying every question it has raised along the way. What the machine learned from, and what is owed (the Amen Break's question, now the subject of the lawsuits on this site's copyright page). Where authorship sits when a system generates (Kircher's question, the Académie's question at the Componium). What remains distinctly human in the work (Spiegel's answer: the expression; Ciani's: the steering; Lewis's: the conversation). This site's other pages take those questions up directly — because fifty thousand years of history don't answer them, but they do teach us how to ask.</p>
+  </div>
+</template>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.tl-item:not(.soon)');
+  var tl = document.getElementById('timeline');
+  var mount = document.getElementById('panel-mount');
+  var empty = document.getElementById('panel-empty');
+  var openId = null, openBtn = null;
+  var mobile = window.matchMedia('(max-width:760px)');
+  var connector = null;
+
+  function removeConnector(){
+    if(connector){ connector.remove(); connector = null; }
+  }
+
+  function closeAll(){
+    document.querySelectorAll('.tl-item.open').forEach(function(b){b.classList.remove('open');});
+    document.querySelectorAll('.tl-inline.show').forEach(function(d){
+      d.classList.remove('show'); d.innerHTML='';
+    });
+    mount.innerHTML='';
+    removeConnector();
+    empty.style.display='';
+    openId=null; openBtn=null;
+  }
+
+  function placeDesktop(btn, id){
+    // align card top with the open entry
+    var top = btn.offsetTop;
+    var tlH = tl.offsetHeight;
+    mount.style.top = top + 'px';
+    var card = mount.querySelector('.card');
+    requestAnimationFrame(function(){
+      var ch = card ? card.offsetHeight : 0;
+      if(top + ch > tlH){ mount.style.top = Math.max(0, tlH - ch) + 'px'; }
+      requestAnimationFrame(function(){
+        if(card) card.classList.add('show');
+      });
+      // wait for the entry's font-size transition (220ms) to finish
+      // before measuring where its last word ends
+      setTimeout(function(){
+        if(openBtn !== btn) return;
+        drawConnector(btn);
+        requestAnimationFrame(function(){
+          if(connector) connector.classList.add('show');
+        });
+      }, 260);
+    });
+  }
+
+  function drawConnector(btn){
+    removeConnector();
+    // find the entry's text node and measure only up to its last
+    // non-whitespace character, so trailing markup whitespace is ignored
+    var node = btn.lastChild;
+    while(node && node.nodeType !== 3){ node = node.previousSibling; }
+    var endX = null, midY = null;
+    if(node){
+      var text = node.textContent;
+      var end = text.length;
+      while(end > 0 && /\s/.test(text.charAt(end-1))){ end--; }
+      var r = document.createRange();
+      r.setStart(node, 0);
+      r.setEnd(node, end);
+      var rects = r.getClientRects();
+      if(rects.length){
+        var last = rects[rects.length-1];
+        endX = last.right; midY = last.top + last.height/2;
+      }
+    }
+    var tlRect = tl.getBoundingClientRect();
+    var gridGap = 48; // 3rem gap between columns
+    if(endX === null){
+      var br = btn.getBoundingClientRect();
+      endX = br.right; midY = br.top + br.height/2;
+    }
+    connector = document.createElement('div');
+    connector.className = 'connector';
+    var left = (endX - tlRect.left) + 10;
+    var width = (tlRect.width - left) + gridGap + 2;
+    if(width < 20) width = 20;
+    connector.style.left = left + 'px';
+    connector.style.top = ((midY - tlRect.top) - 1) + 'px';
+    connector.style.width = width + 'px';
+    tl.appendChild(connector);
+  }
+
+  function open(btn){
+    var id = btn.getAttribute('data-id');
+    if(openId===id){ closeAll(); return; }
+    closeAll();
+    btn.classList.add('open');
+    openId=id; openBtn=btn;
+    var tpl = document.getElementById(id);
+    if(!tpl) return;
+    var node = tpl.content.cloneNode(true);
+    if(mobile.matches){
+      var slot = document.querySelector('.tl-inline[data-for="'+id+'"]');
+      slot.appendChild(node);
+      slot.classList.add('show');
+    }else{
+      empty.style.display='none';
+      mount.appendChild(node);
+      placeDesktop(btn, id);
+    }
+  }
+
+  items.forEach(function(btn){
+    btn.addEventListener('click', function(){ open(btn); });
+  });
+
+  // ----- collapsible eras -----
+  function setEra(head, on){
+    var grp = document.querySelector('.era-group[data-era="'+head.id+'"]');
+    if(!grp) return;
+    // if this era is being collapsed and the open entry lives inside it,
+    // close the card right away (clipped entries still report a layout box,
+    // so this must be checked directly rather than via visibility)
+    if(!on && openBtn && grp.contains(openBtn)){ closeAll(); }
+    head.classList.toggle('on', on);
+    grp.classList.toggle('openEra', on);
+    // re-align an open card after the collapse/expand animation shifts layout
+    setTimeout(function(){
+      if(openBtn && !mobile.matches){
+        var g = openBtn.closest('.era-group');
+        if(g && !g.classList.contains('openEra')){ closeAll(); return; }
+        placeDesktop(openBtn, openId);
+      }
+    }, 580);
+  }
+  document.querySelectorAll('.tl-era').forEach(function(head){
+    head.classList.toggle('on', !!document.querySelector('.era-group[data-era="'+head.id+'"].openEra'));
+    head.addEventListener('click', function(){
+      setEra(head, !head.classList.contains('on'));
+    });
+    head.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); setEra(head, !head.classList.contains('on')); }
+    });
+  });
+
+  // ----- jump-bar: expand target era, then scroll -----
+  document.querySelectorAll('.erabar a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var head = document.querySelector(a.getAttribute('href'));
+      if(!head) return;
+      setEra(head, true);
+      setTimeout(function(){ head.scrollIntoView({behavior:'smooth'}); }, 60);
+    });
+  });
+
+  window.addEventListener('resize', function(){
+    if(openBtn && !mobile.matches){
+      var card = mount.querySelector('.card');
+      if(card){ placeDesktop(openBtn, openId); }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

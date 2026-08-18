@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Speakers — Innovator in Residence Spring 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1F2E;
+    --surface:#15293B;
+    --accent:#E8622A;
+    --accent-soft:#F2895A;
+    --text:#F2F0EC;
+    --muted:#AABBC8;
+    --line:#2C4459;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--ink);color:var(--text);
+    font-family:"IBM Plex Sans",system-ui,Arial,sans-serif;
+    font-size:18px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-soft);text-decoration:none;}
+  a:hover{color:var(--accent);}
+  ::selection{background:var(--accent);color:var(--ink);}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem;}
+
+  /* ---------- top nav (matches index) ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,31,46,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brandmark{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;color:var(--text);}
+  .navlinks{display:flex;gap:1.6rem;font-size:.82rem;
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;}
+  .navlinks a{color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  .navlinks a.here{color:var(--accent-soft);}
+  @media(max-width:620px){ .navlinks{gap:1rem;font-size:.72rem;} }
+
+  /* ---------- page header ---------- */
+  header.page{padding:5rem 0 2.5rem;}
+  .pagelabel{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 1.2rem 0;
+  }
+  .pagelabel .dot{color:var(--accent);}
+  header.page h1{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;
+    color:var(--accent);margin:0 0 1.2rem 0;
+  }
+  .hint{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--muted);letter-spacing:.04em;
+  }
+  .hint b{color:var(--accent-soft);font-weight:500;}
+  .disclaimer{
+    font-size:.78rem;line-height:1.65;color:var(--muted);
+    border-left:2px solid var(--accent);
+    padding-left:.9rem;max-width:38rem;
+    margin:1.4rem 0 0 0;
+  }
+  .intro{margin-top:1.6rem;}
+  .intro p{max-width:38rem;font-size:.95rem;line-height:1.75;margin:0 0 1.2rem 0;}
+  .lenses{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;max-width:44rem;margin:0 0 1.4rem 0;}
+  @media(max-width:620px){ .lenses{grid-template-columns:1fr;} }
+  .lens{
+    background:var(--surface);border:1px solid var(--line);border-radius:8px;
+    padding:.9rem 1.1rem;font-size:.85rem;line-height:1.6;color:var(--muted);
+  }
+  .lens b{
+    display:block;font-family:"IBM Plex Mono",monospace;font-size:.72rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft);
+    margin-bottom:.35rem;font-weight:500;
+  }
+  .slideblock{
+    border:1px solid var(--line);border-left:2px solid var(--accent);
+    border-radius:8px;background:rgba(232,98,42,.04);
+    padding:1rem 1.2rem;margin:0 0 1.2rem 0;max-width:38rem;
+  }
+  .slideblock p{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;line-height:1.7;
+    margin:0 0 .55rem 0;color:var(--text);
+  }
+  .slideblock p:last-child{margin-bottom:0;}
+
+  .card p.audit{font-style:italic;}
+  .card p.audit b{font-style:italic;font-weight:600;color:var(--accent-soft);}
+
+  .card p.slabel{
+    font-family:"IBM Plex Mono",monospace;font-style:normal;
+    font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent-soft);margin:0 0 .3rem 0;
+  }
+  .card p.slabel + p{margin-top:0;}
+
+  .erabar{
+    position:sticky;top:60px;z-index:40;
+    background:rgba(15,31,46,.88);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .erabar .wrap{
+    display:flex;gap:1.8rem;overflow-x:auto;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.06em;padding-top:.65rem;padding-bottom:.65rem;
+    white-space:nowrap;scrollbar-width:none;
+  }
+  .erabar .wrap::-webkit-scrollbar{display:none;}
+  .erabar a{color:var(--muted);}
+  .erabar a:hover{color:var(--accent-soft);}
+
+  .tl-era{
+    font-family:"Fraunces",serif;font-weight:600;font-size:1.15rem;
+    color:var(--accent);margin:2.4rem 0 .6rem 0;padding:.2rem 0;
+    position:relative;cursor:pointer;user-select:none;
+    display:flex;align-items:center;gap:.7rem;
+    scroll-margin-top:8rem;
+  }
+  .tl-era:hover{color:var(--accent-soft);}
+  .tl-era:first-of-type{margin-top:.5rem;}
+  .tl-era .count{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+    color:var(--muted);letter-spacing:.08em;font-weight:400;
+    border:1px solid var(--line);border-radius:99px;
+    padding:.1rem .55rem;
+  }
+  .tl-era .chev{
+    width:.55rem;height:.55rem;
+    border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+    transform:rotate(-45deg);transition:transform .3s ease;
+    margin-top:-.2rem;
+  }
+  .tl-era.on .chev{transform:rotate(45deg);margin-top:-.35rem;}
+
+  .era-group{
+    overflow:hidden;max-height:0;
+    transition:max-height .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .era-group.openEra{max-height:400rem;}
+  .tl-era::before{
+    content:"";position:absolute;left:-1.6rem;top:50%;
+    width:11px;height:11px;border-radius:50%;
+    background:var(--accent);transform:translate(-50%,-50%);
+    box-shadow:0 0 0 4px rgba(232,98,42,.15);
+  }
+  .cats{
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent-soft);margin:0 0 1rem 0;
+  }
+
+  /* ---------- timeline layout ---------- */
+  .tl-grid{
+    display:grid;grid-template-columns:minmax(0,26rem) 1fr;
+    gap:3rem;align-items:start;
+    padding:1.5rem 0 6rem;
+  }
+  /* the vertical line + entries */
+  .tl{
+    position:relative;
+    border-left:1px solid var(--line);
+    padding-left:1.6rem;
+    margin-left:.4rem;
+  }
+  .tl .connector{z-index:2;}
+  .tl-item{
+    position:relative;
+    display:block;width:100%;text-align:left;
+    background:none;border:none;cursor:pointer;
+    color:var(--muted);
+    font-family:"IBM Plex Sans",sans-serif;
+    font-size:.8rem;line-height:1.35;
+    padding:.42rem 0;margin:0;
+    transition:font-size .22s cubic-bezier(.2,.7,.2,1), color .22s;
+  }
+  .tl-item .yr{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.86em;color:var(--accent-soft);
+    margin-right:.55em;letter-spacing:.02em;
+  }
+  /* node dot on the line */
+  .tl-item::before{
+    content:"";position:absolute;left:-1.6rem;top:50%;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--line);
+    transform:translate(-50%,-50%);
+    transition:border-color .22s, background .22s, width .22s, height .22s, box-shadow .22s;
+  }
+  /* hover: enlarge */
+  .tl-item:hover, .tl-item:focus-visible{
+    font-size:1.02rem;color:var(--text);outline:none;
+  }
+  .tl-item:hover::before, .tl-item:focus-visible::before{
+    border-color:var(--accent-soft);
+  }
+  /* open state */
+  .tl-item.open{
+    font-size:1.05rem;color:var(--text);font-weight:600;
+  }
+  .tl-item.open::before{
+    background:var(--accent);border-color:var(--accent);
+    width:10px;height:10px;
+    box-shadow:0 0 0 4px rgba(232,98,42,.16);
+  }
+  /* entries not yet written */
+  .tl-item.soon{cursor:default;opacity:.38;}
+  .tl-item.soon:hover{font-size:.8rem;color:var(--muted);}
+  .tl-item.soon:hover::before{border-color:var(--line);}
+  .tl-item.soon .todo{
+    font-family:"IBM Plex Mono",monospace;font-size:.72em;
+    color:var(--muted);margin-left:.5em;letter-spacing:.06em;
+  }
+
+  /* ---------- detail panel (desktop) ---------- */
+  .panel{
+    position:relative;align-self:stretch;
+    min-height:10rem;
+  }
+  #panel-mount{position:absolute;left:0;right:0;top:0;}
+  /* orange connector from the open entry to the card's bracket */
+  .connector{
+    position:absolute;height:2px;border-radius:1px;
+    background:linear-gradient(90deg,rgba(232,98,42,.25),var(--accent));
+    pointer-events:none;
+    opacity:0;transition:opacity .35s ease .1s;
+  }
+  .connector.show{opacity:1;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    border-radius:10px;
+    padding:1.8rem 2rem;
+    opacity:0;transform:translateX(-14px);
+    transition:opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+    pointer-events:none;
+  }
+  .card.show{opacity:1;transform:none;pointer-events:auto;}
+  .card .cyr{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.16em;color:var(--accent-soft);
+    text-transform:uppercase;margin:0 0 .5rem 0;
+  }
+  .card h2{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:1.45rem;line-height:1.2;margin:0 0 1rem 0;color:var(--text);
+  }
+  .card p{margin:0;font-size:.95rem;line-height:1.75;color:var(--text);}
+  .card p + p{margin-top:1rem;}
+  .panel .empty{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--muted);letter-spacing:.05em;
+    padding:1.8rem 0;
+  }
+
+  /* ---------- mobile: accordion below entry ---------- */
+  .tl-inline{display:none;}
+  @media(max-width:760px){
+    .tl-grid{grid-template-columns:1fr;gap:0;}
+    .panel{display:none;}
+    .tl-inline{
+      display:block;overflow:hidden;max-height:0;
+      transition:max-height .4s ease;
+    }
+    .tl-inline .card{
+      margin:.4rem 0 1rem 0;opacity:1;transform:none;pointer-events:auto;
+      padding:1.2rem 1.3rem;
+    }
+    .tl-inline.show{max-height:60rem;}
+  }
+
+  footer{border-top:1px solid var(--line);padding:2rem 0;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted);}
+
+  a:focus-visible,.tl-item:focus-visible{outline:2px solid var(--accent-soft);outline-offset:3px;border-radius:4px;}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brandmark" href="index.html" style="color:var(--text)">Innovator in Residence Spring 2026</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="explored.html">What We Explored</a>
+      <a class="here" href="speakers.html">The Speakers</a>
+      <a href="history.html">History of Generative Music</a>
+      <a href="copyright.html">Copyright &amp; AI</a>
+      <a href="environment.html">AI &amp; the Environment</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page">
+  <div class="wrap">
+    <p class="pagelabel">Innovator in Residence Spring 2026 <span class="dot">·</span> AI &amp; Music Production</p>
+    <h1>The Speakers</h1>
+    <p class="lede">It was the goal of the residency to be an honest exploration of AI in music (and the arts in general), showing both the powerful potential and the very real negatives. To help us out, we brought in working experts in various fields related to AI — including lawyers, environmentalists, actors, creators, and technologists — to speak about how AI is reshaping their corners of the creative world. Every one of these conversations helped us form educated opinions and practice on how to use AI in an ethical, legal manner, or to choose to not use it at all.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tl-grid">
+
+    <!-- ============ TIMELINE (left) ============ -->
+    <div class="tl" id="timeline">
+      <button class="tl-item" data-id="s1">
+        <span class="yr"></span>Orian Israelsohn — Copyright Law
+      </button>
+      <div class="tl-inline" data-for="s1"></div>
+      <button class="tl-item" data-id="s2">
+        <span class="yr"></span>Han Qiao — AI &amp; the Environment
+      </button>
+      <div class="tl-inline" data-for="s2"></div>
+      <button class="tl-item" data-id="s3">
+        <span class="yr"></span>Bill Hepburn — Voice Acting
+      </button>
+      <div class="tl-inline" data-for="s3"></div>
+      <button class="tl-item" data-id="s4">
+        <span class="yr"></span>Katrina Lat — Immersive Experiences &amp; Gaming
+      </button>
+      <div class="tl-inline" data-for="s4"></div>
+      <button class="tl-item" data-id="s5">
+        <span class="yr"></span>Sean Thomas Evans — Agentic AI Workflows
+      </button>
+      <div class="tl-inline" data-for="s5"></div>
+      <button class="tl-item" data-id="s6">
+        <span class="yr"></span>Annesta Duodo — SOCAN: Music Ownership &amp; Rights
+      </button>
+      <div class="tl-inline" data-for="s6"></div>
+      <button class="tl-item" data-id="s7">
+        <span class="yr"></span>James Rowan — AI in Film &amp; Television
+      </button>
+      <div class="tl-inline" data-for="s7"></div>
+    </div>
+
+    <!-- ============ DETAIL PANEL (right, desktop) ============ -->
+    <div class="panel">
+      <p class="empty" id="panel-empty">← Choose a moment on the timeline</p>
+      <div id="panel-mount"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Innovator in Residence Spring 2026 · <a href="https://silverphonic.com" target="_blank" rel="noopener">Joel S. Silver</a></span>
+    <span>Toronto Public Library · Fairview DIH · 2026</span>
+  </div>
+</footer>
+
+<!-- ============ ENTRY CONTENT ============ -->
+
+
+
+
+
+<template id="s1">
+  <div class="card">
+    <h2>Orian Israelsohn — Copyright Law</h2>
+    <p class="slabel">Who she is</p>
+    <p>Orian Israelsohn is a Toronto-based lawyer whose work has been focused on the evolving copyright laws as it pertains to AI, including the issues of exploitation of Indigenous groups in training data. She was also the first outside voice of the entire residency.</p>
+    <p class="slabel">What she spoke about</p>
+    <p>Orian gave a thorough, careful account of copyright from its very inception right up to the present day — and then into the hard, current material. She walked us through the specific lawsuits now being fought over how AI models are trained, the real nuances of what “public domain” does and doesn't mean, and the fine print of the major AI platforms: what you are actually agreeing to when you click “accept.” Her framing was Canadian throughout, and her through-line was one that echoes across this whole website — every new copying technology in history, from the printing press to the player piano to the internet, has forced copyright law to reinvent itself. AI is simply the latest.</p>
+    <p class="slabel">What stuck with us</p>
+    <p>That copyright has always been playing catch-up — and that the anxiety we feel about AI today is a version of an argument that society has had many times before. She also exposed many of the copyright issues present in both the training and the output of AI, and why it will take a few more court cases and appeals before anyone knows what's legal and what isn't. And Terms &amp; Conditions — the ones we all click without questioning — are there to protect the big companies, not the users. (For much more, see the dedicated <a href="copyright.html">Copyright &amp; AI</a> page.)</p>
+  </div>
+</template>
+
+<template id="s2">
+  <div class="card">
+    <h2>Han Qiao — AI &amp; the Environment</h2>
+    <p class="slabel">Who she is</p>
+    <p>Han Qiao is a PhD student whose thesis focuses on AI and environmental sustainability. Hers was the session that complicated the room's easy enthusiasm — deliberately, and necessarily.</p>
+    <p class="slabel">What she spoke about</p>
+    <p>Han walked us through the environmental cost of the large data-training centres that AI depends on — not in the abstract, but with specific, concrete examples of how real communities are being affected. Water drawn down, power consumed, land taken, and the question that runs underneath all of it: who actually bears that cost, and whether it falls on the same people who reap the benefits. It was a grounding counterweight to twelve weeks of creative exploration — a reminder that the tools we'd been playing with have a physical footprint that lands somewhere, on someone.</p>
+    <p class="slabel">What stuck with us</p>
+    <p>That the cost is real — but that it isn't inevitable. Han's talk made the environmental price of AI impossible to wave away, and it reframed the efficiency question as a matter of choice: smaller, single-purpose tools that do one thing well don't need a data centre burning power and water behind them. It's the session that turned “look what AI can do” into “look what AI costs, and who pays” — (For much more, see the dedicated <a href="environment.html">AI &amp; the Environment</a> page.)</p>
+  </div>
+</template>
+
+<template id="s3">
+  <div class="card">
+    <h2>Bill Hepburn — Voice Acting</h2>
+    <p class="slabel">Who he is</p>
+    <p>Bill Hepburn is a professional voice actor — which makes him a working artist in one of the first creative industries to feel the full force of AI, as synthetic voices move into advertising, narration, and games.</p>
+    <p class="slabel">What he spoke about</p>
+    <p>Bill spoke candidly about what it's like to watch your profession change under your feet. AI voice generation is no longer a novelty — it's a commercial reality that voice actors are contending with directly, and he was honest about both the threat and the nuance. He talked about the ways he and others in his field are responding: not with pure resistance, but with a mix of pushing back where the technology exploits performers and incorporating it where it genuinely serves the work.</p>
+    <p class="slabel">What stuck with us</p>
+    <p>That the smartest response to a disruption like this isn't panic or denial — it's a workable strategy. Bill wasn't in the room to tell us AI is coming for our jobs; he was there to show what it looks like to face that reality clear-eyed and build a practical plan for it: knowing where to draw hard lines, where to adapt, and how to keep working on your own terms. For a group that was exploring this technology head-on, this was an important lesson: it's not whether change is coming, but how to meet it with a strategy instead of fear.</p>
+  </div>
+</template>
+
+<template id="s4">
+  <div class="card">
+    <h2>Katrina Lat — Immersive Experiences &amp; Gaming</h2>
+    <p class="slabel">Who she is</p>
+    <p>Katrina Lat is an immersive-experience expert and advisor working at the frontier of interactive media and gaming — worlds where AI isn't a distant question but an active, everyday design tool. Her session was also our Toronto Tech Week panel.</p>
+    <p class="slabel">What she spoke about</p>
+    <p>Katrina took us inside the fast-moving world of immersive experiences and gaming, where AI is already shaping what players see, hear, and do. Rather than dealing in hype, she drew a sharp line between the good and bad uses of the technology. AI as a <em>gimmick</em> — bolted on to seem cutting-edge — she dismissed as useless and boring. But AI used to create genuinely dynamic characters — ones that respond to a player's actions in real time and behave in ways no script could anticipate — was where she lit up. The same went for dynamic world-building, where an environment can extend and generate itself in real time, growing beyond anything the original creators explicitly built. Exciting, alive, and — to paraphrase her words — at times wonderfully terrifying.</p>
+    <p class="slabel">What stuck with us</p>
+    <p>That the difference between AI that thrills and AI that bores comes down to whether it's doing real work or just decorating. A gimmick impresses for a second and then evaporates; a character that reacts to you, surprises you, maybe even unsettles you, creates something that couldn't exist any other way. It was the same lesson running through the whole residency, arriving from an unexpected direction: AI is only interesting when it's used to make something genuinely new happen — not when it's there to look impressive.</p>
+  </div>
+</template>
+
+<template id="s5">
+  <div class="card">
+    <h2>Sean Thomas Evans — Agentic AI Workflows</h2>
+    <p class="slabel">Who he is</p>
+    <p>Sean Thomas Evans, of EVoqXR, works with agentic AI — systems that don't just answer a prompt but carry out multi-step tasks on their own, making decisions and taking actions toward a goal with minimal human steering. He's driven by a specific ambition: shrinking the gap between inspiration and finished result, so that the distance between having an idea and holding the completed thing collapses to almost nothing.</p>
+    <p class="slabel">What he spoke about</p>
+    <p>Sean explained how AI agents differ from the chatbots most of us know: instead of responding once and waiting, an agent can be handed an objective and left to work — planning steps, using tools, correcting itself along the way. He takes it a striking step further, using agents that control <em>other</em> agents — a supervising AI directing a whole team of sub-agents, all working at once, like a manager running a workforce that never sleeps. And he didn't just describe it. During his talk, he set his agents loose on a real task and let them run in the background while he kept speaking. By the time he finished, they'd built it: a complete, functioning, wonderfully absurd website — a fully-realized online store for garden gnomes. Not a rough sketch, either. It was a genuinely well-made vendor site, with dedicated sections to buy garden gnomes, listen to garden gnome music, and watch garden gnome videos, all properly linked and laid out. It was ridiculous, but it was a great way to demonstrate the power of understanding how to use AI agents to increase productivity.</p>
+    <p class="slabel">What stuck with us</p>
+    <p>That we may be closer to a genuinely different way of working than most people realize. A chatbot is a tool you operate; an agent is something you <em>delegate to</em> — and a team of agents managing each other is something else again, closer to running an organization than using an app. Sean's live demonstration turned an abstract idea into something the room could actually watch unfold, and it left everyone a little exhilarated and a little uneasy in equal measure — which may be exactly the right response to where this technology is heading.</p>
+  </div>
+</template>
+
+<template id="s6">
+  <div class="card">
+    <h2>Annesta Duodo — SOCAN: Music Ownership &amp; Rights</h2>
+    <p class="slabel">Who she is</p>
+    <p>Annesta Duodo is part of the legal counsel team at SOCAN — the Society of Composers, Authors and Music Publishers of Canada, the performing rights organization that registers music and collects royalties in this country. When it comes to who owns a piece of music in Canada, SOCAN is the authority.</p>
+    <p class="slabel">What she spoke about</p>
+    <p>Annesta walked us through Canadian and music-specific copyright in its various forms, how music ownership actually works, how they determine what can and can't be registered, and how SOCAN is handling the flood of AI-generated music. Her answers weren't hedged or speculative — she gave us SOCAN's actual position on AI, stated as policy: “AI can be used to enhance your creative process, but not replace it.”</p>
+    <p class="slabel">What stuck with us</p>
+    <p>SOCAN's official stance as the body that governs music ownership in Canada was completely in line with the Toronto Public Library's policies and the core beliefs of this whole residency. Copyright law and music ownership may be complex, but the fact remains — human expression should be at the core of all art. As for how that plays out and is enforced in the years to come is not entirely clear yet, but that is how they (and their international equivalents) are moving forward.</p>
+  </div>
+</template>
+
+<template id="s7">
+  <div class="card">
+    <h2>James Rowan — AI in Film &amp; Television</h2>
+    <p class="slabel">Who he is</p>
+    <p>James Rowan is with the Seneca Institute for Research and Technology (SIRT), where he spends his days exploring what new technologies can do for film and television production. He describes himself as a “conscientious AI accelerator” — an apt phrase for someone working at the practical edge of the industry, testing in real productions what actually helps and what merely dazzles.</p>
+    <p class="slabel">What he spoke about</p>
+    <p>James walked us through the good and the bad uses of AI across the entire filmmaking process, with real examples of each — from pre-production and previsualization through to post. His framing was refreshingly clear-eyed: he showed where the technology genuinely helps a production, saving time and money on work that was always tedious, and where it hollows the work out, producing something that looks finished but feels empty. He was notably unconvinced by one use in particular — AI-generated performances. On the question of synthetic actors, he was a firm skeptic: a machine, in his view, simply cannot deliver the thing a real performer does. He didn't pitch AI as saviour or villain; he sorted it, use by use, into what earns its place and what doesn't.</p>
+    <p class="slabel">What stuck with us</p>
+    <p>That the useful question isn't “is AI good or bad for film?” but “good or bad <em>for which task</em>?” James modelled a way of thinking that ran through the whole residency: evaluate the tool one job at a time, keep it where it serves the work, and refuse it where it hollows the work out. It was a fitting note to end our speaker series on — not a verdict, but a discipline. The same balanced, case-by-case judgment we'd tried to bring to every session, coming back to us from someone who does it professionally, every day.</p>
+  </div>
+</template>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.tl-item:not(.soon)');
+  var tl = document.getElementById('timeline');
+  var mount = document.getElementById('panel-mount');
+  var empty = document.getElementById('panel-empty');
+  var openId = null, openBtn = null;
+  var mobile = window.matchMedia('(max-width:760px)');
+  var connector = null;
+
+  function removeConnector(){
+    if(connector){ connector.remove(); connector = null; }
+  }
+
+  function closeAll(){
+    document.querySelectorAll('.tl-item.open').forEach(function(b){b.classList.remove('open');});
+    document.querySelectorAll('.tl-inline.show').forEach(function(d){
+      d.classList.remove('show'); d.innerHTML='';
+    });
+    mount.innerHTML='';
+    removeConnector();
+    empty.style.display='';
+    openId=null; openBtn=null;
+  }
+
+  function placeDesktop(btn, id){
+    // align card top with the open entry
+    var top = btn.offsetTop;
+    var tlH = tl.offsetHeight;
+    mount.style.top = top + 'px';
+    var card = mount.querySelector('.card');
+    requestAnimationFrame(function(){
+      var ch = card ? card.offsetHeight : 0;
+      if(top + ch > tlH){ mount.style.top = Math.max(0, tlH - ch) + 'px'; }
+      requestAnimationFrame(function(){
+        if(card) card.classList.add('show');
+      });
+      // wait for the entry's font-size transition (220ms) to finish
+      // before measuring where its last word ends
+      setTimeout(function(){
+        if(openBtn !== btn) return;
+        drawConnector(btn);
+        requestAnimationFrame(function(){
+          if(connector) connector.classList.add('show');
+        });
+      }, 260);
+    });
+  }
+
+  function drawConnector(btn){
+    removeConnector();
+    // find the entry's text node and measure only up to its last
+    // non-whitespace character, so trailing markup whitespace is ignored
+    var node = btn.lastChild;
+    while(node && node.nodeType !== 3){ node = node.previousSibling; }
+    var endX = null, midY = null;
+    if(node){
+      var text = node.textContent;
+      var end = text.length;
+      while(end > 0 && /\s/.test(text.charAt(end-1))){ end--; }
+      var r = document.createRange();
+      r.setStart(node, 0);
+      r.setEnd(node, end);
+      var rects = r.getClientRects();
+      if(rects.length){
+        var last = rects[rects.length-1];
+        endX = last.right; midY = last.top + last.height/2;
+      }
+    }
+    var tlRect = tl.getBoundingClientRect();
+    var gridGap = 48; // 3rem gap between columns
+    if(endX === null){
+      var br = btn.getBoundingClientRect();
+      endX = br.right; midY = br.top + br.height/2;
+    }
+    connector = document.createElement('div');
+    connector.className = 'connector';
+    var left = (endX - tlRect.left) + 10;
+    var width = (tlRect.width - left) + gridGap + 2;
+    if(width < 20) width = 20;
+    connector.style.left = left + 'px';
+    connector.style.top = ((midY - tlRect.top) - 1) + 'px';
+    connector.style.width = width + 'px';
+    tl.appendChild(connector);
+  }
+
+  function open(btn){
+    var id = btn.getAttribute('data-id');
+    if(openId===id){ closeAll(); return; }
+    closeAll();
+    btn.classList.add('open');
+    openId=id; openBtn=btn;
+    var tpl = document.getElementById(id);
+    if(!tpl) return;
+    var node = tpl.content.cloneNode(true);
+    if(mobile.matches){
+      var slot = document.querySelector('.tl-inline[data-for="'+id+'"]');
+      slot.appendChild(node);
+      slot.classList.add('show');
+    }else{
+      empty.style.display='none';
+      mount.appendChild(node);
+      placeDesktop(btn, id);
+    }
+  }
+
+  items.forEach(function(btn){
+    btn.addEventListener('click', function(){ open(btn); });
+  });
+
+  // ----- collapsible eras -----
+  function setEra(head, on){
+    var grp = document.querySelector('.era-group[data-era="'+head.id+'"]');
+    if(!grp) return;
+    // if this era is being collapsed and the open entry lives inside it,
+    // close the card right away (clipped entries still report a layout box,
+    // so this must be checked directly rather than via visibility)
+    if(!on && openBtn && grp.contains(openBtn)){ closeAll(); }
+    head.classList.toggle('on', on);
+    grp.classList.toggle('openEra', on);
+    // re-align an open card after the collapse/expand animation shifts layout
+    setTimeout(function(){
+      if(openBtn && !mobile.matches){
+        var g = openBtn.closest('.era-group');
+        if(g && !g.classList.contains('openEra')){ closeAll(); return; }
+        placeDesktop(openBtn, openId);
+      }
+    }, 580);
+  }
+  document.querySelectorAll('.tl-era').forEach(function(head){
+    head.classList.toggle('on', !!document.querySelector('.era-group[data-era="'+head.id+'"].openEra'));
+    head.addEventListener('click', function(){
+      setEra(head, !head.classList.contains('on'));
+    });
+    head.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); setEra(head, !head.classList.contains('on')); }
+    });
+  });
+
+  // ----- jump-bar: expand target era, then scroll -----
+  document.querySelectorAll('.erabar a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var head = document.querySelector(a.getAttribute('href'));
+      if(!head) return;
+      setEra(head, true);
+      setTimeout(function(){ head.scrollIntoView({behavior:'smooth'}); }, 60);
+    });
+  });
+
+  window.addEventListener('resize', function(){
+    if(openBtn && !mobile.matches){
+      var card = mount.querySelector('.card');
+      if(card){ placeDesktop(openBtn, openId); }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

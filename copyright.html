@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copyright &amp; AI — Innovator in Residence Spring 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1F2E;
+    --surface:#15293B;
+    --accent:#E8622A;
+    --accent-soft:#F2895A;
+    --text:#F2F0EC;
+    --muted:#AABBC8;
+    --line:#2C4459;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--ink);color:var(--text);
+    font-family:"IBM Plex Sans",system-ui,Arial,sans-serif;
+    font-size:18px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-soft);text-decoration:none;}
+  a:hover{color:var(--accent);}
+  ::selection{background:var(--accent);color:var(--ink);}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem;}
+
+  /* ---------- top nav (matches index) ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,31,46,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brandmark{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;color:var(--text);}
+  .navlinks{display:flex;gap:1.6rem;font-size:.82rem;
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;}
+  .navlinks a{color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  .navlinks a.here{color:var(--accent-soft);}
+  @media(max-width:620px){ .navlinks{gap:1rem;font-size:.72rem;} }
+
+  /* ---------- page header ---------- */
+  header.page{padding:5rem 0 2.5rem;}
+  .pagelabel{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 1.2rem 0;
+  }
+  .pagelabel .dot{color:var(--accent);}
+  header.page h1{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;
+    color:var(--accent);margin:0 0 1.2rem 0;
+  }
+  .hint{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--muted);letter-spacing:.04em;
+  }
+  .hint b{color:var(--accent-soft);font-weight:500;}
+  .disclaimer{
+    font-size:.78rem;line-height:1.65;color:var(--muted);
+    border-left:2px solid var(--accent);
+    padding-left:.9rem;max-width:38rem;
+    margin:1.4rem 0 0 0;
+  }
+
+  /* ---------- timeline layout ---------- */
+  .tl-grid{
+    display:grid;grid-template-columns:minmax(0,26rem) 1fr;
+    gap:3rem;align-items:start;
+    padding:1.5rem 0 6rem;
+  }
+  /* the vertical line + entries */
+  .tl{
+    position:relative;
+    border-left:1px solid var(--line);
+    padding-left:1.6rem;
+    margin-left:.4rem;
+  }
+  .tl .connector{z-index:2;}
+  .tl-item{
+    position:relative;
+    display:block;width:100%;text-align:left;
+    background:none;border:none;cursor:pointer;
+    color:var(--muted);
+    font-family:"IBM Plex Sans",sans-serif;
+    font-size:.8rem;line-height:1.35;
+    padding:.42rem 0;margin:0;
+    transition:font-size .22s cubic-bezier(.2,.7,.2,1), color .22s;
+  }
+  .tl-item .yr{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.86em;color:var(--accent-soft);
+    margin-right:.55em;letter-spacing:.02em;
+  }
+  /* node dot on the line */
+  .tl-item::before{
+    content:"";position:absolute;left:-1.6rem;top:50%;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--line);
+    transform:translate(-50%,-50%);
+    transition:border-color .22s, background .22s, width .22s, height .22s, box-shadow .22s;
+  }
+  /* hover: enlarge */
+  .tl-item:hover, .tl-item:focus-visible{
+    font-size:1.02rem;color:var(--text);outline:none;
+  }
+  .tl-item:hover::before, .tl-item:focus-visible::before{
+    border-color:var(--accent-soft);
+  }
+  /* open state */
+  .tl-item.open{
+    font-size:1.05rem;color:var(--text);font-weight:600;
+  }
+  .tl-item.open::before{
+    background:var(--accent);border-color:var(--accent);
+    width:10px;height:10px;
+    box-shadow:0 0 0 4px rgba(232,98,42,.16);
+  }
+  /* entries not yet written */
+  .tl-item.soon{cursor:default;opacity:.38;}
+  .tl-item.soon:hover{font-size:.8rem;color:var(--muted);}
+  .tl-item.soon:hover::before{border-color:var(--line);}
+  .tl-item.soon .todo{
+    font-family:"IBM Plex Mono",monospace;font-size:.72em;
+    color:var(--muted);margin-left:.5em;letter-spacing:.06em;
+  }
+
+  /* ---------- detail panel (desktop) ---------- */
+  .panel{
+    position:relative;align-self:stretch;
+    min-height:10rem;
+  }
+  #panel-mount{position:absolute;left:0;right:0;top:0;}
+  /* orange connector from the open entry to the card's bracket */
+  .connector{
+    position:absolute;height:2px;border-radius:1px;
+    background:linear-gradient(90deg,rgba(232,98,42,.25),var(--accent));
+    pointer-events:none;
+    opacity:0;transition:opacity .35s ease .1s;
+  }
+  .connector.show{opacity:1;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    border-radius:10px;
+    padding:1.8rem 2rem;
+    opacity:0;transform:translateX(-14px);
+    transition:opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+    pointer-events:none;
+  }
+  .card.show{opacity:1;transform:none;pointer-events:auto;}
+  .card .cyr{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.16em;color:var(--accent-soft);
+    text-transform:uppercase;margin:0 0 .5rem 0;
+  }
+  .card h2{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:1.45rem;line-height:1.2;margin:0 0 1rem 0;color:var(--text);
+  }
+  .card p{margin:0;font-size:.95rem;line-height:1.75;color:var(--text);}
+  .card p + p{margin-top:1rem;}
+  .panel .empty{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--muted);letter-spacing:.05em;
+    padding:1.8rem 0;
+  }
+
+  /* ---------- mobile: accordion below entry ---------- */
+  .tl-inline{display:none;}
+  @media(max-width:760px){
+    .tl-grid{grid-template-columns:1fr;gap:0;}
+    .panel{display:none;}
+    .tl-inline{
+      display:block;overflow:hidden;max-height:0;
+      transition:max-height .4s ease;
+    }
+    .tl-inline .card{
+      margin:.4rem 0 1rem 0;opacity:1;transform:none;pointer-events:auto;
+      padding:1.2rem 1.3rem;
+    }
+    .tl-inline.show{max-height:60rem;}
+  }
+
+  footer{border-top:1px solid var(--line);padding:2rem 0;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted);}
+
+  a:focus-visible,.tl-item:focus-visible{outline:2px solid var(--accent-soft);outline-offset:3px;border-radius:4px;}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brandmark" href="index.html" style="color:var(--text)">Innovator in Residence Spring 2026</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="explored.html">What We Explored</a>
+      <a href="speakers.html">The Speakers</a>
+      <a href="history.html">History of Generative Music</a>
+      <a class="here" href="copyright.html">Copyright &amp; AI</a>
+      <a href="environment.html">AI &amp; the Environment</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page">
+  <div class="wrap">
+    <p class="pagelabel">Innovator in Residence Spring 2026 <span class="dot">·</span> AI &amp; Music Production</p>
+    <h1>Copyright &amp; AI</h1>
+      <p class="disclaimer">This page is current as of August 2026. The law — especially where AI is concerned — moves quickly, and changes may have occurred since this was written. Nothing here should be considered legal advice, by any means.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tl-grid">
+
+    <!-- ============ TIMELINE (left) ============ -->
+    <div class="tl" id="timeline">
+
+      <button class="tl-item" data-id="e1">
+        <span class="yr">Before 1710</span>Patronage, privileges &amp; the Stationers' Company
+      </button>
+      <div class="tl-inline" data-for="e1"></div>
+
+      <button class="tl-item" data-id="e2">
+        <span class="yr">1710</span>The Statute of Anne — the first copyright law
+      </button>
+      <div class="tl-inline" data-for="e2"></div>
+
+      <button class="tl-item" data-id="e3">
+        <span class="yr">1774</span>Donaldson v Becket — copyright gets an expiry date
+      </button>
+      <div class="tl-inline" data-for="e3"></div>
+
+      <button class="tl-item" data-id="e29">
+        <span class="yr">1886</span>The Berne Convention — copyright goes international
+      </button>
+      <div class="tl-inline" data-for="e29"></div>
+
+      <button class="tl-item" data-id="e4">
+        <span class="yr">1908</span>White-Smith v Apollo — the player-piano case
+      </button>
+      <div class="tl-inline" data-for="e4"></div>
+      <button class="tl-item" data-id="e5">
+        <span class="yr">1921</span>Canada's first Copyright Act
+      </button>
+      <div class="tl-inline" data-for="e5"></div>
+      <button class="tl-item" data-id="e6">
+        <span class="yr">1925</span>The Canadian Performing Right Society — SOCAN's ancestor
+      </button>
+      <div class="tl-inline" data-for="e6"></div>
+      <button class="tl-item" data-id="e7">
+        <span class="yr">1931</span>Canada writes moral rights into the Act
+      </button>
+      <div class="tl-inline" data-for="e7"></div>
+      <button class="tl-item" data-id="e8">
+        <span class="yr">1954</span>The quiet consolidation — radio, records &amp; the UCC
+      </button>
+      <div class="tl-inline" data-for="e8"></div>
+      <button class="tl-item" data-id="e9">
+        <span class="yr">1971</span>Sound recordings finally get US copyright
+      </button>
+      <div class="tl-inline" data-for="e9"></div>
+      <button class="tl-item" data-id="e10">
+        <span class="yr">1976</span>“My Sweet Lord” — subconscious copying counts
+      </button>
+      <div class="tl-inline" data-for="e10"></div>
+      <button class="tl-item" data-id="e11">
+        <span class="yr">1984</span>Betamax — home taping is fair use
+      </button>
+      <div class="tl-inline" data-for="e11"></div>
+      <button class="tl-item" data-id="e12">
+        <span class="yr">1991</span>Grand Upright — sampling needs a licence
+      </button>
+      <div class="tl-inline" data-for="e12"></div>
+      <button class="tl-item" data-id="e13">
+        <span class="yr">1994</span>Campbell v Acuff-Rose — parody &amp; “transformative use”
+      </button>
+      <div class="tl-inline" data-for="e13"></div>
+      <button class="tl-item" data-id="e14">
+        <span class="yr">1997</span>Canada creates neighbouring rights
+      </button>
+      <div class="tl-inline" data-for="e14"></div>
+      <button class="tl-item" data-id="e15">
+        <span class="yr">2001</span>Napster
+      </button>
+      <div class="tl-inline" data-for="e15"></div>
+      <button class="tl-item" data-id="e16">
+        <span class="yr">2002</span>Théberge — copyright is a balance
+      </button>
+      <div class="tl-inline" data-for="e16"></div>
+      <button class="tl-item" data-id="e17">
+        <span class="yr">2004</span>CCH — fair dealing becomes a user's right
+      </button>
+      <div class="tl-inline" data-for="e17"></div>
+      <button class="tl-item" data-id="e18">
+        <span class="yr">2012</span>The Pentalogy &amp; the Copyright Modernization Act
+      </button>
+      <div class="tl-inline" data-for="e18"></div>
+      <button class="tl-item" data-id="e19">
+        <span class="yr">2015</span>Blurred Lines — can a feel be copyrighted?
+      </button>
+      <div class="tl-inline" data-for="e19"></div>
+      <button class="tl-item" data-id="e20">
+        <span class="yr">2022</span>Life + 70 — the public domain freezes until 2043
+      </button>
+      <div class="tl-inline" data-for="e20"></div>
+      <button class="tl-item" data-id="e21">
+        <span class="yr">2022</span>SOCAN v ESA — technological neutrality
+      </button>
+      <div class="tl-inline" data-for="e21"></div>
+      <button class="tl-item" data-id="e22">
+        <span class="yr">2023</span>“Heart on My Sleeve” — fake Drake &amp; voice cloning
+      </button>
+      <div class="tl-inline" data-for="e22"></div>
+      <button class="tl-item" data-id="e23">
+        <span class="yr">2023</span>Concord v Anthropic — the song-lyrics case
+      </button>
+      <div class="tl-inline" data-for="e23"></div>
+      <button class="tl-item" data-id="e24">
+        <span class="yr">2024</span>The majors sue Suno &amp; Udio
+      </button>
+      <div class="tl-inline" data-for="e24"></div>
+      <button class="tl-item" data-id="e25">
+        <span class="yr">2024</span>The ELVIS Act — the first voice-cloning law
+      </button>
+      <div class="tl-inline" data-for="e25"></div>
+      <button class="tl-item" data-id="e26">
+        <span class="yr">2025</span>Bartz v Anthropic — training, piracy &amp; the $1.5B settlement
+      </button>
+      <div class="tl-inline" data-for="e26"></div>
+      <button class="tl-item" data-id="e27">
+        <span class="yr">2025</span>SOCAN's new rule — AI-assisted works can be registered
+      </button>
+      <div class="tl-inline" data-for="e27"></div>
+      <button class="tl-item" data-id="e28">
+        <span class="yr">2026</span>Canada consults, but hasn't legislated
+      </button>
+      <div class="tl-inline" data-for="e28"></div>
+
+    </div>
+
+    <!-- ============ DETAIL PANEL (right, desktop) ============ -->
+    <div class="panel">
+      <p class="empty" id="panel-empty">← Choose a moment on the timeline</p>
+      <div id="panel-mount"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Innovator in Residence Spring 2026 · <a href="https://silverphonic.com" target="_blank" rel="noopener">Joel S. Silver</a></span>
+    <span>Toronto Public Library · Fairview DIH · 2026</span>
+  </div>
+</footer>
+
+<!-- ============ ENTRY CONTENT ============ -->
+<template id="e1">
+  <div class="card">
+    <p class="cyr">Before 1710</p>
+    <h2>Patronage, privileges &amp; the Stationers' Company</h2>
+    <p>Before copyright existed, music and books survived on patronage — composers wrote for whoever paid the bills: a court, a church, an aristocrat. Meanwhile, the right to actually <em>print</em> anything was a monopoly. In England, the Crown handed control of the entire book trade to a guild called the Stationers' Company: once one of its printers registered a work as their "copy," no other member could print it. That's where the word "copyright" comes from — and notice that it protects the printer, not the author.</p>
+    <p>When Parliament let the guild's monopoly lapse in 1694, unauthorized printing exploded, and the Stationers spent a decade begging to get their monopoly back. When that failed, they tried a new argument: think of the <em>authors</em>. It worked — and it accidentally invented the idea that creators have rights in their own work.</p>
+  </div>
+</template>
+
+<template id="e2">
+  <div class="card">
+    <p class="cyr">1710</p>
+    <h2>The Statute of Anne — the first copyright law</h2>
+    <p>The Statute of Anne — "An Act for the Encouragement of Learning" — was the world's first true copyright law, and it established three ideas we still live by. First, rights belong to <em>authors</em>, not printers. Second, those rights are <em>temporary</em>: fourteen years, renewable once, and then the work belongs to everyone. Third, the whole point of the system is public benefit — copyright exists to encourage learning, not simply to protect property.</p>
+    <p>That framing matters enormously for everything that follows on this timeline. Copyright was born as a <em>bargain</em>: creators get a limited monopoly, and in exchange the public eventually gets a rich commons of shared culture. Every fight since — player pianos, sampling, Napster, AI training — is really an argument about the terms of that bargain.</p>
+  </div>
+</template>
+
+<template id="e3">
+  <div class="card">
+    <p class="cyr">1774</p>
+    <h2>Donaldson v Becket — copyright gets an expiry date</h2>
+    <p>London's booksellers didn't accept the "limited term" part quietly. For decades they argued that authors held a natural, <em>perpetual</em> right at common law — meaning their valuable back-catalogues would never expire. In 1769 they actually won that argument (Millar v Taylor). Five years later, in Donaldson v Becket, the House of Lords reversed it: once a work is published, the statute governs, the term is limited, and when it ends, the work enters the public domain. Perpetual copyright was dead.</p>
+    <p>It's hard to overstate what this settled. The public domain — the shared pool of culture every creator freely draws from — exists because of this case. Every folk melody you can arrange, every classical theme you can quote, every out-of-copyright text you can set to music is downstream of Donaldson. Copyright is a loan, not a fence.</p>
+  </div>
+</template>
+
+
+<template id="e29">
+  <div class="card">
+    <p class="cyr">1886</p>
+    <h2>The Berne Convention — copyright goes international</h2>
+    <p>For most of the 1800s, copyright stopped at the border. A song or book protected at home could be freely reprinted abroad, and publishers on every continent did exactly that. In 1886, a group of nations meeting in Berne, Switzerland — with Victor Hugo among the campaign's champions — agreed to protect each other's authors as if they were their own. Just as important, Berne established that copyright requires no formalities: no registration, no paperwork. The moment you write the song down or record it, it's protected.</p>
+    <p>Today roughly 180 countries belong to Berne, which is why a melody you write in Toronto is automatically protected in Tokyo, Berlin, and São Paulo. Its later revisions also carried moral rights into international law — the thread Canada picks up in 1931, further down this line. But Berne set minimum standards, not identical rules, and that gap matters enormously now: AI models are trained globally, while each country decides for itself whether that training is lawful. One protected world, many different answers — that tension runs straight through the rest of this timeline.</p>
+  </div>
+</template>
+
+<template id="e4">
+  <div class="card">
+    <p class="cyr">1908</p>
+    <h2>White-Smith v Apollo — the player-piano case</h2>
+    <p>As technologies developed, copyright laws have had to evolve. This was evident even in the early 1900s, when player pianos became the hot technology of the day. Companies were selling perforated paper rolls of popular songs by the thousands — without paying the sheet-music publishers a cent. The publishers sued, and the US Supreme Court reached a conclusion that sounds absurd today: a piano roll wasn't a “copy” of the song, because a human being couldn't read the music from it. It was just a part of a machine. The publishers lost.</p>
+    <p>Congress fixed it within a year, creating the compulsory “mechanical licence” — the reason why reproduction royalties are called “mechanicals” to this day. But the deeper lesson is the pattern this case set: a new copying technology arrives, the law's old definitions can't stretch to fit it, courts produce a strange result, and the legislature has to rewrite the rules. This is a pattern that persists right up to today's current AI cases and rulings.</p>
+  </div>
+</template>
+
+<template id="e5">
+  <div class="card">
+    <p class="cyr">1921</p>
+    <h2>Canada's first Copyright Act</h2>
+    <p>Canada wrote its own Copyright Act in 1921 (in force by 1924), closely modelled on Britain's 1911 law. That inheritance turned out to matter: the British Act carried continental European ideas about authors' rights that the American system largely lacked — seeds that would later grow into Canada's distinctive approach, including moral rights and, eventually, a court-built doctrine of users' rights.</p>
+    <p>Nearly everything on the Canadian side of this timeline traces back to this statute. It has been renovated repeatedly — major reforms in 1988, 1997, and 2012 each responding to new technology — but never fully replaced. A century later, it's the same Act being asked whether an AI model may learn from a composer's life's work.</p>
+  </div>
+</template>
+
+<template id="e6">
+  <div class="card">
+    <p class="cyr">1925</p>
+    <h2>The Canadian Performing Right Society — SOCAN's ancestor</h2>
+    <p>By the 1920s, music's economics had a problem: songs were being performed everywhere — theatres, dance halls, radio — and no individual composer could possibly track who owed them what. The answer was collective licensing. The Canadian Performing Right Society, formed in 1925, licensed performances on behalf of its members and split the fees — the direct ancestor of today's SOCAN, which now administers performing rights for Canadian songwriters, composers, and publishers.</p>
+    <p>For a working composer, this is arguably the most practical moment on the whole timeline: it's the origin of the royalty cheque. And it established an idea that's suddenly relevant again — when a new technology uses music at a scale no individual can police, a collective can negotiate on behalf of everyone. A century later, SOCAN is making exactly that argument about AI training.</p>
+  </div>
+</template>
+
+<template id="e7">
+  <div class="card">
+    <p class="cyr">1931</p>
+    <h2>Canada writes moral rights into the Act</h2>
+    <p>Following the Berne Convention's 1928 Rome revision, Canada wrote moral rights into its Copyright Act — among the first countries in the common-law world to do so. Moral rights are separate from the economic rights you can sell: they're the right to be credited for your work, and the right to object when your work is distorted or mutilated in a way that damages your honour or reputation. You can waive them, but you can never sell them — they stay with you.</p>
+    <p>The classic Canadian illustration came in 1982, when the Eaton Centre tied red Christmas ribbons around the necks of Michael Snow's flying-geese sculpture. Snow sued — and won. The geese were untied. For musicians in the AI era, moral rights are quietly powerful: they're about controlling how your work is altered and presented, which is precisely what's at stake when a machine can remix, mimic, or mangle your music without asking.</p>
+  </div>
+</template>
+
+<template id="e8">
+  <div class="card">
+    <p class="cyr">1954</p>
+    <h2>The quiet consolidation — radio, records &amp; the UCC</h2>
+    <p>The mid-century was copyright's infrastructure-building period: radio royalties became a real income stream, the record industry grew into an economic force, performing-rights societies matured, and in 1954 Canada joined the Universal Copyright Convention, knitting itself further into the international system.</p>
+    <p>This is the era when the modern music business took its shape: composition royalties flowing one way, record revenues another, collectives in the middle, treaties overhead. Every fight that comes later — sampling, file-sharing, streaming, AI — is a fight over concepts that became established in these decades.</p>
+  </div>
+</template>
+
+<template id="e9">
+  <div class="card">
+    <p class="cyr">1971</p>
+    <h2>Sound recordings finally get US copyright</h2>
+    <p>Though it sounds unbelievable, until 1971, the United States gave no federal copyright protection to sound recordings at all. Songs — melody and lyrics — were protected, but the recordings themselves weren't. Rampant record piracy finally forced Congress to act, giving masters their own copyright and cementing a split that now defines the entire music business: every track carries two separate copyrights, the composition and the recording, often owned by different people.</p>
+    <p>That split is the key to reading every music lawsuit since — and it's essential to understanding the AI cases. When an AI system trains on a track, it potentially implicates <em>both</em> copyrights at once: the label's master and the writer's composition. That's why the record labels and the music publishers have each brought their own separate lawsuits against AI companies.</p>
+  </div>
+</template>
+
+<template id="e10">
+  <div class="card">
+    <p class="cyr">1976</p>
+    <h2>“My Sweet Lord” — subconscious copying counts</h2>
+    <p>George Harrison's <a href="https://www.youtube.com/watch?v=6wHBsMoHFWs&amp;list=RD6wHBsMoHFWs&amp;start_radio=1" target="_blank" rel="noopener">“My Sweet Lord”</a> was a worldwide hit — and it sounded strikingly like <a href="https://www.youtube.com/watch?v=MGkhe0DW5Oc&amp;list=RDMGkhe0DW5Oc&amp;start_radio=1" target="_blank" rel="noopener">“He's So Fine”</a> recorded by The Chiffons a decade earlier. The court believed Harrison hadn't deliberately copied anything. It didn't matter. Because he'd had access to the earlier hit and the songs were substantially similar, he was liable anyway. The copying was, in the court's famous word, <em>subconscious</em>.</p>
+    <p>Intent is irrelevant. You can infringe without ever meaning to, simply because a melody you once absorbed resurfaces as your own. Now consider a machine-learning model, which absorbs millions of songs and generates new ones from what it learned. If subconscious human copying counts, what about machine copying with no consciousness at all?</p>
+  </div>
+</template>
+
+<template id="e11">
+  <div class="card">
+    <p class="cyr">1984</p>
+    <h2>Betamax — home taping is fair use</h2>
+    <p>When Sony's Betamax VCR let ordinary people record television at home, Hollywood sued to have the machine itself declared an instrument of infringement. The US Supreme Court said no — narrowly, 5 to 4. Taping a show to watch later was fair use, and a technology with “substantial non-infringing uses” couldn't be outlawed just because some people would misuse it.</p>
+    <p>Betamax became the legal shield for a generation of technologies — the photocopier, the CD burner, the iPod, arguably the internet itself. Every AI company's legal team knows this case by heart: their argument is that a model is a tool with enormous legitimate uses, and the tool-maker shouldn't be liable for what some users do with it. Whether that shield stretches to cover machines <em>built</em> by copying millions of works — that's the live question.</p>
+  </div>
+</template>
+
+<template id="e12">
+  <div class="card">
+    <p class="cyr">1991</p>
+    <h2>Grand Upright — sampling needs a licence</h2>
+    <p>Rapper Biz Markie sampled Gilbert O'Sullivan's “Alone Again (Naturally)” without permission, and the judge opened his ruling with three words from the Ten Commandments: “Thou shalt not steal.” Unlicensed sampling was infringement, full stop — and the golden age of freewheeling, collage-style hip-hop production ended almost overnight. From then on, the rule was: clear it or don't use it.</p>
+    <p>The parallel to today is almost uncomfortably neat. Sampling was a new creative technique built directly on existing recordings, and the law's answer wasn't to ban it — it was to price it. A licensing market grew, and sampling became a legitimate, paid-for part of music-making. Many people think AI training is headed the same way: not forbidden, but licensed. The Suno and Udio settlements further down this timeline suggest that's exactly what's happening.</p>
+  </div>
+</template>
+
+<template id="e13">
+  <div class="card">
+    <p class="cyr">1994</p>
+    <h2>Campbell v Acuff-Rose — parody &amp; “transformative use”</h2>
+    <p>When 2 Live Crew recorded a raunchy parody of Roy Orbison's “Oh, Pretty Woman,” the publisher sued — and the US Supreme Court unanimously sided with the parody. A commercial use could still be fair use, the Court held, and the key question was whether the new work was <em>transformative</em>: did it add something new, with a different purpose or character, rather than merely substituting for the original?</p>
+    <p>That one word — transformative — went on to dominate American copyright law, and it is now the single load-bearing beam of the AI industry's legal position. When an AI company argues that training a model on millions of songs is lawful, the argument is Campbell: the model doesn't <em>replace</em> the songs, it learns statistical patterns from them and makes something categorically different. Whether judges accept that framing is, in large part, what the next decade of copyright law will decide. Note, though: “transformative use” is an American doctrine — Canadian law has no such open-ended category, which is why the Canadian analysis of AI looks so different.</p>
+  </div>
+</template>
+
+<template id="e14">
+  <div class="card">
+    <p class="cyr">1997</p>
+    <h2>Canada creates neighbouring rights</h2>
+    <p>Canada's 1997 reforms gave performers and record makers their own rights in sound recordings — “neighbouring rights,” so called because they sit beside the composer's copyright rather than inside it. When a recording is played on the radio or in public, money is now owed not just to whoever wrote the song, but to whoever performed and produced the record. A new collective, today called Re:Sound, was created to collect and distribute it. The same reform added the private-copying levy on blank media — Canada's pragmatic answer to home taping.</p>
+    <p>This completed the Canadian rights map a working musician navigates today: SOCAN for performances of the composition, CMRRA for its reproduction, Re:Sound for the recording itself. It's also why AI training tangles so many parties at once in Canada — a model trained on a Canadian record touches the writer, the performers, the label, and three different collectives, each with something to say about it.</p>
+  </div>
+</template>
+
+<template id="e15">
+  <div class="card">
+    <p class="cyr">2001</p>
+    <h2>Napster</h2>
+    <p>Napster let millions of people share MP3s with each other for free, and for about two years it felt like the entire recorded-music economy might simply dissolve. The courts shut it down — Napster knew about the infringement flowing through its system and could have policed it, so the Betamax shield didn't apply. But winning the lawsuit didn't bring the old business back. File-sharing had permanently changed what listeners expected music to cost.</p>
+    <p>The industry's real answer wasn't legal; it was commercial — first iTunes, then streaming, which took twenty years to rebuild revenues. Napster is the cautionary tale both sides of the AI fight carry with them: rights-holders remember what happens when they respond too slowly to a technology people love, and AI companies remember that even a service used by millions can be litigated out of existence. Both are negotiating in Napster's shadow.</p>
+  </div>
+</template>
+
+<template id="e16">
+  <div class="card">
+    <p class="cyr">2002</p>
+    <h2>Théberge — copyright is a balance</h2>
+    <p>A Quebec painter objected when a gallery lifted the ink from posters of his work and transferred it onto canvas — same image, fancier product. The Supreme Court of Canada held that no new copy had been made, but the decision's real legacy is its statement of what copyright is <em>for</em>: a balance between rewarding creators and the public's interest in the dissemination and use of works. Over-protecting, the Court warned, is as harmful as under-protecting.</p>
+    <p>That sentence quietly reoriented Canadian copyright law. Where American rhetoric often treats copyright as property, full stop, Canada's highest court framed it as a bargain with two sides — and cautioned judges against tilting it. Every major Canadian decision since, including everything on this timeline about fair dealing and users' rights, is built on Théberge's foundation. When Canadian courts eventually face AI training, this is the frame they'll start from.</p>
+  </div>
+</template>
+
+<template id="e17">
+  <div class="card">
+    <p class="cyr">2004</p>
+    <h2>CCH — fair dealing becomes a user's right</h2>
+    <p>CCH, a Canadian publisher, brought an infringement suit against The Law Society of Upper Canada's Great Library for photocopying materials, including CCH's, for lawyers on request. The Supreme Court of Canada unanimously said the copying was <em>fair dealing</em> — and, crucially, declared that fair dealing is not a grudging exception or a defence to be tolerated, but a <em>user's right</em>, integral to the whole scheme of copyright. The Court laid out six factors for judging fairness: the purpose, character, and amount of the dealing, alternatives to it, the nature of the work, and the effect on its market.</p>
+    <p>CCH is the most important Canadian copyright decision ever rendered. It also set Canada's originality standard — a work is protected when it reflects an author's <em>skill and judgment</em> — which is precisely the test now being applied to AI: a purely machine-generated track involves no human skill and judgment, and so earns no copyright. One case, two doctrines, both at the centre of the AI debate. Worth knowing: Canadian fair dealing is narrower than American fair use — your purpose must fit an enumerated category (research, private study, education, parody, satire, criticism, review, or news reporting) before fairness even gets assessed.</p>
+  </div>
+</template>
+
+<template id="e18">
+  <div class="card">
+    <p class="cyr">2012</p>
+    <h2>The Pentalogy &amp; the Copyright Modernization Act</h2>
+    <p>In a single day in July 2012, the Supreme Court of Canada released five copyright rulings at once — the “pentalogy” — and users won across the board. Thirty-second song previews on music stores? Fair dealing: a consumer deciding what to buy is doing <em>research</em>. Teachers copying short excerpts for their students? Fair dealing. And in the video-game case, the Court coined the principle of <em>technological neutrality</em>, memorably calling the internet a “technological taxi”: buying a copy online is not legally different from buying it in a store.</p>
+    <p>Parliament matched the moment: the Copyright Modernization Act added education, parody, and satire to the fair-dealing purposes and created an exception for non-commercial user-generated content — the “mashup exception” that legalized much of remix culture in Canada. Together, 2012 confirmed Canada's distinct identity: a copyright system with strong users' rights and a refusal to let the law depend on the particular machine involved. Both principles will be tested hard by AI.</p>
+  </div>
+</template>
+
+<template id="e19">
+  <div class="card">
+    <p class="cyr">2015</p>
+    <h2>Blurred Lines — can a feel be copyrighted?</h2>
+    <p>A jury found that Robin Thicke and Pharrell Williams's <a href="https://www.youtube.com/watch?v=yyDUC1LUXSU&amp;list=RDyyDUC1LUXSU&amp;start_radio=1" target="_blank" rel="noopener">“Blurred Lines”</a> infringed Marvin Gaye's <a href="https://www.youtube.com/watch?v=8LU6S1KpsgI&amp;list=RD8LU6S1KpsgI&amp;start_radio=1" target="_blank" rel="noopener">“Got to Give It Up”</a> — not for copying a melody or lyric, but for capturing the earlier song's <em>vibe</em>: its groove, its feel, its era. The verdict (over five million US dollars, plus a share of ongoing royalties) horrified much of the songwriting community, because genre and feel are exactly the things musicians have always borrowed from each other. A wave of soundalike lawsuits followed.</p>
+    <p>The correction came in later cases: Katy Perry's “Dark Horse” verdict was overturned because an eight-note ostinato was just a commonplace building block, and Ed Sheeran won his cases on the same logic — chord progressions and rhythms belong to everyone. The settled line matters enormously for AI: <em>style is not protected expression</em>. An AI generating “1970s soul in the style of Marvin Gaye” isn't infringing any single work — which is precisely why the AI battles moved upstream, away from outputs and toward the training data itself.</p>
+  </div>
+</template>
+
+<template id="e20">
+  <div class="card">
+    <p class="cyr">2022</p>
+    <h2>Life + 70 — the public domain freezes until 2043</h2>
+    <p>To meet its obligations under the renegotiated NAFTA (CUSMA), Canada extended copyright's general term from life-plus-fifty to life-plus-seventy years, effective 30 December 2022. The change isn't retroactive — anything already in the public domain stays there — but it has a startling side effect: works that would have expired between 2023 and 2042 now wait the extra twenty years. No new works will enter the Canadian public domain until 1 January 2043.</p>
+    <p>For composers, the public domain isn't an abstraction — it's raw material. It's the folk songs you can freely arrange, the classical themes you can quote, the poems you can set. Donaldson v Becket (1774, further up this line) established that the commons must grow; this amendment paused its growth for a generation. If you were waiting to arrange or sample a composer who died in 1972 or later — the wait just got much longer.</p>
+  </div>
+</template>
+
+<template id="e21">
+  <div class="card">
+    <p class="cyr">2022</p>
+    <h2>SOCAN v ESA — technological neutrality</h2>
+    <p>When Parliament implemented the international “making available” right, SOCAN argued the maths had changed: posting a song online to be streamed should trigger one royalty, and the stream itself another — two payments for what used to be one. The Supreme Court of Canada unanimously disagreed. One activity, one royalty. Justice Rowe's formulation is the cleanest statement of Canadian copyright's guiding principle yet: “What matters is what the user receives, not how the user receives it.”</p>
+    <p>This is the Supreme Court's most recent word on copyright and technology, and it's the lens any Canadian AI case will be viewed through. Technological neutrality cuts in both directions, though. It tells rights-holders they can't multiply royalties just because the delivery method is new — but it also tells AI companies they can't escape the rules just because their copying happens inside a training pipeline. The machine doesn't change the analysis. The analysis is coming either way.</p>
+  </div>
+</template>
+
+<template id="e22">
+  <div class="card">
+    <p class="cyr">2023</p>
+    <h2>“Heart on My Sleeve” — fake Drake &amp; voice cloning</h2>
+    <p>In April 2023, an anonymous producer called Ghostwriter977 released “Heart on My Sleeve” — a convincing duet between Drake and The Weeknd that neither artist had anything to do with. AI-cloned voices, original song. It racked up millions of streams before the labels forced it offline. And note the detail that matters for this page: both cloned artists are Canadian.</p>
+    <p>Here's the uncomfortable legal truth the track exposed: copyright barely touches it. The composition was original; no existing recording was copied. What was taken was something copyright doesn't protect — the artists' <em>voices</em>, their personas. In Canada, the closest remedy is the common-law tort of appropriation of personality (born in Ontario case law), but it was built for unauthorized celebrity endorsements, not neural networks, and no Canadian statute yet addresses voice cloning directly. Two of the biggest artists on Earth, both Canadian, and the law of their own country isn't sure how to protect their voices. That gap is the next frontier.</p>
+  </div>
+</template>
+
+<template id="e23">
+  <div class="card">
+    <p class="cyr">2023</p>
+    <h2>Concord v Anthropic — the song-lyrics case</h2>
+    <p>Music publishers — Concord, Universal, ABKCO and others — sued the AI company Anthropic, alleging that its chatbot Claude had been trained on copyrighted song lyrics and would reproduce them: ask it for the words to a famous song, and out they came; sometimes lyrics surfaced even when nobody asked for them. It became the leading music-industry test of the <em>output</em> problem — what lawyers call memorization or regurgitation.</p>
+    <p>The case — still active as of August 2026, and joined by a second suit in January 2026 covering more than 20,000 additional songs — matters because it separates the two questions everyone tends to blur. Training is one issue. But if a model can be made to <em>emit</em> substantial chunks of a protected work, that looks like plain old reproduction, no matter how transformative the training was. For musicians, the practical warning runs the other way too: if an AI tool hands you a melody or a lyric, you have no idea whether it's memorized from somewhere. The liability for releasing it would be yours.</p>
+  </div>
+</template>
+
+<template id="e24">
+  <div class="card">
+    <p class="cyr">2024</p>
+    <h2>The majors sue Suno &amp; Udio</h2>
+    <p>In June 2024, Universal, Sony, and Warner sued the two leading AI music generators, Suno and Udio, for training on their recorded catalogues — the complaints included side-by-side spectrograms of AI outputs against real recordings, and sought damages of up to US$150,000 <em>per work</em>. The defendants essentially conceded that copyrighted recordings were in the training data, and staked everything on fair use.</p>
+    <p>Then the story split in two. By late 2025, Universal and Warner had settled with one or both companies — trading lawsuits for licensing deals and jointly announcing <em>licensed</em> AI music platforms, with artist opt-ins and compensation. Sony, the lone holdout, settled with neither company. Meanwhile the remaining claims ground on: in May 2026, the still-litigating labels moved to expand the Suno suit to over 61,000 identified recordings — a theoretical exposure in the billions. The likely destination is the one sampling reached in the nineties: not banned, licensed. The difference is that this time the negotiation is happening at the scale of entire catalogues.</p>
+  </div>
+</template>
+
+<template id="e25">
+  <div class="card">
+    <p class="cyr">2024</p>
+    <h2>The ELVIS Act — the first voice-cloning law</h2>
+    <p>Tennessee — home of Nashville — passed the Ensuring Likeness Voice and Image Security Act in March 2024, the first law anywhere in the United States to explicitly protect a person's <em>voice</em> against unauthorized AI cloning. The acronym is no accident. Where copyright protects songs and recordings, the ELVIS Act protects the instrument copyright forgot: the human voice itself, as part of a person's identity.</p>
+    <p>It's a state law, not a national one, but it set the template now being copied and debated across the US and beyond. Canada, as the fake-Drake incident made plain, has no equivalent — just a patchwork of personality torts and provincial privacy statutes that predate the technology. For a country that produces a wildly disproportionate share of the world's biggest vocal artists, that's a conspicuous gap — and a live policy question Canadian musicians have every reason to watch.</p>
+  </div>
+</template>
+
+<template id="e26">
+  <div class="card">
+    <p class="cyr">2025</p>
+    <h2>Bartz v Anthropic — training, piracy &amp; the $1.5B settlement</h2>
+    <p>This is the ruling everyone had been waiting for. Authors sued Anthropic over the books used to train Claude, and in June 2025 Judge William Alsup split the baby with surgical precision: training an AI on <em>lawfully acquired</em> books was fair use — “exceedingly transformative,” in his words — but downloading millions of <em>pirated</em> books to build a permanent library was flat-out infringement. The lawful part was the learning; the unlawful part was the stealing.</p>
+    <p>With statutory damages running to US$150,000 per work across hundreds of thousands of pirated books, Anthropic settled for a minimum of US$1.5 billion — roughly $3,000 per book, the largest copyright settlement in history — and agreed to destroy the pirated copies. The settlement received final court approval in July 2026. The two-part lesson now shapes the entire industry. How a model learns may be defensible; how the training copies were <em>obtained</em> absolutely is not. Provenance — where the data came from — became the most expensive word in artificial intelligence.</p>
+  </div>
+</template>
+
+<template id="e27">
+  <div class="card">
+    <p class="cyr">2025</p>
+    <h2>SOCAN's new rule — AI-assisted works can be registered</h2>
+    <p>In October 2025, SOCAN — moving in lockstep with the American societies ASCAP and BMI — answered the question every member had been asking: yes, you can register works made with AI's help, provided they genuinely combine AI-generated elements with human authorship. Fully AI-generated compositions, by contrast, cannot be registered at all; SOCAN will place suspected all-machine works on hold and pay no royalties on them. The societies' joint statement pulled no punches on training either, calling the unlicensed ingestion of members' catalogues “not fair use, but theft.”</p>
+    <p>For a Canadian composer, this is the most practical entry on the timeline. Use AI as a tool — generate raw material, then apply your own skill and judgment in selecting, editing, arranging, performing — and the result is yours: protectable, registrable, royalty-earning. Hand the whole job to the machine and the output belongs to no one, earns nothing, and can be used by anyone. Document your human contribution. The line between “AI-assisted” and “AI-generated” is now, quite literally, the line between owning your work and not.</p>
+  </div>
+</template>
+
+<template id="e28">
+  <div class="card">
+    <p class="cyr">2026</p>
+    <h2>Canada consults, but hasn't legislated</h2>
+    <p>Where does Canadian law actually stand on AI training? Officially: nowhere yet. The federal government ran a full consultation on copyright and generative AI (2023–2024), published a “What We Heard” report, and a Commons committee has recommended requiring <em>opt-in consent</em> before copyrighted works can be used for training. But as of 2026, no bill has been introduced. Unlike the EU, the UK, Japan, or Singapore — which all built explicit text-and-data-mining rules — Canada has no exception permitting AI training, and no case law testing whether fair dealing covers it.</p>
+    <p>So the story this whole timeline tells arrives at its cliffhanger. For three hundred years, every new copying technology — the press, the piano roll, the tape deck, the sampler, the file-sharing network — forced copyright to reinvent itself, usually a few years behind the machines. AI is simply the largest instance of the pattern, and Canada's chapter is still being written. If the history here says anything, it's this: the technology will not be un-invented, the law will eventually catch up, and the interesting question — the one this residency kept returning to — is what terms we, as creators and as a public, negotiate in the meantime.</p>
+  </div>
+</template>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.tl-item:not(.soon)');
+  var tl = document.getElementById('timeline');
+  var mount = document.getElementById('panel-mount');
+  var empty = document.getElementById('panel-empty');
+  var openId = null, openBtn = null;
+  var mobile = window.matchMedia('(max-width:760px)');
+  var connector = null;
+
+  function removeConnector(){
+    if(connector){ connector.remove(); connector = null; }
+  }
+
+  function closeAll(){
+    document.querySelectorAll('.tl-item.open').forEach(function(b){b.classList.remove('open');});
+    document.querySelectorAll('.tl-inline.show').forEach(function(d){
+      d.classList.remove('show'); d.innerHTML='';
+    });
+    mount.innerHTML='';
+    removeConnector();
+    empty.style.display='';
+    openId=null; openBtn=null;
+  }
+
+  function placeDesktop(btn, id){
+    // align card top with the open entry
+    var top = btn.offsetTop;
+    var tlH = tl.offsetHeight;
+    mount.style.top = top + 'px';
+    var card = mount.querySelector('.card');
+    requestAnimationFrame(function(){
+      var ch = card ? card.offsetHeight : 0;
+      if(top + ch > tlH){ mount.style.top = Math.max(0, tlH - ch) + 'px'; }
+      requestAnimationFrame(function(){
+        if(card) card.classList.add('show');
+      });
+      // wait for the entry's font-size transition (220ms) to finish
+      // before measuring where its last word ends
+      setTimeout(function(){
+        if(openBtn !== btn) return;
+        drawConnector(btn);
+        requestAnimationFrame(function(){
+          if(connector) connector.classList.add('show');
+        });
+      }, 260);
+    });
+  }
+
+  function drawConnector(btn){
+    removeConnector();
+    // find the entry's text node and measure only up to its last
+    // non-whitespace character, so trailing markup whitespace is ignored
+    var node = btn.lastChild;
+    while(node && node.nodeType !== 3){ node = node.previousSibling; }
+    var endX = null, midY = null;
+    if(node){
+      var text = node.textContent;
+      var end = text.length;
+      while(end > 0 && /\s/.test(text.charAt(end-1))){ end--; }
+      var r = document.createRange();
+      r.setStart(node, 0);
+      r.setEnd(node, end);
+      var rects = r.getClientRects();
+      if(rects.length){
+        var last = rects[rects.length-1];
+        endX = last.right; midY = last.top + last.height/2;
+      }
+    }
+    var tlRect = tl.getBoundingClientRect();
+    var gridGap = 48; // 3rem gap between columns
+    if(endX === null){
+      var br = btn.getBoundingClientRect();
+      endX = br.right; midY = br.top + br.height/2;
+    }
+    connector = document.createElement('div');
+    connector.className = 'connector';
+    var left = (endX - tlRect.left) + 10;
+    var width = (tlRect.width - left) + gridGap + 2;
+    if(width < 20) width = 20;
+    connector.style.left = left + 'px';
+    connector.style.top = ((midY - tlRect.top) - 1) + 'px';
+    connector.style.width = width + 'px';
+    tl.appendChild(connector);
+  }
+
+  function open(btn){
+    var id = btn.getAttribute('data-id');
+    if(openId===id){ closeAll(); return; }
+    closeAll();
+    btn.classList.add('open');
+    openId=id; openBtn=btn;
+    var tpl = document.getElementById(id);
+    if(!tpl) return;
+    var node = tpl.content.cloneNode(true);
+    if(mobile.matches){
+      var slot = document.querySelector('.tl-inline[data-for="'+id+'"]');
+      slot.appendChild(node);
+      slot.classList.add('show');
+    }else{
+      empty.style.display='none';
+      mount.appendChild(node);
+      placeDesktop(btn, id);
+    }
+  }
+
+  items.forEach(function(btn){
+    btn.addEventListener('click', function(){ open(btn); });
+  });
+
+  window.addEventListener('resize', function(){
+    if(openBtn && !mobile.matches){
+      var card = mount.querySelector('.card');
+      if(card){ placeDesktop(openBtn, openId); }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

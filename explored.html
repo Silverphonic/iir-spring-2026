@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What We Explored — Innovator in Residence Spring 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1F2E;
+    --surface:#15293B;
+    --accent:#E8622A;
+    --accent-soft:#F2895A;
+    --text:#F2F0EC;
+    --muted:#AABBC8;
+    --line:#2C4459;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--ink);color:var(--text);
+    font-family:"IBM Plex Sans",system-ui,Arial,sans-serif;
+    font-size:18px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-soft);text-decoration:none;}
+  a:hover{color:var(--accent);}
+  ::selection{background:var(--accent);color:var(--ink);}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem;}
+
+  /* ---------- top nav (matches index) ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,31,46,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brandmark{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;color:var(--text);}
+  .navlinks{display:flex;gap:1.6rem;font-size:.82rem;
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;}
+  .navlinks a{color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  .navlinks a.here{color:var(--accent-soft);}
+  @media(max-width:620px){ .navlinks{gap:1rem;font-size:.72rem;} }
+
+  /* ---------- page header ---------- */
+  header.page{padding:5rem 0 2.5rem;}
+  .pagelabel{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 1.2rem 0;
+  }
+  .pagelabel .dot{color:var(--accent);}
+  header.page h1{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.08;
+    color:var(--accent);margin:0 0 1.2rem 0;
+  }
+  .hint{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--muted);letter-spacing:.04em;
+  }
+  .hint b{color:var(--accent-soft);font-weight:500;}
+  .disclaimer{
+    font-size:.78rem;line-height:1.65;color:var(--muted);
+    border-left:2px solid var(--accent);
+    padding-left:.9rem;max-width:38rem;
+    margin:1.4rem 0 0 0;
+  }
+  .intro{margin-top:1.6rem;}
+  .intro p{max-width:38rem;font-size:.95rem;line-height:1.75;margin:0 0 1.2rem 0;}
+  .lenses{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;max-width:44rem;margin:0 0 1.4rem 0;}
+  @media(max-width:620px){ .lenses{grid-template-columns:1fr;} }
+  .lens{
+    background:var(--surface);border:1px solid var(--line);border-radius:8px;
+    padding:.9rem 1.1rem;font-size:.85rem;line-height:1.6;color:var(--muted);
+  }
+  .lens b{
+    display:block;font-family:"IBM Plex Mono",monospace;font-size:.72rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft);
+    margin-bottom:.35rem;font-weight:500;
+  }
+  .slideblock{
+    border:1px solid var(--line);border-left:2px solid var(--accent);
+    border-radius:8px;background:rgba(232,98,42,.04);
+    padding:1rem 1.2rem;margin:0 0 1.2rem 0;max-width:38rem;
+  }
+  .slideblock p{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;line-height:1.7;
+    margin:0 0 .55rem 0;color:var(--text);
+  }
+  .slideblock p:last-child{margin-bottom:0;}
+
+  .card p.audit{font-style:italic;}
+  .card p.audit b{font-style:italic;font-weight:600;color:var(--accent-soft);}
+
+  .erabar{
+    position:sticky;top:60px;z-index:40;
+    background:rgba(15,31,46,.88);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .erabar .wrap{
+    display:flex;gap:1.8rem;overflow-x:auto;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.06em;padding-top:.65rem;padding-bottom:.65rem;
+    white-space:nowrap;scrollbar-width:none;
+  }
+  .erabar .wrap::-webkit-scrollbar{display:none;}
+  .erabar a{color:var(--muted);}
+  .erabar a:hover{color:var(--accent-soft);}
+
+  .tl-era{
+    font-family:"Fraunces",serif;font-weight:600;font-size:1.15rem;
+    color:var(--accent);margin:2.4rem 0 .6rem 0;padding:.2rem 0;
+    position:relative;cursor:pointer;user-select:none;
+    display:flex;align-items:center;gap:.7rem;
+    scroll-margin-top:8rem;
+  }
+  .tl-era:hover{color:var(--accent-soft);}
+  .tl-era:first-of-type{margin-top:.5rem;}
+  .tl-era .count{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+    color:var(--muted);letter-spacing:.08em;font-weight:400;
+    border:1px solid var(--line);border-radius:99px;
+    padding:.1rem .55rem;
+  }
+  .tl-era .chev{
+    width:.55rem;height:.55rem;
+    border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+    transform:rotate(-45deg);transition:transform .3s ease;
+    margin-top:-.2rem;
+  }
+  .tl-era.on .chev{transform:rotate(45deg);margin-top:-.35rem;}
+
+  .era-group{
+    overflow:hidden;max-height:0;
+    transition:max-height .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .era-group.openEra{max-height:400rem;}
+  .tl-era::before{
+    content:"";position:absolute;left:-1.6rem;top:50%;
+    width:11px;height:11px;border-radius:50%;
+    background:var(--accent);transform:translate(-50%,-50%);
+    box-shadow:0 0 0 4px rgba(232,98,42,.15);
+  }
+  .cats{
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent-soft);margin:0 0 1rem 0;
+  }
+
+  /* ---------- timeline layout ---------- */
+  .tl-grid{
+    display:grid;grid-template-columns:minmax(0,26rem) 1fr;
+    gap:3rem;align-items:start;
+    padding:1.5rem 0 6rem;
+  }
+  /* the vertical line + entries */
+  .tl{
+    position:relative;
+    border-left:1px solid var(--line);
+    padding-left:1.6rem;
+    margin-left:.4rem;
+  }
+  .tl .connector{z-index:2;}
+  .tl-item{
+    position:relative;
+    display:block;width:100%;text-align:left;
+    background:none;border:none;cursor:pointer;
+    color:var(--muted);
+    font-family:"IBM Plex Sans",sans-serif;
+    font-size:.8rem;line-height:1.35;
+    padding:.42rem 0;margin:0;
+    transition:font-size .22s cubic-bezier(.2,.7,.2,1), color .22s;
+  }
+  .tl-item .yr{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.86em;color:var(--accent-soft);
+    margin-right:.55em;letter-spacing:.02em;
+  }
+  /* node dot on the line */
+  .tl-item::before{
+    content:"";position:absolute;left:-1.6rem;top:50%;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--line);
+    transform:translate(-50%,-50%);
+    transition:border-color .22s, background .22s, width .22s, height .22s, box-shadow .22s;
+  }
+  /* hover: enlarge */
+  .tl-item:hover, .tl-item:focus-visible{
+    font-size:1.02rem;color:var(--text);outline:none;
+  }
+  .tl-item:hover::before, .tl-item:focus-visible::before{
+    border-color:var(--accent-soft);
+  }
+  /* open state */
+  .tl-item.open{
+    font-size:1.05rem;color:var(--text);font-weight:600;
+  }
+  .tl-item.open::before{
+    background:var(--accent);border-color:var(--accent);
+    width:10px;height:10px;
+    box-shadow:0 0 0 4px rgba(232,98,42,.16);
+  }
+  /* entries not yet written */
+  .tl-item.soon{cursor:default;opacity:.38;}
+  .tl-item.soon:hover{font-size:.8rem;color:var(--muted);}
+  .tl-item.soon:hover::before{border-color:var(--line);}
+  .tl-item.soon .todo{
+    font-family:"IBM Plex Mono",monospace;font-size:.72em;
+    color:var(--muted);margin-left:.5em;letter-spacing:.06em;
+  }
+
+  /* ---------- detail panel (desktop) ---------- */
+  .panel{
+    position:relative;align-self:stretch;
+    min-height:10rem;
+  }
+  #panel-mount{position:absolute;left:0;right:0;top:0;}
+  /* orange connector from the open entry to the card's bracket */
+  .connector{
+    position:absolute;height:2px;border-radius:1px;
+    background:linear-gradient(90deg,rgba(232,98,42,.25),var(--accent));
+    pointer-events:none;
+    opacity:0;transition:opacity .35s ease .1s;
+  }
+  .connector.show{opacity:1;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    border-radius:10px;
+    padding:1.8rem 2rem;
+    opacity:0;transform:translateX(-14px);
+    transition:opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+    pointer-events:none;
+  }
+  .card.show{opacity:1;transform:none;pointer-events:auto;}
+  .card .cyr{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    letter-spacing:.16em;color:var(--accent-soft);
+    text-transform:uppercase;margin:0 0 .5rem 0;
+  }
+  .card h2{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:1.45rem;line-height:1.2;margin:0 0 1rem 0;color:var(--text);
+  }
+  .card p{margin:0;font-size:.95rem;line-height:1.75;color:var(--text);}
+  .card p + p{margin-top:1rem;}
+  .panel .empty{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--muted);letter-spacing:.05em;
+    padding:1.8rem 0;
+  }
+
+  /* ---------- mobile: accordion below entry ---------- */
+  .tl-inline{display:none;}
+  @media(max-width:760px){
+    .tl-grid{grid-template-columns:1fr;gap:0;}
+    .panel{display:none;}
+    .tl-inline{
+      display:block;overflow:hidden;max-height:0;
+      transition:max-height .4s ease;
+    }
+    .tl-inline .card{
+      margin:.4rem 0 1rem 0;opacity:1;transform:none;pointer-events:auto;
+      padding:1.2rem 1.3rem;
+    }
+    .tl-inline.show{max-height:60rem;}
+  }
+
+  footer{border-top:1px solid var(--line);padding:2rem 0;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted);}
+
+  a:focus-visible,.tl-item:focus-visible{outline:2px solid var(--accent-soft);outline-offset:3px;border-radius:4px;}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brandmark" href="index.html" style="color:var(--text)">Innovator in Residence Spring 2026</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a class="here" href="explored.html">What We Explored</a>
+      <a href="speakers.html">The Speakers</a>
+      <a href="history.html">History of Generative Music</a>
+      <a href="copyright.html">Copyright &amp; AI</a>
+      <a href="environment.html">AI &amp; the Environment</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page">
+  <div class="wrap">
+    <p class="pagelabel">Innovator in Residence Spring 2026 <span class="dot">·</span> AI &amp; Music Production</p>
+    <h1>What We Explored</h1>
+    <p class="lede">Over twelve weeks at Fairview's Digital Innovation Hub, we ran hands-on workshops exploring the benefits, complications, strengths, and weaknesses of AI-assisted music-making. From ambient soundscapes to hip-hop sets, we explored how (and when) we might use this technology to create music in accordance with SOCAN's guidelines — as a tool to enhance the human creative process — and not replace it. As part of the exercise, we audited each process (to the best of our abilities) to discuss the legal and ethical status of our creations. Were we the authors? Could we copyright our creations? Were we genuinely expressing our own creativity — or were we sitting back and relying on algorithms to piece together outcomes based on probability instead of emotion?</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tl-grid">
+
+    <!-- ============ TIMELINE (left) ============ -->
+    <div class="tl" id="timeline">
+      <button class="tl-item" data-id="c0">
+        <span class="yr"></span>Before We Begin — Our Standard Disclaimer
+      </button>
+      <div class="tl-inline" data-for="c0"></div>
+      <button class="tl-item" data-id="c1">
+        <span class="yr"></span>Create Ambient Generative Music
+      </button>
+      <div class="tl-inline" data-for="c1"></div>
+      <button class="tl-item" data-id="c2">
+        <span class="yr"></span>Build Experimental Music with AI Tools
+      </button>
+      <div class="tl-inline" data-for="c2"></div>
+      <button class="tl-item" data-id="c3">
+        <span class="yr"></span>Write AI Prompts to Get the Music You Want
+      </button>
+      <div class="tl-inline" data-for="c3"></div>
+      <button class="tl-item" data-id="c4">
+        <span class="yr"></span>For Teens: Create a DJ Set with AI Tools
+      </button>
+      <div class="tl-inline" data-for="c4"></div>
+      <button class="tl-item" data-id="c5">
+        <span class="yr"></span>For Seniors: Make a Song for Someone You Love
+      </button>
+      <div class="tl-inline" data-for="c5"></div>
+      <button class="tl-item" data-id="c6">
+        <span class="yr"></span>Create Pop Music with AI Tools
+      </button>
+      <div class="tl-inline" data-for="c6"></div>
+      <button class="tl-item" data-id="c7">
+        <span class="yr"></span>Mix and Master Music with AI Tools
+      </button>
+      <div class="tl-inline" data-for="c7"></div>
+      <button class="tl-item" data-id="c8">
+        <span class="yr"></span>Worlds of Music: Write AI Prompts for Different Music Styles
+      </button>
+      <div class="tl-inline" data-for="c8"></div>
+      <button class="tl-item" data-id="c9">
+        <span class="yr"></span>After-School Club
+      </button>
+      <div class="tl-inline" data-for="c9"></div>
+      <button class="tl-item" data-id="c10">
+        <span class="yr"></span>Investigative Tension: Compose True Crime Soundtracks with AI Tools
+      </button>
+      <div class="tl-inline" data-for="c10"></div>
+      <button class="tl-item" data-id="c11">
+        <span class="yr"></span>From Our Mouths to Your Ears: Generate Music from Sound with AI Tools
+      </button>
+      <div class="tl-inline" data-for="c11"></div>
+      <button class="tl-item" data-id="c12">
+        <span class="yr"></span>From Demo to Done: Turn Your Musical Ideas into Full Productions with AI
+      </button>
+      <div class="tl-inline" data-for="c12"></div>
+      <button class="tl-item" data-id="c13">
+        <span class="yr"></span>Prompt Sounds and Effects with AI Tools
+      </button>
+      <div class="tl-inline" data-for="c13"></div>
+      <button class="tl-item" data-id="c14">
+        <span class="yr"></span>Generate Film Scores with AI Tools
+      </button>
+      <div class="tl-inline" data-for="c14"></div>
+      <button class="tl-item" data-id="c15">
+        <span class="yr"></span>Vibe-Code with AI for Music Generation
+      </button>
+      <div class="tl-inline" data-for="c15"></div>
+      <button class="tl-item" data-id="c16">
+        <span class="yr"></span>Generate Music with Gesture
+      </button>
+      <div class="tl-inline" data-for="c16"></div>
+      <button class="tl-item" data-id="c17">
+        <span class="yr"></span>Sharing Your Sound: Build an Online Presence with AI-Generated Music
+      </button>
+      <div class="tl-inline" data-for="c17"></div>
+    </div>
+
+    <!-- ============ DETAIL PANEL (right, desktop) ============ -->
+    <div class="panel">
+      <p class="empty" id="panel-empty">← Choose a moment on the timeline</p>
+      <div id="panel-mount"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Innovator in Residence Spring 2026 · <a href="https://silverphonic.com" target="_blank" rel="noopener">Joel S. Silver</a></span>
+    <span>Toronto Public Library · Fairview DIH · 2026</span>
+  </div>
+</footer>
+
+<!-- ============ ENTRY CONTENT ============ -->
+
+
+
+<template id="c0">
+  <div class="card">
+    <p class="cyr">Shown at the start of every creative session</p>
+    <h2>Before We Begin — Our Standard Disclaimer</h2>
+    <p>Every creative session in the residency opened the same way — before a single sound was generated, this slide went up:</p>
+    <div class="slideblock">
+      <p>♥ We are committed to human-forward creation and ethical AI use</p>
+      <p>⚖ AI and copyright law is complex and still evolving</p>
+      <p>✅ Everything we create today is absolutely fine for personal use</p>
+      <p>⚠ Before releasing anything publicly — consult a legal professional</p>
+    </div>
+    <p>We included it for a simple reason: honesty. The legal ground under AI-generated music is still shifting — cases are being argued, rules are still being written, ethics are still being debated — and it would have been wrong to pretend otherwise. The disclaimer drew a clear line: inside this room, for your own enjoyment and learning, create without fear; but before your work heads out into the world commercially, get real advice from a real professional. And its first line was the residency's whole philosophy in miniature — human-forward creation, with AI as the tool and never the author.</p>
+  </div>
+</template>
+
+<template id="c1">
+  <div class="card">
+    <h2>Create Ambient Generative Music</h2>
+    <p>This was the residency's very first workshop, and it carried a double lesson. On the surface: create ambient music — the kind that surrounds us in meditation apps, video games, and film. Underneath: learn to use AI in a manner that does not leave the overall creative decisions in the hands of probability algorithms. The goal was to use AI to generate individual sounds to our custom specifications, which we then edited and affected further, and used as source materials within a custom-built engine that we used to do live ambient music performances.</p>
+    <p>Participants began by experimenting with prompting custom sound elements — sustained pads, bell-like tones, and atonal risers. We focused on learning to describe timbres (sound textures), dynamics, and environments, hoping to coax interesting and unexpected results. Then, sounds were loaded into a custom Max/MSP patch with three “machines” — one for pads, one for bells, one for risers — each with performable interfaces and realtime controllable musical parameters, so that as the soundscapes evolved, individuals could steer the direction and mood. Along the way, we listened to Brian Eno's <em>Music for Airports</em> to place the afternoon's work in a historical context.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> In our opinion, the outcomes of this exercise fall within SOCAN's guidelines for creating music with AI. AI was only used to generate sounds, not music — the music itself was created by the performances that individuals did with those sounds.</p>
+    
+  </div>
+</template>
+
+<template id="c2">
+  <div class="card">
+    <h2>Build Experimental Music with AI Tools</h2>
+    <p>If the ambient class was about steering AI toward calm, this one was about pushing it somewhere strange. Experimental music is defined by its refusal of pop conventions, which makes it the perfect adversary for AI, whose training pulls relentlessly toward generic melody, verse-chorus structure. The challenge of the session was learning to fight that gravity.</p>
+    <p>We began by listening. The class worked through a century of experimental landmarks — Pierre Schaeffer's train études, John Cage's chance operations, Xenakis's mathematical sound-masses, Steve Reich's tape phasing, Alvin Lucier's <em>I Am Sitting in a Room</em> — describing what we heard. This built a shared vocabulary; the source sounds (grinding metal, hissing steam, field recordings) that would feed our prompts, and the editing techniques (looping, layering, transformation beyond recognition) we'd reach for later in the DAW.</p>
+    <p>Then we turned AI against its own instincts. Rather than generic prompts, we wrote deliberately elaborate and often confusing ones — stacking genre signals and joining every requirement with “and” instead of commas, to make them mandatory, and building aggressive exclusion lists to close every door the model might use to sneak conventional music back in. If there was an option in the AI model for an extreme or chaotic setting, we tried pushing it to the brink. The resulting fragments — atonal, textural, strange — were imported into a DAW, where participants looped, chopped, and processed them into finished experimental pieces of their own.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> In our opinion, this exercise sits within SOCAN's guidelines. The AI generated musical fragments and raw non-traditional elements. The human authorship lives in the selection, editing, processing, and arrangement. The more a participant transformed the AI's output, the stronger their claim to authorship.</p>
+  </div>
+</template>
+
+<template id="c3">
+  <div class="card">
+    <h2>Write AI Prompts to Get the Music You Want</h2>
+    <p>Music is famously hard to put into words. What, exactly, does “warm” sound like? “Punchy”? “Dreamy”? These words mean something to us, but they're slippery — and when the machine standing between your intention and the result only understands words, that slipperiness becomes the whole problem. This session was about closing the gap between the sound in your head and what comes out of the generator.</p>
+    <p>We started with why music resists language at all, then experimented our way toward precision — testing how small changes in wording moved the results, and building up a shared vocabulary for describing timbre, energy, and feel. From there we moved to advanced techniques: meta-tags (structured instructions the models read differently from ordinary description), learning how to use language like code to get specific timbral and structural results, and exploring “LLM-ception” — using a conversational AI to translate our thoughts into the exact phrasing specific music generators will understand best, all in an effort to keep ourselves in the driver's seat.</p>
+    <p>The real lesson was that prompting to get specific results requires precise language, not lucky guesses. The better you can describe what you hear using words and prompting structures the AI understands, the more it becomes about using a guidable tool than a roll of the dice.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> This session lives at the heart of the authorship question. A prompt alone — however skillfully written, if it does not include user-given chords and melodies, is still generating a fully AI-made track. Under SOCAN's guidelines, this would not qualify as human-authored music. What this class taught was the craft of timbral and structural direction, and the results without more human input could not be considered your original work.</p>
+  </div>
+</template>
+
+<template id="c4">
+  <div class="card">
+    <h2>For Teens: Create a DJ Set with AI Tools</h2>
+    <p>Ever wonder how DJs build a set that keeps a room moving? Run for our teen participants, this session turned that question into a hands-on afternoon: use AI to generate beat-based source music, take it apart, and put it back together as a set you can perform live.</p>
+    <p>We started by generating dance-floor tracks, and then pulled them apart into layers that we split, chopped, affected, and edited. Then we arranged the loops and one-shots into dynamic mash-ups. By the end, everyone had the components of a live set they could perform, trigger and arrange into something new on the fly.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> Like the prompting class, the raw tracks here began as AI-generated material — so the starting point does not, on its own, clear SOCAN's bar for human authorship. What participants added was real, though: taking that material apart and rebuilding it into an original arrangement or live performance could be seen as a genuine act of creative authorship, even if the underlying generated audio is AI-made. Canadian copyright protects “compilations” of non-original or public domain works — but the specifics of this situation are too new to know the legalities 100%.</p>
+  </div>
+</template>
+
+<template id="c5">
+  <div class="card">
+    <h2>For Seniors: Make a Song for Someone You Love</h2>
+    <p>This was one of the most moving sessions of the whole residency. The premise was simple and human, and the creative work began with giving a conversational AI a different kind of prompt: “I'd like to write a song for someone. I don't want you to write it for me. I want you to help me write it myself.”</p>
+    <p>But we didn't start with technology; we started with songs. We listened to two contrasting pieces written for real people — Eric Clapton's “Wonderful Tonight” and Leonard Cohen's “Famous Blue Raincoat” — analyzing the lyrics to see how each writer paid attention: Clapton through plain-language specificity, and Cohen through literary, unresolved complexity. The lesson underneath both: a song for someone you love doesn't have to be impressive, it has to be honest.</p>
+    <p>Then participants worked with a conversational AI as a writing partner — telling it who they are, who the song is for, and the things they wanted to say — always reminding the AI that it is there only to help, to make suggestions, or to ask them questions that could guide the authors, but never doing the creative work for them. When the lyrics were done, we brought them into a song generator, and, using prompting skills we'd acquired in previous sessions, we described the specifics of the music that we wanted it to build. There was a heartwarming (and sometimes heartbreaking) array of all genres, created for partners, children, missed connections, siblings, those we've lost, and even pets.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> This session was complex to audit. The lyrics were genuinely authored by the participants — their words, their memories, their person — and, though an AI may have acted as an assistant, as long as humans wrote the words, the lyrics are considered protectable creative work. The music, however, was AI-generated, so under SOCAN's guidelines the composition and recording wouldn't fully qualify as human-authored, even if the words at the heart of each song are unquestionably the writer's own.</p>
+  </div>
+</template>
+
+<template id="c6">
+  <div class="card">
+    <h2>Create Pop Music with AI Tools</h2>
+    <p>Pop is the hardest genre to keep the human in charge of. Whereas ambient and experimental music leave room to wander and experiment, Pop is built on conventions — a hook, a verse, a chorus, a three-minute shape — and those are exactly the patterns AI generators reach for by default. Left alone, the tools will happily write a whole radio-ready song for you. But this also leaves it particularly susceptible to infringement.</p>
+    <p>We talked about the conventions of Pop music, and how certain words (like, for example, “Pop”) carry gravity, and will cause AI to default to set ideas. The analogy we gave was “if AI could generate food, and you asked it for a burger — you are unlikely to get JUST a burger; you will probably also get fries and a milkshake that you didn't want because most of the burgers the AI was trained on have fries and a milkshake with them.” Saying “Pop” is like saying “burger”. This becomes more problematic when you consider that a lot of the “fries” and “milkshakes” in this analogy are derivative of other people's work, who likely did not agree to have an AI train on their materials.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> This session was built from the start to try to stay within SOCAN's guidelines, but that became extremely difficult with Pop. If working in this genre, it is highly recommended that you not just bring as much of your own contribution to the process as you can, but also that you document your process, and give it an honest self-audit before calling it yours — there's a very high chance what you've created is derivative.</p>
+  </div>
+</template>
+
+<template id="c7">
+  <div class="card">
+    <h2>Mix and Master Music with AI Tools</h2>
+    <p>This session was about the two crafts that turn a rough collection of sounds into a finished record: mixing and mastering. Unlike most of the residency, this one was a demonstration rather than a hands-on build — the goal was to teach people what these processes actually do, so they'd know what they were listening for, and then to show where AI now fits into work that used to demand a specialist and a very expensive room.</p>
+    <p>We used two analogies that have stuck with people. Mixing is like a stained-glass window: you have many separate coloured pieces — drums, bass, vocals, keys — and if you simply pile them on top of each other, you get mud; the craft is carving out a distinct space for each so all of them can be seen clearly at once. Mastering is like a head chef's final inspection before a plate leaves the kitchen: checking that everything belongs, nothing's missing, and the presentation is as good as it can be across every table in the room — or in music's case, every speaker, from a phone to a car to a club. We also introduced some of the essential tools, like EQ, compression, and limiting — and explained how each of them is used to make the pieces fit together and sound as good as possible.</p>
+    <p>Then we looked at what AI brings to this stage. Modern AI assistants can analyze a track and suggest a whole mixing or mastering chain in seconds — the kind of technical starting point that once took years of training to hear. But the demonstration made the key point clear: these tools may propose ideas, but it's just a starting point, and a human needs to make the final decisions. The AI handles the technical heavy lifting — spotting a frequency problem, setting a sensible loudness — while every creative decision about how the record should actually <em>feel</em> stays in human hands.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> This is the most comfortable case on the page. Mixing and mastering tools don't generate music — they polish music you already have, whatever its source. Used on your own recording, an AI mastering assistant is no more an author than a graphic equalizer or a well-designed compressor; it's a technical aid, not a creative voice. The authorship question here rests entirely on where the underlying track came from, not on the mixing and mastering itself.</p>
+  </div>
+</template>
+
+<template id="c8">
+  <div class="card">
+    <h2>Worlds of Music: Write AI Prompts for Different Music Styles</h2>
+    <p>This session existed because of a problem we expected to hit hard. AI music tools are trained overwhelmingly on Western music — Western scales, Western song forms, Western instruments — so we assumed that prompting them toward the traditions of other cultures would be an uphill struggle. It turned out to be one of the pleasant surprises of the residency: the tools were far more capable with world music styles than we'd anticipated. Not only did they handle unfamiliar scales and rhythms well — they also produced convincing vocals in multiple languages we hadn't expected them to manage, including Farsi, Hindi, and Cantonese, amongst others.</p>
+    <p>We began with the building blocks that distinguish musical traditions from one another — scales and modes, metres and rhythmic cycles, forms and instrumentation. But the most important discovery was about <em>language</em>. It's tempting, when prompting, to reach for words like “exotic” or “foreign” — and those words are a trap, both ethically and practically. Ethically, they frame entire living traditions as strange curiosities seen from a Western centre. Practically, they produce worse results: the tools tend to answer “exotic” with a vague, stereotyped pastiche rather than the specific tradition you actually want. We learned to name things precisely instead — a raga rather than “Indian-sounding,” a specific rhythmic cycle rather than “tribal” — which is both more respectful and simply more effective.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> This session raised questions that go beyond authorship. Prompting a tool to imitate a living musical tradition — especially one that isn't your own — sits close to cultural appropriation, and the language we use to do it matters enormously; ethnocentric shorthand like “exotic” or “foreign” quietly places one tradition at the centre and everything else at the margins. There is also a deeper concern in the background: there has been growing discussion about the exploitation of Indigenous and other marginalized communities whose music and cultural knowledge may have been swept into AI training data without consent, credit, or benefit. Our approach was to treat these as experiments in listening and learning, undertaken with respect and specificity, rather than as licence to mass-produce and release music in traditions we only partly understand. The respectful path and the effective path, encouragingly, turned out to be the same one.</p>
+  </div>
+</template>
+
+<template id="c9">
+  <div class="card">
+    <h2>After-School Club</h2>
+    <p>For our after-school clubs — kids roughly six to ten — we deliberately set aside the complicated questions and did something simpler: we used AI to have fun. No lectures, no audits, no worrying about SOCAN's bar. Just a room full of kids, a lot of laughing, and a machine that turns silly words into songs.</p>
+    <p>We started with a few improv games — clapping and name games — to get everyone warmed up. Then came the centrepiece: The Silly Story and Song Machine. Working together, the room built a story out loud — we'd tell a story and pause at the good parts to collect a word from the kids (“give me an animal!” “give me something gross!”), weaving each shouted suggestion into a growing, increasingly ridiculous narrative. Once the story was complete, every word the kids had contributed — the farts, the evil snails, the pink unicorn hair, the sardine pizza — all went into an AI music generator, which spun the whole silly saga into a song in whatever ridiculous combination of styles the room had voted for. A frenzied dance party ensued.</p>
+    <p>The kids weren't thinking about artificial intelligence; they were thinking of funny words, ridiculous musical hybrids, and coming up with new dance moves to fit their unique music. And that was exactly the point — focusing on their own creativity, with AI as a background tool that doesn't replace imagination.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> Even though legality was less of a concern in this exercise, ethics are always important. Central to the entire residency is the notion that real human expression should always be the core of our art, including our storytelling. This whole session was built to keep the kids' imaginations doing the heavy lifting: the improv games limbered up their brains (and bodies), and the story came from them, one ridiculous word at a time. The AI only really arrived as the punchline that turned their nonsense into a song. That order was deliberate. Even at six years old, the lesson underneath the laughter was the same one running through this whole residency: AI is not a replacement for the human imagination.</p>
+  </div>
+</template>
+
+<template id="c10">
+  <div class="card">
+    <h2>Investigative Tension: Compose True Crime Soundtracks with AI Tools</h2>
+    <p>True crime is everywhere — podcasts, documentaries, streaming series — and almost all of it runs on the same kind of music: the low, unresolved dread that makes you feel a revelation is coming even when nothing is happening. It's a genre with enormous room for experimental, atmospheric writing, which made it a perfect fit for the approach at the centre of this session: building a piece from individual components rather than prompting a whole track at once.</p>
+    <p>This was the session where we committed fully to component-building. Instead of asking a generator for “a true crime soundtrack” and accepting whatever it returned, we first took the genre apart to understand what we'd need to build. We identified the essential ingredients — the sustained drone that never resolves, the slow pulse that implies something approaching, sparse metallic hits, and restraint: how much of the tension lives in what <em>isn't</em> played. Then we built those ingredients one at a time. Each element was prompted, generated, and then further edited and affected on its own until it was right — and assembled and arranged the separate pieces into a finished cue. This is the opposite of one-prompt composition: the AI supplies raw materials on request, but the architecture, the layering, and every decision about what goes where belong entirely to the composer.</p>
+    <p>And the results were genuinely unnerving, in the best way. By combining the components deliberately, participants built minimalist cues that filled the room with dread. A held dissonance under an evolving pulse can be far more frightening than a busy, fully-arranged piece of music.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> Even though AI generated the source materials, in our opinion, the component-based approach — in which participants prompted but then curated, edited, affected, and arranged individual elements — gives the resulting composition a fairly strong case for human authorship over the piece.</p>
+  </div>
+</template>
+
+<template id="c11">
+  <div class="card">
+    <h2>From Our Mouths to Your Ears: Generate Music from Sound with AI Tools</h2>
+    <p>The idea behind this session was genuinely exciting: some AI tools can take a sound you make — a hummed melody, a beatboxed groove, a rhythm tapped on a table — and use it as the seed for a fully generated instrument part or even a complete piece of music. In principle, this is one of the most promising techniques for a working composer: a way to get your own musical ideas into the machine as raw material, and maintaining control over melodies, harmonies, even instrumentation. We'd planned to beatbox, sing, clap, and tap our way to original results.</p>
+    <p>But it failed. When this lesson was first planned and tested, the technique (which was even advertised on the AI website) performed beautifully. However, in the weeks between planning and teaching, the underlying AI models “upgraded” — and the new versions were noticeably worse at this task, misreading the inputs, ignoring instrumentation requests, and returning disappointing results. This session quickly stopped being a workshop and instead became an experiment.</p>
+    <p>This turned out to be worth documenting in its own right. When you build creative work on top of AI tools, you are building on ground you don't own and can't see into. A model you depend on can change overnight — with no warning, no changelog you'd understand, and no guarantee that a capability you relied on yesterday still exists today. The “black box” isn't only that we can't see how these systems make their decisions; it's that we don't control when they change, or whether they change for the better. For anyone thinking of folding these tools into a serious creative practice, that unpredictability is not a footnote. It's a central fact of the medium.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> In theory, if successful, the case for human authorship with this technique is perhaps stronger than any other example we've explored — but this session raises a point worth stating plainly: if a tool's behaviour can silently degrade between one week and the next, then any creative or professional workflow built on top of it carries a hidden fragility. The lesson we'd pass on is one of caution: enjoy these techniques when they are working, but AI is not infallible, and results can be incredibly inconsistent.</p>
+  </div>
+</template>
+
+<template id="c12">
+  <div class="card">
+    <h2>From Demo to Done: Turn Your Musical Ideas into Full Productions with AI</h2>
+    <p>This session was the more “professional” cousin of <em>From Our Mouths to Your Ears</em>. Instead of beatboxing or tapping a rhythm, the idea was to bring in a real demo — a rough piano part, a scratch vocal over strummed guitar, a sketch of a song — upload it, and have the AI build it out into a fuller, more polished production. For songwriters, this is the dream use case: you keep authorship of the core idea — your melody, your chords, your performance — and let the tool handle the production around it.</p>
+    <p>And we hit the same wall. Like the beatboxing session before it, this technique had worked reliably for me in the past. But by the time we ran it in the residency, the current models had shifted, and the results no longer matched what the tools had once been capable of. Uploading a demo fared <em>slightly</em> better than raw beatboxed input — but only slightly, and not nearly well enough to call the session the workshop it was meant to be. It became, like its cousin, an experiment.</p>
+    <p>Two sessions, two different methods, one identical disappointment. It's one thing to hear that AI tools are unreliable; it's another to watch two separate, previously-dependable techniques fail the same way in the same month. This is what the “black box” costs you in practice. A technique that could anchor real professional work stopped delivering, with no notice and no explanation — something changed inside a system you can't control. If you take these tools seriously as part of your craft, you have to plan for the floor to move.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> As with <em>From Our Mouths to Your Ears</em>, this technique would — when it works — make one of the strongest authorship cases of anything we tried, since the essential musical idea starts as the participant's own demo. But the same caution applies, doubly now that we've seen it twice: a workflow that depends on a specific AI capability is only ever as stable as the company's next update. Build with these tools, by all means — but keep your original demo, your stems, and a version of the craft that survives without them.</p>
+  </div>
+</template>
+
+<template id="c13">
+  <div class="card">
+    <h2>Prompt Sounds and Effects with AI Tools</h2>
+    <p>Before you can ask an AI for a sound, you have to know how sound is made — so this session, which we called “Shaping Sound,” started with the craft itself. We traced the history and mechanics of synthesis: how subtractive, FM, additive, and granular synthesis each build a tone from scratch, how samplers repurpose recorded sound, and how film sound designers have long shaped noise into emotion. The point was to build a real vocabulary of timbre first, so that when we turned to the AI tools, we'd actually know what to ask for.</p>
+    <p>Then we put a new generation of tools to the test — AI-powered plugins that build synth and effect patches from a plain-language description, right inside your music software. Instead of tweaking dozens of knobs, you describe what you're after — “warm and fuzzy,” “sharp and metallic,” “underwater echo” — and the tool constructs the patch. We went a step further and explored using MCP (a protocol that lets a conversational AI connect directly to other software) to reach into third-party plugins and shape their sounds for us — an AI assistant with its hands on the actual controls. We learned which descriptors these tools understand, tried to coax specific sounds out of them, and used a conversational AI to help design entire soundscapes from a described scene. The synthesis grounding from the first half paid off immediately: the more precisely we could name what a sound <em>was</em> — its waveform, its envelope, its space — the better the tools performed.</p>
+    <p>This was a session about description as a craft in its own right. Whether you're turning knobs by hand or typing a request, the limiting factor is the same: how clearly you can hear the sound in your head and put it into words. AI didn't remove the need for that skill — it made it the whole game.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> In our opinion, this one sits comfortably within SOCAN's guidelines. A tool that builds a synth patch or an effect from your description is closer to a sophisticated preset browser than to a composer — it shapes raw sound, but it doesn't write music. Whatever you go on to play or compose with those sounds is authored the same way it always has been: by you. The AI here is building the instrument, not performing the piece.</p>
+  </div>
+</template>
+
+<template id="c14">
+  <div class="card">
+    <h2>Generate Film Scores with AI Tools</h2>
+    <p>Think about the last time a film made your heart race or brought you to tears — chances are the music was doing more of that work than you noticed. Film scoring is the craft of using music to shape how an audience feels. This session was about learning to think like a film composer — and being honest about where AI tools can, and cannot, follow.</p>
+    <p>As with the sound-design session, we started with the craft, not the tools. We looked at what actually makes a score work: the recurring musical theme (the leitmotif — a melody that follows a character or an idea through a story), how instrument choice colours emotion, and timing — the art of landing a musical moment exactly when the picture needs it. Scoring to picture is a frame-accurate discipline: the music isn't free-standing, it has to breathe with the edit, hit the cut, and swell on the right frame.</p>
+    <p>In our opinions, an AI cannot successfully score a film. Scoring is an act of reading — a human composer interpreting the emotional cues in an actor's performance, the intent behind a writer's words, the meaning in a cinematographer's chosen angle, the notes from a director about what a scene is really about. An AI sees none of that. Sure, it can generate a mood, a texture, a fragment of theme — but it cannot watch a face and know when to ache. That said, what it can do is supply raw musical elements that a human being then arranges, places, and syncs into a score. The scoring — the part that actually matters — remains entirely ours.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> In our opinion, this depends entirely on how the tools are used. Used to generate raw sounds and thematic fragments that a composer edits and then arranges into a score, the human authorship can be significant and the result, genuinely successful. But a completely AI-generated film score on its own would certainly fail the test of human authorship, and, frankly, would probably not do a very good job of it either.</p>
+  </div>
+</template>
+
+<template id="c15">
+  <div class="card">
+    <h2>Vibe-Code with AI for Music Generation</h2>
+    <p>This session took the residency's ideas somewhere new. Instead of generating music with AI, we used AI to build custom music-making applications — creating working, playable music software from plain-language descriptions that an AI translated into code — or, as it's colloquially known: “vibe coding.”</p>
+    <p>We worked right inside a conversational AI's browser tools, which can build and run little music apps live in the same window — no installation, nothing to set up. After a quick demo where we built an eight-step drum machine together, participants chose their own project: a step sequencer, a playable synth, a generative ambient generator, a Euclidean rhythm machine, a chance composer. Then they built it the vibe-coding way — not by typing code, but by describing it and iterating: “add a knob to increase the reverb,” “put a piano keyboard along the bottom,” “make the low notes darker,” “add a slider for the tempo,” “give it a button that randomizes the melody.” Each request was a creative decision; the AI handled the programming underneath. Within an hour, people with no coding experience whatsoever had working, original musical instruments running in their browsers.</p>
+    <p>This is the residency's throughline made almost literal. The participant makes every creative decision about what the instrument should be and do; the AI supplies the technical craft to realize it. It's the same relationship as a composer and a luthier, or a director and a crew — authorship in the vision and the choices, assistance in the execution.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> In our opinion, this sits comfortably on the human side of the line — but it's worth being precise about what is authored. What participants created here were musical tools, and the creative decisions driving each one — its behaviour, its sound, its rules — were entirely theirs, even though the AI wrote the underlying code. The music you then make by playing those instruments is authored the same way any performance is: by the human playing. As for the code itself, AI-generated code raises its own evolving questions of ownership, stability, and ability to troubleshoot, maintain, upgrade, etc.</p>
+  </div>
+</template>
+
+<template id="c16">
+  <div class="card">
+    <h2>Generate Music with Gesture</h2>
+    <p>This was the most futuristic session of the residency — and one where the AI worked invisibly, inside the technology rather than on the music. The idea: control music with your body. Using a camera and a hand-tracking system, we turned physical gestures in the air — the position of a hand, the spread of your fingers, the tilt of a wrist — into live musical control, so that moving through empty space became a way to play.</p>
+    <p>The AI here plays two roles. First, as in our very first ambient class, we used AI to generate the raw sound materials — the pads, tones, and textures the instrument would eventually play. Second, and more unusually, AI did the <em>seeing</em>: hand-tracking works because a machine-learning model, trained on countless images of hands, can watch a live camera feed and work out in real time where your fingers, knuckles, and palm are in space. That stream of data became our controller. We mapped those movements onto our generated sounds — a raised hand swelling the volume, the distance between two hands opening a filter, a closing fist triggering an event — so that a gesture-driven, generative instrument responded to the body with no physical controller at all. It's a direct descendant of the theremin, the 1920 instrument played by moving your hands through electromagnetic fields — except here the “field” is a camera and a neural network.</p>
+    <p>What made this compelling wasn't the novelty; it was the return of the <em>body</em> to music-making that had, all residency, lived mostly in typed words and mouse clicks. Prompting is disembodied; this was the opposite — sweaty, physical, expressive, imprecise in the way real performance is. It was a reminder that however the tools evolve, music still wants to be <em>played</em>.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> In our opinion, this is firmly human-authored music. The AI's role in the performance here is purely as a sensor — it perceives the body and reports where the hands are, exactly as a microphone perceives sound or a MIDI keyboard reports a key-press. Every musical result comes from a human moving in real time; the performance is entirely the player's own. Of everything we explored, gesture control may be the clearest case of AI as pure instrument — a tool that extends the body's reach into sound and then gets out of the way.</p>
+  </div>
+</template>
+
+<template id="c17">
+  <div class="card">
+    <h2>Sharing Your Sound: Build an Online Presence with AI-Generated Music</h2>
+    <p>You've made something you're proud of — now what? This closing session stepped away from creation and into the harder, less romantic question every modern musician faces: how do you actually get your music heard, and can you build a real presence around work made with AI? It's the business end of the whole residency.</p>
+    <p>We walked through the modern landscape: the platforms where music lives now (short-video apps, streaming services, video sites), how distributors act as the gateway that gets your track onto the major streaming services, and how the economics actually work — including a clear-eyed look at how little a stream really pays, and how many plays it takes to earn anything at all. We covered direct-to-fan approaches, the basics of sync licensing for film and television (a corner of the industry I've worked in for years), how royalties get collected in Canada, and — importantly — the scams that prey on independent artists trying to get noticed.</p>
+    <p>But AI-generated music carries a specific complication that ordinary music doesn't, and it's the through-line of this whole website: to collect royalties, the performing rights organizations — SOCAN here in Canada — require that a work have a human author. Which means the question of <em>how much of yourself you put into the music</em> stops being philosophical and becomes financial. A track the AI generated on its own may not be one you can register, monetise, or fully call yours. Everything this residency taught about keeping the human at the centre turns out to matter not just ethically, but practically, at the exact moment you try to share your sound with the world.</p>
+    <p class="audit"><b>Legal/Ethical Audit:</b> This session was, in a sense, one long legal-and-ethical audit. The central lesson bears repeating: in Canada, SOCAN and the other rights organizations require human authorship for a work to be registered and earn royalties. That single requirement ties every ethical question this residency raised to a concrete, real-world consequence; the more genuinely you author your music and the more of your own human creative decisions live inside it, the more it can actually do for you out in the world.</p>
+  </div>
+</template>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.tl-item:not(.soon)');
+  var tl = document.getElementById('timeline');
+  var mount = document.getElementById('panel-mount');
+  var empty = document.getElementById('panel-empty');
+  var openId = null, openBtn = null;
+  var mobile = window.matchMedia('(max-width:760px)');
+  var connector = null;
+
+  function removeConnector(){
+    if(connector){ connector.remove(); connector = null; }
+  }
+
+  function closeAll(){
+    document.querySelectorAll('.tl-item.open').forEach(function(b){b.classList.remove('open');});
+    document.querySelectorAll('.tl-inline.show').forEach(function(d){
+      d.classList.remove('show'); d.innerHTML='';
+    });
+    mount.innerHTML='';
+    removeConnector();
+    empty.style.display='';
+    openId=null; openBtn=null;
+  }
+
+  function placeDesktop(btn, id){
+    // align card top with the open entry
+    var top = btn.offsetTop;
+    var tlH = tl.offsetHeight;
+    mount.style.top = top + 'px';
+    var card = mount.querySelector('.card');
+    requestAnimationFrame(function(){
+      var ch = card ? card.offsetHeight : 0;
+      if(top + ch > tlH){ mount.style.top = Math.max(0, tlH - ch) + 'px'; }
+      requestAnimationFrame(function(){
+        if(card) card.classList.add('show');
+      });
+      // wait for the entry's font-size transition (220ms) to finish
+      // before measuring where its last word ends
+      setTimeout(function(){
+        if(openBtn !== btn) return;
+        drawConnector(btn);
+        requestAnimationFrame(function(){
+          if(connector) connector.classList.add('show');
+        });
+      }, 260);
+    });
+  }
+
+  function drawConnector(btn){
+    removeConnector();
+    // find the entry's text node and measure only up to its last
+    // non-whitespace character, so trailing markup whitespace is ignored
+    var node = btn.lastChild;
+    while(node && node.nodeType !== 3){ node = node.previousSibling; }
+    var endX = null, midY = null;
+    if(node){
+      var text = node.textContent;
+      var end = text.length;
+      while(end > 0 && /\s/.test(text.charAt(end-1))){ end--; }
+      var r = document.createRange();
+      r.setStart(node, 0);
+      r.setEnd(node, end);
+      var rects = r.getClientRects();
+      if(rects.length){
+        var last = rects[rects.length-1];
+        endX = last.right; midY = last.top + last.height/2;
+      }
+    }
+    var tlRect = tl.getBoundingClientRect();
+    var gridGap = 48; // 3rem gap between columns
+    if(endX === null){
+      var br = btn.getBoundingClientRect();
+      endX = br.right; midY = br.top + br.height/2;
+    }
+    connector = document.createElement('div');
+    connector.className = 'connector';
+    var left = (endX - tlRect.left) + 10;
+    var width = (tlRect.width - left) + gridGap + 2;
+    if(width < 20) width = 20;
+    connector.style.left = left + 'px';
+    connector.style.top = ((midY - tlRect.top) - 1) + 'px';
+    connector.style.width = width + 'px';
+    tl.appendChild(connector);
+  }
+
+  function open(btn){
+    var id = btn.getAttribute('data-id');
+    if(openId===id){ closeAll(); return; }
+    closeAll();
+    btn.classList.add('open');
+    openId=id; openBtn=btn;
+    var tpl = document.getElementById(id);
+    if(!tpl) return;
+    var node = tpl.content.cloneNode(true);
+    if(mobile.matches){
+      var slot = document.querySelector('.tl-inline[data-for="'+id+'"]');
+      slot.appendChild(node);
+      slot.classList.add('show');
+    }else{
+      empty.style.display='none';
+      mount.appendChild(node);
+      placeDesktop(btn, id);
+    }
+  }
+
+  items.forEach(function(btn){
+    btn.addEventListener('click', function(){ open(btn); });
+  });
+
+  // ----- collapsible eras -----
+  function setEra(head, on){
+    var grp = document.querySelector('.era-group[data-era="'+head.id+'"]');
+    if(!grp) return;
+    // if this era is being collapsed and the open entry lives inside it,
+    // close the card right away (clipped entries still report a layout box,
+    // so this must be checked directly rather than via visibility)
+    if(!on && openBtn && grp.contains(openBtn)){ closeAll(); }
+    head.classList.toggle('on', on);
+    grp.classList.toggle('openEra', on);
+    // re-align an open card after the collapse/expand animation shifts layout
+    setTimeout(function(){
+      if(openBtn && !mobile.matches){
+        var g = openBtn.closest('.era-group');
+        if(g && !g.classList.contains('openEra')){ closeAll(); return; }
+        placeDesktop(openBtn, openId);
+      }
+    }, 580);
+  }
+  document.querySelectorAll('.tl-era').forEach(function(head){
+    head.classList.toggle('on', !!document.querySelector('.era-group[data-era="'+head.id+'"].openEra'));
+    head.addEventListener('click', function(){
+      setEra(head, !head.classList.contains('on'));
+    });
+    head.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); setEra(head, !head.classList.contains('on')); }
+    });
+  });
+
+  // ----- jump-bar: expand target era, then scroll -----
+  document.querySelectorAll('.erabar a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var head = document.querySelector(a.getAttribute('href'));
+      if(!head) return;
+      setEra(head, true);
+      setTimeout(function(){ head.scrollIntoView({behavior:'smooth'}); }, 60);
+    });
+  });
+
+  window.addEventListener('resize', function(){
+    if(openBtn && !mobile.matches){
+      var card = mount.querySelector('.card');
+      if(card){ placeDesktop(openBtn, openId); }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
