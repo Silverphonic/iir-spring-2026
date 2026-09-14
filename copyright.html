@@ -226,6 +226,15 @@
     }
     .navlinks::-webkit-scrollbar{display:none;}
     .navlinks a{white-space:nowrap;flex:0 0 auto;}
+    /* fade the right edge to hint that the nav scrolls */
+    .navlinks{
+      -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 2.5rem),transparent 100%);
+      mask-image:linear-gradient(90deg,#000 calc(100% - 2.5rem),transparent 100%);
+    }
+    .navlinks.atend{
+      -webkit-mask-image:none;
+      mask-image:none;
+    }
   }
 </style>
 </head>
@@ -805,5 +814,19 @@
 })();
 </script>
 
+<script>
+(function(){
+  var el = document.querySelector('.navlinks');
+  if (!el) return;
+  function update(){
+    // 1px tolerance: scroll offsets can land on fractional pixels
+    var atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
+    el.classList.toggle('atend', atEnd);
+  }
+  update();
+  el.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+})();
+</script>
 </body>
 </html>
